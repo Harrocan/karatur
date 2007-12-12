@@ -1,0 +1,428 @@
+/* {
+	color: #DEB887;
+	font-family: verdana;
+	font-size: 10px;
+}*/
+
+/*body { behavior:url("./csshover.htc"); }*/
+div {
+color: #DEB887;
+}
+pre {
+	font-size: 10px;
+	font-family: monospace;
+}
+img {
+	border-style:none;
+}
+.bgleft{
+	background-image: url(images/left.gif); 
+	width:17px; 
+	min-width: 17px;
+}
+.bgright{
+	background-image: url(images/right.gif); 
+	width:17px; 
+	min-width: 17px;
+}
+.bgmid{
+	background-image: url(../images/mid.gif); 
+}
+.bgmidc{
+	background-image: url(../images/midc.gif); 
+}
+table {
+color: #DEB887;
+font-size:10px;
+}
+.table {
+	background-color: #0c1115;
+	color: #DEB887;
+	font-size:10px;
+}
+.table td {
+	background-color: #000000;
+}
+.table .thead {
+	background-color: #0c1115;
+	padding-left:0px;
+}
+.table .ind {
+	background-color: #000000;
+	padding-left:30px;
+}
+input, textarea, select, button, option, .test {
+	color: #806800;
+	font-size: 10px;
+	background: black;
+	border: solid gray 1px;
+	font-family:verdana;
+}
+input[disabled='disabled']{
+	color:#444;
+}
+option {
+border:none;
+}
+a {
+	text-decoration: none;
+	text-transform: none;
+	color: #FFEBCD;
+}
+a:hover, a:active, a:focus{
+border:none;
+}
+b {
+	color: #685430;
+}
+.border {
+background: #302810;
+width:1px;
+height:2px;
+}
+h2 {
+color: #988060;
+font-size: 14px;
+font-weight:bold;
+font-style:italic;
+/*line-height:2px;*/
+display:inline;
+}
+.td_title {
+background : #383400;
+}
+a:hover {
+text-decoration: none;
+text-transform: none;
+color: #988800;
+
+}
+body {
+background: #000000;
+}
+/*
+body, iframe, select, textarea {
+scrollbar-face-color: black;
+scrollbar-highlight-color: silver; 
+scrollbar-shadow-color: silver; 
+scrollbar-3dlight-color: black; 
+scrollbar-arrow-color: silver;
+scrollbar-track-color: black; 
+scrollbar-darkshadow-color: black; 
+scrollbar-base-color: black;
+}
+*/
+
+.error{
+	background: url( '../images/error.gif' );
+	background-repeat: no-repeat;
+	background-position: 4px;
+	border-style:solid;
+	border-width: 4px;
+	border-color:#cd0505;
+	min-height: 50px;
+	margin:4px;
+	padding:2px;
+	padding-left: 54px;
+	width:50%;
+}
+
+.info{
+	background: url( '../images/done.gif' );
+	background-repeat: no-repeat;
+	background-position: 4px;
+	border-style:solid;
+	border-width: 4px;
+	border-color:#5cc66d;
+	min-height: 50px;
+	margin:4px;
+	padding:2px;
+	padding-left: 54px;
+	width:50%;
+}
+
+.box-info{
+border-style:solid;
+border-color:#17a000;
+border-width:3px;
+margin: 5px auto;
+padding: 3px;
+width: 70%;
+text-align:center;
+}
+
+.box-error{
+border-style:solid;
+border-color:#a41414;
+border-width:3px;
+margin: 5px auto;
+padding: 3px;
+width: 70%;
+text-align:center;
+}
+
+.box-warn{
+border-style:solid;
+border-color:#c69500;
+border-width:3px;
+margin: 5px auto;
+padding: 3px;
+width: 70%;
+text-align:center;
+}
+
+.zgl_solved {
+border-top-style:solid;
+border-width:thin;
+background-color:#0c4e1b;
+width:100%;
+}
+.zgl_unsolved {
+border-top-style:solid;
+border-width:thin;
+background-color:#7b1212;
+width:100%;
+}
+
+.menu {
+background-color: #FF00FF;
+}
+
+p {
+display:inline;
+}
+
+/*
+ * Map editor
+ */
+.mapMenu .menuEntry {
+width: 50px;
+height: 50px;
+text-align: center;
+background-color: #0c1115;
+}
+
+.mapMenu .menuEntry :hover {
+background-color: #FF00FF;
+}
+.typeSel {
+font-weight: bold;
+color: #A24E4E;
+}
+.brushSel {
+font-weight: bold;
+color: #A24E4E;
+}
+.imgStack {
+width:20px;
+height:20px;
+}
+div.mapBtn:hover{
+background-color: #21323f;
+}
+.mapSpcBtn {
+position:absolute;
+width: 55px;
+border-style:solid;
+border-width:1px;
+top:20px;
+}
+div.mapSpcBtn:hover{
+background-color: #21323f;
+color: white;
+cursor:pointer;
+}
+.infoImgStack{
+max-width: 50px;
+max-height: 50px;
+}
+.infoAbout{
+color: #FF00FF;
+border-color: #00FF00;
+position: absolute;
+background-image: url( '../images/map/map_load_fog.png' );
+width: 440px;
+height: 440px;
+z-index: 2000;
+}
+.infoAboutSpc{
+border-style:solid;
+border-width:thin;
+position:absolute;
+top:40px;
+left:10px;
+width:220px;
+height:260px;
+}
+
+.infoAboutSpc > div > input:focus {
+background-color: #21323f;
+}
+
+/*
+ * Classes for world map
+ */
+.mapLegend{
+vertical-align: middle;
+border-bottom-style:solid;
+border-bottom-width:thin;
+}
+.mapCell{
+width: 50px;
+height: 50px;
+}
+
+/*
+ * Classes for mailbox
+ */
+.mailContainer{
+margin-bottom:7px;
+position:relative;
+border-bottom-style:solid;
+border-width:thin;
+}
+.mailHeader{
+}
+.mailTopic{
+font-family:verdana;
+border-style:none;
+background-color: #0c1115;
+font-size:12px;
+}
+.mailUnread{
+background-color: #0c4e1b;
+}
+.mailMore, .mailReply{
+border-style:none;
+text-align:right;
+font-size:9px;
+color: white;
+}
+div.mailMore:hover, div.mailReply:hover{
+background-color: #121d25;
+color: red;
+}
+/*.mailReply{
+border-style:none;
+text-align:right;
+font-size:9px;
+color: white;
+}*/
+.mailBody{
+padding-left: 20px;
+padding-right: 10px;
+}
+.mailOriginal{
+text-align:center;
+font-size:14px;
+border-bottom-style:solid;
+border-width: thin;
+}
+.mailPages{
+text-align:center;
+font-size:8px;
+}
+.unreadMail{
+color:red;
+}
+szept{
+color:gray;
+}
+szept:before{
+content: '/';
+}
+szept:after{
+content: '/';
+}
+
+emo{
+color:#00B800;
+}
+emo:before{
+content: '*';
+}
+emo:after{
+content: '*';
+}
+.preInline {
+font-family:monospace;
+color:white;
+background-color: #404040;
+}
+.pl-list {
+cursor:default;
+position:relative;
+}
+.pl-list-img{
+max-width:100px;
+max-height:100px;
+float:left;
+margin-right:4px;
+}
+.pl-list-title{
+text-align:center;
+font-weight:bold;
+color:#685430;
+background:#121d25;
+border-bottom:solid 1px;
+border-color: #DEB887;
+}
+div.pl-list:hover {
+background:#121d25;
+}
+.pl-data{
+display:none;
+border:solid 1px;
+background:black;
+position:absolute;
+top:0px;
+width:220px;
+left: -230px;
+padding: 4px;
+}
+div.pl-list:hover div.pl-data {
+display:block;
+}
+.css-popup {
+position:relative;
+}
+.css-popup-content{
+position:absolute;
+border: solid 2px;
+border-color: #121d25;
+display:none;
+background:black;
+z-index:999;
+}
+
+a.css-popup:hover div.css-popup-content,
+div.css-popup:hover div.css-popup-content {
+display:block;
+color: #DEB887;
+}
+a.css-popup:focus{
+border:none;
+}
+
+.kt_nav{
+color: #DEB887;
+text-align:left;
+border-width: 1px;
+left:0px;
+}
+.kt_nav_title{
+background: #0C1115;
+color:white;
+font-weight:bold;
+padding:2px;
+}
+.kt_nav_cont{
+padding:2px;
+}
+
+span.chat-emo{
+color:#085108;
+}
+span.chat-szept{
+color:#383838;
+}

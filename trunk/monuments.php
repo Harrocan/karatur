@@ -1,0 +1,60 @@
+<?php
+//@type: F
+//@desc: Pos±gi
+$title = "Posagi";
+require_once("includes/head.php");
+
+$title = array('Najwyzszy poziom', 'Najwyzsze kowalstwo', 'Najwiecej sztuk zlota</b></u> (przy sobie)', 'Najwiecej sztuk zlota</b></u> (w banku)', 'Najwiecej sztuk mithrilu', 'Najwyzsze dowodzenie', 'Najwiecej zwyciestw', 'Najwiecej porazek', 'Najwiecej Sily', 'Najwiecej Zrecznosci', 'Najwiecej Inteligencji', 'Najwiecej Wytrzymalosci', 'Najwiecej Szybkosci', 'Najwyzsza Alchemia', 'Najwyzsze Strzelectwo', 'Najwyzsze Stolarstwo', 'Najwyzsza Walka bronia biala','Najwyzsze Rzucanie czarow', 'Najwiecej Unikow', 'Najwiecej Sily Woli','Najlepsi Kucharze','Logowania');
+$ADODB_FETCH_MODE = ADODB_FETCH_NUM;
+$top = $db -> SelectLimit("SELECT id, user, level FROM players ORDER BY level DESC, exp DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, ability FROM players ORDER BY ability DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT p.id, p.user, r.gold FROM players p JOIN resources r ON r.id=p.id ORDER BY r.gold DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT p.id, p.user, r.bank FROM players p JOIN resources r ON r.id=p.id ORDER BY r.bank DESC", 5);
+//$top = $db -> SelectLimit("SELECT id, user, bank FROM players ORDER BY bank DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT p.id, p.user, r.mithril FROM players p JOIN resources r ON r.id=p.id ORDER BY r.mithril DESC", 5);
+//$top = $db -> SelectLimit("SELECT id, user, platinum FROM players ORDER BY platinum DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, leadership FROM players ORDER BY leadership DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, wins FROM players ORDER BY wins DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, losses FROM players ORDER BY losses DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, strength FROM players ORDER BY strength DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, agility FROM players ORDER BY agility DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, inteli FROM players ORDER BY inteli DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, wytrz FROM players ORDER BY wytrz DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, szyb FROM players ORDER BY szyb DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, alchemia FROM players ORDER BY alchemia DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, shoot FROM players ORDER BY shoot DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, fletcher FROM players ORDER BY fletcher DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, atak FROM players ORDER BY atak DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, magia FROM players ORDER BY magia DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, unik FROM players ORDER BY unik DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, wisdom FROM players ORDER BY wisdom DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, gotowanie FROM players ORDER BY gotowanie DESC", 5);
+$topss[]=$top->GetArray();
+$top = $db -> SelectLimit("SELECT id, user, logins FROM players ORDER BY logins  DESC", 5);
+$topss[]=$top->GetArray();
+$smarty->assign("Tops",$topss);
+$smarty->assign("Title",$title);
+$smarty -> display ('monuments.tpl');
+$ADODB_FETCH_MODE = ADODB_FETCH_ASSOC;
+require_once("includes/foot.php");
+?>

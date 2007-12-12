@@ -1,0 +1,1385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-2">
+<title>KaraTur Class: Plik źródłowy /var/www/localhost/htdocs/karatur/class/player.class.php</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Wygenerowano przez Doxygen 1.4.7 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Strona&nbsp;główna</span></a></li>
+    <li><a href="annotated.html"><span>Struktury&nbsp;Danych</span></a></li>
+    <li id="current"><a href="files.html"><span>Pliki</span></a></li>
+    <li><a href="pages.html"><span>Dodatkowe&nbsp;strony</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;<u>S</u>zukaj&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Lista&nbsp;plików</span></a></li>
+    <li><a href="globals.html"><span>Globalne</span></a></li>
+  </ul></div>
+<h1>/var/www/localhost/htdocs/karatur/class/player.class.php</h1><a href="player_8class_8php.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00015"></a>00015 <span class="comment">/*</span>
+<a name="l00016"></a>00016 <span class="comment"></span>
+<a name="l00017"></a>00017 <span class="comment">*/</span>
+<a name="l00018"></a><a class="code" href="player_8class_8php.html#c625587784814fd03bc1d0e5de5346ab">00018</a> <a class="code" href="player_8class_8php.html#c625587784814fd03bc1d0e5de5346ab">$oldatr</a> = array( 'strength' =&gt; 'str', 'agility' =&gt; 'dex', 'inteli' =&gt; '<span class="keywordtype">int</span>', 'cond' =&gt; 'con', 'speed' =&gt; 'spd', 'wisdom' =&gt; 'wis' );
+<a name="l00019"></a><a class="code" href="player_8class_8php.html#654c161ae73521e57e756e3d92850435">00019</a> <a class="code" href="player_8class_8php.html#654c161ae73521e57e756e3d92850435">$dbatr</a> = array( 'str' =&gt; 'strength',
+<a name="l00020"></a>00020                                 'dex' =&gt; 'agility',
+<a name="l00021"></a>00021                                 'con' =&gt; 'wytrz',
+<a name="l00022"></a>00022                                 'spd' =&gt; 'szyb',
+<a name="l00023"></a>00023                                 '<span class="keywordtype">int</span>' =&gt; 'inteli',
+<a name="l00024"></a>00024                                 'wis' =&gt; 'wisdom' );
+<a name="l00025"></a>00025 
+<a name="l00026"></a><a class="code" href="player_8class_8php.html#c198076c40d5645191a51eff31a6d86f">00026</a> <a class="code" href="player_8class_8php.html#c198076c40d5645191a51eff31a6d86f">$oldskill</a> = array( 'attack' =&gt; 'melee', 'magic' =&gt; 'cast', 'shoot' =&gt; 'ranged', 'gotowanie' =&gt; 'cook' );
+<a name="l00027"></a><a class="code" href="player_8class_8php.html#d77c08c1b7d145cdd62022fb9d7f6a7a">00027</a> <a class="code" href="player_8class_8php.html#d77c08c1b7d145cdd62022fb9d7f6a7a">$dbskill</a> = array( 'smith' =&gt; 'ability',
+<a name="l00028"></a>00028                                         'melee' =&gt; 'atak',
+<a name="l00029"></a>00029                                         'miss' =&gt; 'unik',
+<a name="l00030"></a>00030                                         'cast' =&gt; 'magia',
+<a name="l00031"></a>00031                                         'alchemy' =&gt; 'alchemia',
+<a name="l00032"></a>00032                                         'ranged' =&gt; 'shoot',
+<a name="l00033"></a>00033                                         'fletcher' =&gt; 'fletcher',
+<a name="l00034"></a>00034                                         'leadership' =&gt; 'leadership',
+<a name="l00035"></a>00035                                         'cook' =&gt; 'gotowanie' );
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="player_8class_8php.html#8896f020c45a717ce712b28f5d6ac279">00037</a> <a class="code" href="player_8class_8php.html#8896f020c45a717ce712b28f5d6ac279">$oldmisc</a> = array( 'max_hp' =&gt; 'hp_max', 'max_energy' =&gt; 'energy_max', 'tribe' =&gt; 'tribe_id', 'immunited' =&gt; 'immu',
+<a name="l00038"></a>00038                                         'pw' =&gt; 'faith' );
+<a name="l00039"></a><a class="code" href="player_8class_8php.html#f400cbb2eef5c04b0538e6f21dc965cc">00039</a> <a class="code" href="player_8class_8php.html#f400cbb2eef5c04b0538e6f21dc965cc">$dbmisc</a> = array( '<span class="keywordtype">id</span>' =&gt; '<span class="keywordtype">id</span>',
+<a name="l00040"></a>00040                                 'user' =&gt; 'user',
+<a name="l00041"></a>00041                                 'email' =&gt; 'email',
+<a name="l00042"></a>00042                                 'level' =&gt; 'level',
+<a name="l00043"></a>00043                                 'exp' =&gt; 'exp',
+<a name="l00044"></a>00044                                 'hp' =&gt; 'hp',
+<a name="l00045"></a>00045                                 'hp_max' =&gt; 'max_hp',
+<a name="l00046"></a>00046                                 'mana' =&gt; 'pm',
+<a name="l00047"></a>00047                                 'energy' =&gt; 'energy',
+<a name="l00048"></a>00048                                 'energy_max' =&gt; 'max_energy',
+<a name="l00049"></a>00049                                 'tribe_id' =&gt; 'tribe',
+<a name="l00050"></a>00050                                 'tribe_rank' =&gt; 'tribe_rank',
+<a name="l00051"></a>00051                                 'rid' =&gt; 'rid',
+<a name="l00052"></a>00052                                 'location' =&gt; 'miejsce',
+<a name="l00053"></a>00053                                 'ap' =&gt; 'ap',
+<a name="l00054"></a>00054                                 'race' =&gt; 'rasa',
+<a name="l00055"></a>00055                                 'clas' =&gt; 'klasa',
+<a name="l00056"></a>00056                                 'charakter' =&gt; 'charakter',
+<a name="l00057"></a>00057                                 'deity' =&gt; 'deity',
+<a name="l00058"></a>00058                                 'gender' =&gt; 'gender',
+<a name="l00059"></a>00059                                 'poch' =&gt; 'poch',
+<a name="l00060"></a>00060                                 'wlos' =&gt; 'wlos',
+<a name="l00061"></a>00061                                 'skora' =&gt; 'skora',
+<a name="l00062"></a>00062                                 'oczy' =&gt; 'oczy',
+<a name="l00063"></a>00063                                 'wins' =&gt; 'wins',
+<a name="l00064"></a>00064                                 'losses' =&gt; 'losses',
+<a name="l00065"></a>00065                                 'lastkilled' =&gt; 'lastkilled',
+<a name="l00066"></a>00066                                 'lastkilledby' =&gt; 'lastkilledby',
+<a name="l00067"></a>00067                                 'age' =&gt; 'age',
+<a name="l00068"></a>00068                                 'logins' =&gt; 'logins',
+<a name="l00069"></a>00069                                 'ip' =&gt; 'ip',
+<a name="l00070"></a>00070                                 'lpv' =&gt; 'lpv',
+<a name="l00071"></a>00071                                 'gg' =&gt; 'gg',
+<a name="l00072"></a>00072                                 'avatar' =&gt; 'avatar',
+<a name="l00073"></a>00073                                 'immu' =&gt; 'immu',
+<a name="l00074"></a>00074                                 'corepass' =&gt; 'corepass',
+<a name="l00075"></a>00075                                 'trains' =&gt; 'trains',
+<a name="l00076"></a>00076                                 'fight' =&gt; 'fight',
+<a name="l00077"></a>00077                                 'maps' =&gt; 'maps',
+<a name="l00078"></a>00078                                 'rest' =&gt; 'rest',
+<a name="l00079"></a>00079                                 'page' =&gt; 'page',
+<a name="l00080"></a>00080                                 'profile' =&gt; 'profile',
+<a name="l00081"></a>00081                                 'crime' =&gt; 'crime',
+<a name="l00082"></a>00082                                 'style' =&gt; 'style',
+<a name="l00083"></a>00083                                 <span class="comment">//'graphic' =&gt; 'graphic',</span>
+<a name="l00084"></a>00084                                 'stan' =&gt; 'stan',
+<a name="l00085"></a>00085                                 'przemiana' =&gt; 'przemiana',
+<a name="l00086"></a>00086                                 'tow' =&gt; 'tow',
+<a name="l00087"></a>00087                                 'kat' =&gt; 'kat',
+<a name="l00088"></a>00088                                 'vote' =&gt; 'vote',
+<a name="l00089"></a>00089                                 'mapx' =&gt; 'mapx',
+<a name="l00090"></a>00090                                 'mapy' =&gt; 'mapy',
+<a name="l00091"></a>00091                                 'file' =&gt; 'file',
+<a name="l00092"></a>00092                                 'newbie' =&gt; 'newbie',
+<a name="l00093"></a>00093                                 'jail' =&gt; 'jail',
+<a name="l00094"></a>00094                                 'temp' =&gt; 'temp',
+<a name="l00095"></a>00095                                 'bridge' =&gt; 'bridge',
+<a name="l00096"></a>00096                                 'faith' =&gt; 'pw',
+<a name="l00097"></a>00097                                 'kuchnia' =&gt; 'gotow',
+<a name="l00098"></a>00098                                 <span class="comment">// Pimp my shit</span>
+<a name="l00099"></a>00099                                 'ugryziony' =&gt; 'ugryziony',
+<a name="l00100"></a>00100                                 'ilosc_ugryz' =&gt; 'ilosc_ugryz',
+<a name="l00101"></a>00101                                 'krew' =&gt; 'krew',
+<a name="l00102"></a>00102                                 'max_krew' =&gt; 'max_krew',
+<a name="l00103"></a>00103                                 'ugryz' =&gt; 'ugryz',
+<a name="l00104"></a>00104                                 'przez' =&gt; 'przez',
+<a name="l00105"></a>00105                                 'przemieniony_przez' =&gt; 'przemieniony_przez' );
+<a name="l00106"></a>00106 
+<a name="l00107"></a><a class="code" href="player_8class_8php.html#2e81acff48c938f9ef64847451a12cbc">00107</a> <a class="code" href="player_8class_8php.html#2e81acff48c938f9ef64847451a12cbc">$oldres</a> = array( 'credits' =&gt; 'gold', 'platinum' =&gt; 'mithril', 'ryby' =&gt; 'fish', 'ziemniaki' =&gt; 'potato' );
+<a name="l00108"></a><a class="code" href="player_8class_8php.html#916b661aad76392cea20367071c667ce">00108</a> <a class="code" href="player_8class_8php.html#916b661aad76392cea20367071c667ce">$dbres</a> = array( 'gold' =&gt; 'gold',
+<a name="l00109"></a>00109                                 'bank' =&gt; 'bank',
+<a name="l00110"></a>00110                                 'mithril' =&gt; 'mithril',
+<a name="l00111"></a>00111                                 'copper' =&gt; 'copper',
+<a name="l00112"></a>00112                                 'iron' =&gt; 'iron',
+<a name="l00113"></a>00113                                 'coal' =&gt; 'coal',
+<a name="l00114"></a>00114                                 'adamantium' =&gt; 'adamantium',
+<a name="l00115"></a>00115                                 'meteor' =&gt; 'meteor',
+<a name="l00116"></a>00116                                 'crystal' =&gt; 'crystal',
+<a name="l00117"></a>00117                                 'wood' =&gt; 'wood',
+<a name="l00118"></a>00118                                 'illani' =&gt; 'illani',
+<a name="l00119"></a>00119                                 'illanias' =&gt; 'illanias',
+<a name="l00120"></a>00120                                 'nutari' =&gt; 'nutari',
+<a name="l00121"></a>00121                                 'dynallca' =&gt; 'dynallca',
+<a name="l00122"></a>00122                                 'fish' =&gt; 'fish',
+<a name="l00123"></a>00123                                 'grzyby' =&gt; 'grzyb',
+<a name="l00124"></a>00124                                 'potato' =&gt; 'potato' );
+<a name="l00125"></a>00125 
+<a name="l00126"></a><a class="code" href="player_8class_8php.html#3a4c8daa05d89c946b1b38e86b1c2aa2">00126</a> <a class="code" href="player_8class_8php.html#3a4c8daa05d89c946b1b38e86b1c2aa2">$dbmoved</a> = array( 'credits', 'platinum', 'bank', 'ryby', 'grzyby', 'ziemniaki' );
+<a name="l00127"></a>00127 
+<a name="l00128"></a><a class="code" href="player_8class_8php.html#b4d4212f3c62b203ae27f48a9a2c9e9e">00128</a> <a class="code" href="player_8class_8php.html#b4d4212f3c62b203ae27f48a9a2c9e9e">$oldtrash</a> = array( 'rank', 'aktorstwo', 'aktor', 'bles', 'chaos', 'soul' );
+<a name="l00129"></a>00129 
+<a name="l00131"></a>00131 
+<a name="l00148"></a><a class="code" href="classPlayer.html">00148</a> <span class="keyword">class </span><a class="code" href="classPlayer.html">Player</a> {
+<a name="l00150"></a>00150 
+<a name="l00155"></a><a class="code" href="classPlayer.html#b490e3cc535f92d167bef04be4c0ddde">00155</a>         <span class="keyword">public</span> <a class="code" href="classPlayer.html#b490e3cc535f92d167bef04be4c0ddde">$SqlDebug</a>;
+<a name="l00157"></a>00157 
+<a name="l00163"></a><a class="code" href="classPlayer.html#d0e5ef10c19f006add11523f76621ba7">00163</a>         <span class="keyword">public</span> <a class="code" href="classPlayer.html#d0e5ef10c19f006add11523f76621ba7">$RawReturn</a>;
+<a name="l00165"></a>00165 
+<a name="l00171"></a><a class="code" href="classPlayer.html#ec9891c8acff451c806c98b5280b7e6d">00171</a>         <span class="keyword">public</span> <a class="code" href="classPlayer.html#ec9891c8acff451c806c98b5280b7e6d">$Reloaded</a>;
+<a name="l00173"></a>00173 
+<a name="l00179"></a><a class="code" href="classPlayer.html#615278a408ffa88dc5f8b07a5f0bb0ce">00179</a>         <span class="keyword">public</span> <a class="code" href="classPlayer.html#615278a408ffa88dc5f8b07a5f0bb0ce">$created</a>;
+<a name="l00180"></a>00180         
+<a name="l00182"></a><a class="code" href="classPlayer.html#0aa99d4873470087d430cd8439543e1b">00182</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#0aa99d4873470087d430cd8439543e1b">$dbatr</a>;
+<a name="l00184"></a><a class="code" href="classPlayer.html#7172a716111b499720a3c1f87ac8151a">00184</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#7172a716111b499720a3c1f87ac8151a">$dbskill</a>;
+<a name="l00186"></a><a class="code" href="classPlayer.html#ac83827a729a80742bc09945f3361d45">00186</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#ac83827a729a80742bc09945f3361d45">$dbmisc</a>;
+<a name="l00188"></a><a class="code" href="classPlayer.html#8c1e3ebda378960fd1cc15f87623085c">00188</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#8c1e3ebda378960fd1cc15f87623085c">$dbres</a>;
+<a name="l00190"></a><a class="code" href="classPlayer.html#f7b7c7d8773a23055271151c65a06f10">00190</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#f7b7c7d8773a23055271151c65a06f10">$dbmoved</a>;
+<a name="l00192"></a><a class="code" href="classPlayer.html#946ded7e2c812ab3777e672e8adde163">00192</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#946ded7e2c812ab3777e672e8adde163">$oldatr</a>;
+<a name="l00194"></a><a class="code" href="classPlayer.html#fde11bdd37ee5acf64a9ff127ba52b62">00194</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#fde11bdd37ee5acf64a9ff127ba52b62">$oldskill</a>;
+<a name="l00196"></a><a class="code" href="classPlayer.html#dd0a9d2a382a313ff217b855f7ba776b">00196</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#dd0a9d2a382a313ff217b855f7ba776b">$oldmisc</a>;
+<a name="l00198"></a><a class="code" href="classPlayer.html#e218150173eb3295d19acd17d6f903c6">00198</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#e218150173eb3295d19acd17d6f903c6">$oldres</a>;
+<a name="l00200"></a><a class="code" href="classPlayer.html#8dc385d192a75480d94d1284e07f2634">00200</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#8dc385d192a75480d94d1284e07f2634">$oldtrash</a>;
+<a name="l00201"></a>00201         
+<a name="l00203"></a><a class="code" href="classPlayer.html#15e98e79849d9e7ae89ecef40f7ee400">00203</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#15e98e79849d9e7ae89ecef40f7ee400">$atr</a>;
+<a name="l00205"></a><a class="code" href="classPlayer.html#3750c081fdb6f89acf1c94ed2cc55a74">00205</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#3750c081fdb6f89acf1c94ed2cc55a74">$skill</a>;
+<a name="l00207"></a><a class="code" href="classPlayer.html#7ebf66ae5cdf5717ee7aada7c011243e">00207</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#7ebf66ae5cdf5717ee7aada7c011243e">$misc</a>;
+<a name="l00209"></a><a class="code" href="classPlayer.html#9efe823c0b4bec547d05ba2643371455">00209</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#9efe823c0b4bec547d05ba2643371455">$res</a>;
+<a name="l00210"></a>00210         
+<a name="l00212"></a><a class="code" href="classPlayer.html#1d8ef7d252781de0de905843cb6ad932">00212</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#1d8ef7d252781de0de905843cb6ad932">$equip</a>;
+<a name="l00214"></a><a class="code" href="classPlayer.html#9f7db9db2d43e1fe6b03abc6df7ede0e">00214</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#9f7db9db2d43e1fe6b03abc6df7ede0e">$backpack</a>;
+<a name="l00216"></a><a class="code" href="classPlayer.html#ab8b5e00241856cea4699ba15b8b3254">00216</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#ab8b5e00241856cea4699ba15b8b3254">$potions</a>;
+<a name="l00218"></a><a class="code" href="classPlayer.html#8aff3f22fa90045388ca1a58d8d21a9a">00218</a>         <span class="keyword">private</span> <a class="code" href="classPlayer.html#8aff3f22fa90045388ca1a58d8d21a9a">$spells</a>;
+<a name="l00219"></a>00219         
+<a name="l00221"></a>00221 
+<a name="l00230"></a><a class="code" href="classPlayer.html#3cb5a0132c895d1dd399b1b92e9c7a54">00230</a>         function <a class="code" href="classPlayer.html#3cb5a0132c895d1dd399b1b92e9c7a54">__construct</a>( $pid, $quick = FALSE ) {
+<a name="l00231"></a>00231                 $stats = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT p.*, r.name AS rankname, t.name AS tribe_name FROM players p JOIN ranks r ON r.id=p.rid LEFT JOIN tribes t ON t.id=p.tribe WHERE p.id=$pid"</span> );
+<a name="l00232"></a>00232                 <span class="comment">//print_r( $stats );</span>
+<a name="l00233"></a>00233                 <span class="keywordflow">if</span>( empty( $stats -&gt; fields['<span class="keywordtype">id</span>'] ) ) {
+<a name="l00234"></a>00234                         trigger_error( <span class="stringliteral">"Blad podczas inicjalizacji klasy Player - nieprawidlowe ID !"</span>, E_USER_ERROR );
+<a name="l00235"></a>00235                         <span class="comment">//$this -&gt; id = 0;</span>
+<a name="l00236"></a>00236                         $this -&gt; created = FALSE;
+<a name="l00237"></a>00237                         <span class="keywordflow">return</span> NULL;
+<a name="l00238"></a>00238                 }
+<a name="l00239"></a>00239                 global <a class="code" href="classPlayer.html#0aa99d4873470087d430cd8439543e1b">$dbatr</a>;
+<a name="l00240"></a>00240                 global <a class="code" href="classPlayer.html#7172a716111b499720a3c1f87ac8151a">$dbskill</a>;
+<a name="l00241"></a>00241                 global <a class="code" href="classPlayer.html#ac83827a729a80742bc09945f3361d45">$dbmisc</a>;
+<a name="l00242"></a>00242                 global <a class="code" href="classPlayer.html#8c1e3ebda378960fd1cc15f87623085c">$dbres</a>;
+<a name="l00243"></a>00243                 global <a class="code" href="classPlayer.html#946ded7e2c812ab3777e672e8adde163">$oldatr</a>;
+<a name="l00244"></a>00244                 global <a class="code" href="classPlayer.html#fde11bdd37ee5acf64a9ff127ba52b62">$oldskill</a>;
+<a name="l00245"></a>00245                 global <a class="code" href="classPlayer.html#dd0a9d2a382a313ff217b855f7ba776b">$oldmisc</a>;
+<a name="l00246"></a>00246                 global <a class="code" href="classPlayer.html#e218150173eb3295d19acd17d6f903c6">$oldres</a>;
+<a name="l00247"></a>00247                 global <a class="code" href="classPlayer.html#8dc385d192a75480d94d1284e07f2634">$oldtrash</a>;
+<a name="l00248"></a>00248                 global <a class="code" href="classPlayer.html#f7b7c7d8773a23055271151c65a06f10">$dbmoved</a>;
+<a name="l00249"></a>00249                 <span class="comment">//if( $quick === FALSE ) {</span>
+<a name="l00250"></a>00250                         $this -&gt; dbatr = $dbatr;
+<a name="l00251"></a>00251                         $this -&gt; dbskill = $dbskill;
+<a name="l00252"></a>00252                         $this -&gt; dbmisc = $dbmisc;
+<a name="l00253"></a>00253                         $this -&gt; dbres = $dbres;
+<a name="l00254"></a>00254                 <span class="comment">//}</span>
+<a name="l00255"></a>00255                 $this -&gt; dbmoved = $dbmoved;
+<a name="l00256"></a>00256                 $this -&gt; oldatr = $oldatr;
+<a name="l00257"></a>00257                 $this -&gt; oldskill = $oldskill;
+<a name="l00258"></a>00258                 $this -&gt; oldmisc = $oldmisc;
+<a name="l00259"></a>00259                 $this -&gt; oldres = $oldres;
+<a name="l00260"></a>00260                 $this -&gt; oldtrash = $oldtrash;
+<a name="l00261"></a>00261                 $this -&gt; RawReturn = FALSE;
+<a name="l00262"></a>00262                 $this -&gt; created = TRUE;
+<a name="l00263"></a>00263                 
+<a name="l00264"></a>00264                 
+<a name="l00265"></a>00265                 $stats = array_shift( $stats -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>() );
+<a name="l00266"></a>00266                 
+<a name="l00267"></a>00267                 foreach( $dbatr as $key =&gt; $val ) {
+<a name="l00268"></a>00268                         <span class="keywordflow">if</span>( !isset( $stats[$val] ) ) {
+<a name="l00269"></a>00269                                 trigger_error( <span class="stringliteral">"Proba inicjalizacji nieistniejacej wartosci: $key =&gt; $val !"</span>, E_USER_ERROR );
+<a name="l00270"></a>00270                         }
+<a name="l00271"></a>00271                         $this -&gt; atr[$key] = $stats[$val];
+<a name="l00272"></a>00272                         unset( $stats[$val] );
+<a name="l00273"></a>00273                 }
+<a name="l00274"></a>00274                 foreach( $dbskill as $key =&gt; $val ) {
+<a name="l00275"></a>00275                         <span class="keywordflow">if</span>( !isset( $stats[$val] ) ) {
+<a name="l00276"></a>00276                                 trigger_error( <span class="stringliteral">"Proba inicjalizacji nieistniejacej wartosci: $key =&gt; $val !"</span>, E_USER_ERROR );
+<a name="l00277"></a>00277                         }
+<a name="l00278"></a>00278                         $this -&gt; skill[$key] = $stats[$val];
+<a name="l00279"></a>00279                         unset( $stats[$val] );
+<a name="l00280"></a>00280                 }
+<a name="l00281"></a>00281                 foreach( $dbmisc as $key =&gt; $val ) {
+<a name="l00282"></a>00282                         <span class="keywordflow">if</span>( !isset( $stats[$val] ) ) {
+<a name="l00283"></a>00283                                 trigger_error( <span class="stringliteral">"Proba inicjalizacji nieistniejacej wartosci: $key =&gt; $val !"</span>, E_USER_ERROR );
+<a name="l00284"></a>00284                         }
+<a name="l00285"></a>00285                         $this -&gt; misc[$key] = $stats[$val];
+<a name="l00286"></a>00286                         unset( $stats[$val] );
+<a name="l00287"></a>00287                 }
+<a name="l00288"></a>00288                 $this -&gt; misc['mana_max'] = 0;
+<a name="l00289"></a>00289                 $this -&gt; misc['rankname'] = $stats['rankname'];
+<a name="l00290"></a>00290                 $this -&gt; misc['tribe_name'] = $stats['tribe_name'];
+<a name="l00291"></a>00291                 <span class="keywordflow">if</span>( !empty( $stats ) ) {
+<a name="l00292"></a>00292                         <span class="comment">//trigger_error( "Nieuzyte wartosci w bazie: ".implode( ", ", array_keys( $stats ) ), E_USER_NOTICE );</span>
+<a name="l00293"></a>00293                 }
+<a name="l00294"></a>00294                 <span class="comment">//$this -&gt; spells = array();</span>
+<a name="l00295"></a>00295                 <span class="keywordflow">if</span>( $quick === FALSE ) {
+<a name="l00296"></a>00296                         $this -&gt; <a class="code" href="classPlayer.html#41a2704bbc8705648459d072a4cac288">_InitEquip</a>();
+<a name="l00297"></a>00297                 }
+<a name="l00298"></a>00298                 $resources = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT * FROM resources WHERE id={$this -&gt; id}"</span> );
+<a name="l00299"></a>00299                 <span class="keywordflow">if</span>( empty( $resources -&gt; fields['<span class="keywordtype">id</span>'] ) ) {
+<a name="l00300"></a>00300                         $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"INSERT INTO resources(id) VALUES({$this-&gt;id})"</span> );
+<a name="l00301"></a>00301                         $resources = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT * FROM resources WHERE id={$this -&gt; id}"</span> );
+<a name="l00302"></a>00302                 }
+<a name="l00303"></a>00303                 $resources = array_shift( $resources -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>() );
+<a name="l00304"></a>00304                 foreach( $dbres as $key =&gt; $val ) {
+<a name="l00305"></a>00305                         <span class="keywordflow">if</span>( !isset( $resources[$val] ) ) {
+<a name="l00306"></a>00306                                 trigger_error( <span class="stringliteral">"Proba inicjalizacji nieistniejacgo surowca: $key =&gt; $val !"</span>, E_USER_ERROR );
+<a name="l00307"></a>00307                         }
+<a name="l00308"></a>00308                         $this -&gt; res[$key] = $resources[$val];
+<a name="l00309"></a>00309                 }
+<a name="l00310"></a>00310                 $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"DELETE FROM wakeup WHERE pid={$this -&gt; id}"</span> );
+<a name="l00311"></a>00311                 $this -&gt; SqlDebug = TRUE;
+<a name="l00312"></a>00312         }
+<a name="l00313"></a>00313         
+<a name="l00315"></a>00315 
+<a name="l00319"></a><a class="code" href="classPlayer.html#41a2704bbc8705648459d072a4cac288">00319</a>         <span class="keyword">private</span> function <a class="code" href="classPlayer.html#41a2704bbc8705648459d072a4cac288">_InitEquip</a>() {
+<a name="l00320"></a>00320                 $worn = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT e.*, i.img_file FROM equipment e LEFT JOIN item_images i ON e.imagenum=i.id WHERE e.owner={$this-&gt;id} AND e.`status`='E'"</span> );
+<a name="l00321"></a>00321                 $worn = $worn -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>();
+<a name="l00322"></a>00322                 <span class="comment">//print_r( $worn );</span>
+<a name="l00323"></a>00323                 foreach( $worn as $item ) {
+<a name="l00324"></a>00324                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'W'</span>, <span class="charliteral">'B'</span>, <span class="charliteral">'S'</span> ) ) ) {
+<a name="l00325"></a>00325                                 $this -&gt;equip['weapon'] = $item;
+<a name="l00326"></a>00326                         }
+<a name="l00327"></a>00327                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'A'</span>, <span class="charliteral">'Z'</span> ) ) ) {
+<a name="l00328"></a>00328                                 $this -&gt;equip['armor'] = $item;
+<a name="l00329"></a>00329                         }
+<a name="l00330"></a>00330                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'H'</span> ) ) ) {
+<a name="l00331"></a>00331                                 $this -&gt;equip['helm'] = $item;
+<a name="l00332"></a>00332                         }
+<a name="l00333"></a>00333                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'D'</span> ) ) ) {
+<a name="l00334"></a>00334                                 $this -&gt;equip['shield'] = $item;
+<a name="l00335"></a>00335                         }
+<a name="l00336"></a>00336                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'N'</span> ) ) ) {
+<a name="l00337"></a>00337                                 $this -&gt;equip['knee'] = $item;
+<a name="l00338"></a>00338                         }
+<a name="l00339"></a>00339                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'R'</span> ) ) ) {
+<a name="l00340"></a>00340                                 $this -&gt;equip['arrows'] = $item;
+<a name="l00341"></a>00341                         }
+<a name="l00342"></a>00342                 }
+<a name="l00343"></a>00343                 <a class="code" href="classPlayer.html#8aff3f22fa90045388ca1a58d8d21a9a">$spells</a> = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT * FROM czary WHERE gracz={$this-&gt;id}"</span> );
+<a name="l00344"></a>00344                 <a class="code" href="classPlayer.html#8aff3f22fa90045388ca1a58d8d21a9a">$spells</a> = <a class="code" href="classPlayer.html#8aff3f22fa90045388ca1a58d8d21a9a">$spells</a> -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>();
+<a name="l00345"></a>00345                 foreach( <a class="code" href="classPlayer.html#8aff3f22fa90045388ca1a58d8d21a9a">$spells</a> as $key =&gt; $spell ) {
+<a name="l00346"></a>00346                         <a class="code" href="classPlayer.html#8aff3f22fa90045388ca1a58d8d21a9a">$spells</a>[$key] = $this -&gt; <a class="code" href="classPlayer.html#edca5d0255b18cae666639c5e6190ae5">TranslateFields</a>( $spell, 'spells' );
+<a name="l00347"></a>00347                 }
+<a name="l00348"></a>00348                 <span class="comment">//if( !empty( $this -&gt; spells ) ) {</span>
+<a name="l00349"></a>00349                 <span class="comment">//      unset( $this -&gt; spells );</span>
+<a name="l00350"></a>00350                 <span class="comment">//}</span>
+<a name="l00351"></a>00351                 foreach( <a class="code" href="classPlayer.html#8aff3f22fa90045388ca1a58d8d21a9a">$spells</a> as $spell ) {
+<a name="l00352"></a>00352                         <span class="keywordflow">if</span>( $spell['status'] == <span class="charliteral">'E'</span> ) {
+<a name="l00353"></a>00353                                 <span class="keywordflow">if</span>( $spell['type'] == <span class="charliteral">'B'</span> )
+<a name="l00354"></a>00354                                         $this -&gt; equip['spellatk'] = $spell;
+<a name="l00355"></a>00355                                 <span class="keywordflow">if</span>( $spell['type'] == <span class="charliteral">'O'</span> )
+<a name="l00356"></a>00356                                         $this -&gt; equip['spelldef'] = $spell;
+<a name="l00357"></a>00357                         }
+<a name="l00358"></a>00358                         <span class="keywordflow">else</span> {
+<a name="l00359"></a>00359                                 $this -&gt; spells[] = $spell;
+<a name="l00360"></a>00360                         }
+<a name="l00361"></a>00361                 }
+<a name="l00362"></a>00362                 <a class="code" href="classPlayer.html#9f7db9db2d43e1fe6b03abc6df7ede0e">$backpack</a> = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT e.*, i.img_file FROM equipment e LEFT JOIN item_images i ON e.imagenum=i.id WHERE e.owner={$this-&gt;id} AND e.`status`='U'"</span> );
+<a name="l00363"></a>00363                 $this -&gt; backpack = <a class="code" href="classPlayer.html#9f7db9db2d43e1fe6b03abc6df7ede0e">$backpack</a> -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>();
+<a name="l00364"></a>00364                 <a class="code" href="classPlayer.html#ab8b5e00241856cea4699ba15b8b3254">$potions</a> = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT * FROM mikstury WHERE gracz={$this -&gt; id} AND `status`='K'"</span> );
+<a name="l00365"></a>00365                 <a class="code" href="classPlayer.html#ab8b5e00241856cea4699ba15b8b3254">$potions</a> = <a class="code" href="classPlayer.html#ab8b5e00241856cea4699ba15b8b3254">$potions</a> -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>();
+<a name="l00366"></a>00366                 foreach( <a class="code" href="classPlayer.html#ab8b5e00241856cea4699ba15b8b3254">$potions</a> as $key =&gt; $potion ) {
+<a name="l00367"></a>00367                         <a class="code" href="classPlayer.html#ab8b5e00241856cea4699ba15b8b3254">$potions</a>[$key] = $this -&gt; <a class="code" href="classPlayer.html#edca5d0255b18cae666639c5e6190ae5">TranslateFields</a>( $potion, 'potions' );
+<a name="l00368"></a>00368                 }
+<a name="l00369"></a>00369                 $this -&gt; potions = <a class="code" href="classPlayer.html#ab8b5e00241856cea4699ba15b8b3254">$potions</a>;
+<a name="l00370"></a>00370         }
+<a name="l00371"></a>00371         
+<a name="l00373"></a>00373 
+<a name="l00381"></a><a class="code" href="classPlayer.html#2730c62c57b5e86536c418695665a737">00381</a>         function <a class="code" href="classPlayer.html#2730c62c57b5e86536c418695665a737">__get</a>( $field ) {
+<a name="l00382"></a>00382                 <span class="keywordflow">if</span>( in_array( $field, array_merge( array_keys( $this -&gt; atr ), array_keys( $this -&gt; oldatr ) ) ) ) {
+<a name="l00383"></a>00383                         <span class="keywordflow">return</span> $this -&gt; <a class="code" href="classPlayer.html#da862a904be31e95dc5bdf8117aa0ca4">GetAtr</a>( $field );
+<a name="l00384"></a>00384                 }
+<a name="l00385"></a>00385                 <span class="keywordflow">if</span>( in_array( $field, array_merge( array_keys( $this -&gt; skill ), array_keys( $this -&gt; oldskill ) ) ) ) {
+<a name="l00386"></a>00386                         <span class="keywordflow">return</span> $this -&gt; <a class="code" href="classPlayer.html#2cb1b1727335e1ddb6a941a33091e586">GetSkill</a>( $field );
+<a name="l00387"></a>00387                 }
+<a name="l00388"></a>00388                 <span class="keywordflow">if</span>( in_array( $field, array_merge( array_keys( $this -&gt; misc ), array_keys( $this -&gt; oldmisc ) ) ) ) {
+<a name="l00389"></a>00389                         <span class="keywordflow">return</span> $this -&gt; <a class="code" href="classPlayer.html#611fb7bf265f227e65f087cda562a936">GetMisc</a>( $field );
+<a name="l00390"></a>00390                 }
+<a name="l00391"></a>00391                 <span class="keywordflow">if</span>( in_array( $field, array_merge( array_keys( $this -&gt; res ), array_keys( $this -&gt; oldres ) ) ) ) {
+<a name="l00392"></a>00392                         <span class="keywordflow">return</span> $this -&gt; <a class="code" href="classPlayer.html#2ae0d57d384b1d368901e16410b0fbb1">GetRes</a>( $field );
+<a name="l00393"></a>00393                 }
+<a name="l00394"></a>00394                 <span class="keywordflow">if</span>( in_array( $field, $this -&gt; oldtrash ) ) {
+<a name="l00395"></a>00395                         trigger_error( <span class="stringliteral">"Pobierasz wartosc $field oznaczona jako 'smieci' ! Zwracam 0"</span>, E_USER_WARNING );
+<a name="l00396"></a>00396                         <span class="keywordflow">return</span> 0;
+<a name="l00397"></a>00397                 }
+<a name="l00398"></a>00398                 <span class="keywordflow">if</span>( in_array( $field, $this -&gt; dbmoved ) ) {
+<a name="l00399"></a>00399                         trigger_error( <span class="stringliteral">"Wywolanie przesunietej wartosci $field ! Sprawdz i koniecznie popraw !"</span>, E_USER_ERROR );
+<a name="l00400"></a>00400                 }
+<a name="l00401"></a>00401                 trigger_error( <span class="stringliteral">"Nie istnieje taka wartosc: $field !"</span>, E_USER_ERROR );
+<a name="l00402"></a>00402         }
+<a name="l00403"></a>00403         
+<a name="l00405"></a>00405 
+<a name="l00418"></a><a class="code" href="classPlayer.html#937c676ccf6b3ab4affb74a5f022546d">00418</a>         function <a class="code" href="classPlayer.html#937c676ccf6b3ab4affb74a5f022546d">__set</a>( $field, $val ) {
+<a name="l00419"></a>00419                 <span class="keywordflow">if</span>( in_array( $field, array_keys( $this -&gt; oldatr ) ) ) {
+<a name="l00420"></a>00420                         trigger_error( <span class="stringliteral">"Probujesz ustawic przestarzaly atrybut -&gt;$field ! Uzywaj -&gt;{$this -&gt; oldatr[$field]}"</span>, E_USER_NOTICE );
+<a name="l00421"></a>00421                         $field = $this -&gt; oldatr[$field];
+<a name="l00422"></a>00422                 }
+<a name="l00423"></a>00423                 <span class="keywordflow">if</span>( in_array( $field, array_keys( $this -&gt; oldskill ) ) ) {
+<a name="l00424"></a>00424                         trigger_error( <span class="stringliteral">"Probujesz ustawic przestarzaly atrybut -&gt;$field ! Uzywaj -&gt;{$this -&gt; oldskill[$field]}"</span>, E_USER_NOTICE );
+<a name="l00425"></a>00425                         $field = $this -&gt; oldskill[$field];
+<a name="l00426"></a>00426                 }
+<a name="l00427"></a>00427                 <span class="keywordflow">if</span>( in_array( $field, array_keys( $this -&gt; oldmisc ) ) ) {
+<a name="l00428"></a>00428                         trigger_error( <span class="stringliteral">"Probujesz ustawic przestarzaly atrybut -&gt;$field ! Uzywaj -&gt;{$this -&gt; oldmisc[$field]}"</span>, E_USER_NOTICE );
+<a name="l00429"></a>00429                         $field = $this -&gt; oldmisc[$field];
+<a name="l00430"></a>00430                 }
+<a name="l00431"></a>00431                 <span class="keywordflow">if</span>( in_array( $field, array_keys( $this -&gt; oldres ) ) ) {
+<a name="l00432"></a>00432                         trigger_error( <span class="stringliteral">"Probujesz ustawic przestarzaly atrybut -&gt;$field ! Uzywaj -&gt;{$this -&gt; oldmisc[$field]}"</span>, E_USER_NOTICE );
+<a name="l00433"></a>00433                         $field = $this -&gt; oldres[$field];
+<a name="l00434"></a>00434                 }
+<a name="l00435"></a>00435                 <span class="keywordflow">if</span>( isset( $this -&gt; atr[$field] ) ) {
+<a name="l00436"></a>00436                         $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"UPDATE `players` SET `{$this -&gt; dbatr[$field]}`='$val' WHERE id={$this -&gt; id}"</span> );
+<a name="l00437"></a>00437                         $this -&gt; atr[$field] = $val;
+<a name="l00438"></a>00438                         <span class="keywordflow">return</span> TRUE;
+<a name="l00439"></a>00439                 }
+<a name="l00440"></a>00440                 <span class="keywordflow">if</span>( isset( $this -&gt; skill[$field] ) ) {
+<a name="l00441"></a>00441                         $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"UPDATE `players` SET `{$this -&gt; dbskill[$field]}`='$val' WHERE id={$this -&gt; id}"</span> );
+<a name="l00442"></a>00442                         $this -&gt; skill[$field] = $val;
+<a name="l00443"></a>00443                         <span class="keywordflow">return</span> TRUE;
+<a name="l00444"></a>00444                 }
+<a name="l00445"></a>00445                 <span class="keywordflow">if</span>( isset( $this -&gt; misc[$field] ) ) {
+<a name="l00446"></a>00446                         $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"UPDATE `players` SET `{$this -&gt; dbmisc[$field]}`='$val' WHERE id={$this -&gt; id}"</span> );
+<a name="l00447"></a>00447                         $this -&gt; misc[$field] = $val;
+<a name="l00448"></a>00448                         <span class="keywordflow">return</span> TRUE;
+<a name="l00449"></a>00449                 }
+<a name="l00450"></a>00450                 <span class="keywordflow">if</span>( isset( $this -&gt; res[$field] ) ) {
+<a name="l00451"></a>00451                         $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"UPDATE resources SET `{$this -&gt; dbres[$field]}`='$val' WHERE id={$this -&gt; id}"</span> );
+<a name="l00452"></a>00452                         $this -&gt; res[$field] = $val;
+<a name="l00453"></a>00453                         <span class="keywordflow">return</span> TRUE;
+<a name="l00454"></a>00454                 }
+<a name="l00455"></a>00455                 trigger_error( <span class="stringliteral">"Probujesz zapisac nieistniejaca wartosc $field = $val do bazy ! "</span>,E_USER_WARNING );
+<a name="l00456"></a>00456                 <span class="keywordflow">return</span> FALSE;
+<a name="l00457"></a>00457         }
+<a name="l00458"></a>00458         
+<a name="l00460"></a>00460 
+<a name="l00469"></a><a class="code" href="classPlayer.html#da862a904be31e95dc5bdf8117aa0ca4">00469</a>         function <a class="code" href="classPlayer.html#da862a904be31e95dc5bdf8117aa0ca4">GetAtr</a>( $field, $raw = NULL ) {
+<a name="l00470"></a>00470                 <span class="keywordflow">if</span>( $raw === NULL ) {
+<a name="l00471"></a>00471                         $raw = $this -&gt; RawReturn;
+<a name="l00472"></a>00472                 }
+<a name="l00473"></a>00473                 <span class="keywordflow">if</span>( isset( $this -&gt; oldatr[$field] ) ) {
+<a name="l00474"></a>00474                         trigger_error( <span class="stringliteral">"Uzywasz przestarzalej wartosci -&gt;$field ! Uzywaj -&gt;{$this -&gt; oldatr[$field]}"</span>, E_USER_NOTICE );
+<a name="l00475"></a>00475                         $field = $this -&gt; oldatr[$field];
+<a name="l00476"></a>00476                 }
+<a name="l00477"></a>00477                 <span class="keywordflow">if</span>( !isset( $this -&gt; atr[$field] ) ) {
+<a name="l00478"></a>00478                         trigger_error( <span class="stringliteral">"Pobierasz nieistniejacy atrybut $field !"</span>, E_USER_ERROR );
+<a name="l00479"></a>00479                 }
+<a name="l00480"></a>00480                 <span class="keywordflow">if</span>( $raw === TRUE ) {
+<a name="l00481"></a>00481                         <span class="keywordflow">return</span> $this -&gt; atr[$field];
+<a name="l00482"></a>00482                 }
+<a name="l00483"></a>00483                 $bon = 0;
+<a name="l00484"></a>00484                 $pen = 0;
+<a name="l00485"></a>00485                 <span class="keywordflow">switch</span>( $field ) {
+<a name="l00486"></a>00486                         <span class="keywordflow">case</span> 'dex' :
+<a name="l00487"></a>00487                                 $val = $this -&gt; atr[$field];
+<a name="l00488"></a>00488                                 <span class="keywordflow">if</span>( !empty( $this -&gt;equip['armor'] ) &amp;&amp; $this -&gt; equip['armor']['zr'] &gt; 0 ) {
+<a name="l00489"></a>00489                                         $pen += $val * ( $this -&gt; equip['armor']['zr'] / 100 );
+<a name="l00490"></a>00490                                 }
+<a name="l00491"></a>00491                                 <span class="keywordflow">if</span>( !empty( $this -&gt;equip['knee'] ) &amp;&amp; $this -&gt; equip['knee']['zr'] &gt; 0 ) {
+<a name="l00492"></a>00492                                         $pen += $val * ( $this -&gt; equip['knee']['zr'] / 100 );
+<a name="l00493"></a>00493                                 }
+<a name="l00494"></a>00494                                 <span class="keywordflow">if</span>( !empty( $this -&gt;equip['shield'] ) &amp;&amp; $this -&gt; equip['shield']['zr'] &gt; 0 ) {
+<a name="l00495"></a>00495                                         $pen += $val * ( $this -&gt; equip['shield']['zr'] / 100 );
+<a name="l00496"></a>00496                                 }
+<a name="l00497"></a>00497                                 <span class="keywordflow">return</span> $val - $pen;
+<a name="l00498"></a>00498                                 <span class="keywordflow">break</span>;
+<a name="l00499"></a>00499                         <span class="keywordflow">case</span> 'spd' :
+<a name="l00500"></a>00500                                 $val = $this -&gt; atr[$field];
+<a name="l00501"></a>00501                                 <span class="keywordflow">if</span>( !empty( $this -&gt; equip['weapon'] ) &amp;&amp; in_array( $this -&gt; equip['weapon']['type'], array( <span class="charliteral">'W'</span>, <span class="charliteral">'B'</span> ) ) ) {
+<a name="l00502"></a>00502                                         $bon += $val * ( $this -&gt; equip['weapon']['szyb'] / 100 );
+<a name="l00503"></a>00503                                 }
+<a name="l00504"></a>00504                                 <span class="keywordflow">if</span>( !empty( $this -&gt; equip['armor'] ) &amp;&amp;  !empty( $this -&gt;equip['armor'] ) &amp;&amp; $this -&gt; equip['armor']['szyb'] &gt; 0 ) {
+<a name="l00505"></a>00505                                         $pen += $val * ( $this -&gt; equip['armor']['szyb'] / 100 );
+<a name="l00506"></a>00506                                 }
+<a name="l00507"></a>00507                                 <span class="keywordflow">if</span>( !empty( $this -&gt; equip['knee'] ) &amp;&amp;  !empty( $this -&gt;equip['knee'] ) &amp;&amp; $this -&gt; equip['knee']['szyb'] &gt; 0 ) {
+<a name="l00508"></a>00508                                         $pen += $val * ( $this -&gt; equip['knee']['szyb'] / 100 );
+<a name="l00509"></a>00509                                 }
+<a name="l00510"></a>00510                                 <span class="keywordflow">return</span> $val + $bon - $pen;
+<a name="l00511"></a>00511                                 <span class="keywordflow">break</span>;
+<a name="l00512"></a>00512                         <span class="keywordflow">default</span> :
+<a name="l00513"></a>00513                                 <span class="keywordflow">return</span> $this -&gt; atr[$field];
+<a name="l00514"></a>00514                 }
+<a name="l00515"></a>00515         }
+<a name="l00516"></a>00516         
+<a name="l00518"></a>00518 
+<a name="l00527"></a><a class="code" href="classPlayer.html#2cb1b1727335e1ddb6a941a33091e586">00527</a>         function <a class="code" href="classPlayer.html#2cb1b1727335e1ddb6a941a33091e586">GetSkill</a>( $field, $raw = NULL ) {
+<a name="l00528"></a>00528                 <span class="keywordflow">if</span>( $raw === NULL ) {
+<a name="l00529"></a>00529                         $raw = $this -&gt; RawReturn;
+<a name="l00530"></a>00530                 }
+<a name="l00531"></a>00531                 <span class="keywordflow">if</span>( isset( $this -&gt; oldskill[$field] ) ) {
+<a name="l00532"></a>00532                         trigger_error( <span class="stringliteral">"Uzywasz przestarzalej wartosci -&gt;$field ! Uzywaj -&gt;{$this -&gt; oldskill[$field]}"</span>, E_USER_NOTICE );
+<a name="l00533"></a>00533                         $field = $this -&gt; oldskill[$field];
+<a name="l00534"></a>00534                 }
+<a name="l00535"></a>00535                 <span class="keywordflow">if</span>( !isset( $this -&gt; skill[$field] ) ) {
+<a name="l00536"></a>00536                         trigger_error( <span class="stringliteral">"Pobierasz nieistniejaca umiejetnosc $field !"</span>, E_USER_ERROR );
+<a name="l00537"></a>00537                 }
+<a name="l00538"></a>00538                 <span class="keywordflow">if</span>( $raw === TRUE ) {
+<a name="l00539"></a>00539                         <span class="keywordflow">return</span> $this -&gt; skill[$field];
+<a name="l00540"></a>00540                 }
+<a name="l00541"></a>00541                 <span class="keywordflow">switch</span>( $field ) {
+<a name="l00542"></a>00542                         <span class="keywordflow">default</span> :
+<a name="l00543"></a>00543                                 <span class="keywordflow">return</span> $this -&gt; skill[$field];
+<a name="l00544"></a>00544                 }
+<a name="l00545"></a>00545         }
+<a name="l00546"></a>00546         
+<a name="l00548"></a>00548 
+<a name="l00557"></a><a class="code" href="classPlayer.html#611fb7bf265f227e65f087cda562a936">00557</a>         function <a class="code" href="classPlayer.html#611fb7bf265f227e65f087cda562a936">GetMisc</a>( $field, $raw = NULL ) {
+<a name="l00558"></a>00558                 <span class="keywordflow">if</span>( $raw === NULL ) {
+<a name="l00559"></a>00559                         $raw = $this -&gt; RawReturn;
+<a name="l00560"></a>00560                 }
+<a name="l00561"></a>00561                 <span class="keywordflow">if</span>( isset( $this -&gt; oldmisc[$field] ) ) {
+<a name="l00562"></a>00562                         trigger_error( <span class="stringliteral">"Uzywasz przestarzalej wartosci -&gt;$field ! Uzywaj -&gt;{$this -&gt; oldmisc[$field]}"</span>, E_USER_NOTICE );
+<a name="l00563"></a>00563                         $field = $this -&gt; oldmisc[$field];
+<a name="l00564"></a>00564                 }
+<a name="l00565"></a>00565                 <span class="keywordflow">if</span>( !isset( $this -&gt; misc[$field] ) ) {
+<a name="l00566"></a>00566                         trigger_error( <span class="stringliteral">"Pobierasz nieistniejaca wartosc $field !"</span>, E_USER_ERROR );
+<a name="l00567"></a>00567                 }
+<a name="l00568"></a>00568                 <span class="keywordflow">if</span>( $raw === TRUE ) {
+<a name="l00569"></a>00569                         <span class="keywordflow">switch</span>( $field ) {
+<a name="l00570"></a>00570                                 <span class="keywordflow">case</span> 'mana_max' :
+<a name="l00571"></a>00571                                         $val = $this -&gt; <a class="code" href="classPlayer.html#da862a904be31e95dc5bdf8117aa0ca4">GetAtr</a>( '<span class="keywordtype">int</span>', $raw ) + $this -&gt; <a class="code" href="classPlayer.html#da862a904be31e95dc5bdf8117aa0ca4">GetAtr</a>( 'wis', $raw );
+<a name="l00572"></a>00572                                         <span class="keywordflow">return</span> round( $val );
+<a name="l00573"></a>00573                                         <span class="keywordflow">break</span>;
+<a name="l00574"></a>00574                                 <span class="keywordflow">default</span> :
+<a name="l00575"></a>00575                                         <span class="keywordflow">return</span> $this -&gt; misc[$field];
+<a name="l00576"></a>00576                         }
+<a name="l00577"></a>00577                 }
+<a name="l00578"></a>00578                 $bon = 0;
+<a name="l00579"></a>00579                 $pen = 0;
+<a name="l00580"></a>00580                 <span class="keywordflow">switch</span>( $field ) {
+<a name="l00581"></a>00581                         <span class="keywordflow">case</span> 'mana_max' :
+<a name="l00582"></a>00582                                 $val = $this -&gt; <a class="code" href="classPlayer.html#da862a904be31e95dc5bdf8117aa0ca4">GetAtr</a>( '<span class="keywordtype">int</span>', $raw ) + $this -&gt; <a class="code" href="classPlayer.html#da862a904be31e95dc5bdf8117aa0ca4">GetAtr</a>( 'wis', $raw );
+<a name="l00583"></a>00583                                 <span class="keywordflow">if</span>( isset( $this -&gt; equip['armor'] ) &amp;&amp; $this -&gt; equip['armor']['type'] == <span class="charliteral">'Z'</span> ) {
+<a name="l00584"></a>00584                                         $bon = $val * ( $this -&gt; equip['armor']['power'] / 100 );
+<a name="l00585"></a>00585                                 }
+<a name="l00586"></a>00586                                 <span class="keywordflow">return</span> round ($val + $bon );
+<a name="l00587"></a>00587                         <span class="keywordflow">default</span> :
+<a name="l00588"></a>00588                                 <span class="keywordflow">return</span> $this -&gt; misc[$field];
+<a name="l00589"></a>00589                 }
+<a name="l00590"></a>00590         }
+<a name="l00591"></a>00591         
+<a name="l00593"></a>00593 
+<a name="l00602"></a><a class="code" href="classPlayer.html#2ae0d57d384b1d368901e16410b0fbb1">00602</a>         function <a class="code" href="classPlayer.html#2ae0d57d384b1d368901e16410b0fbb1">GetRes</a>( $field ) {
+<a name="l00603"></a>00603                 <span class="keywordflow">if</span>( isset( $this -&gt; oldres[$field] ) ) {
+<a name="l00604"></a>00604                         trigger_error( <span class="stringliteral">"Uzywasz przestarzalej wartosci -&gt;$field ! Uzywaj -&gt;{$this -&gt; oldres[$field]}"</span>, E_USER_NOTICE );
+<a name="l00605"></a>00605                         $field = $this -&gt; oldres[$field];
+<a name="l00606"></a>00606                 }
+<a name="l00607"></a>00607                 <span class="keywordflow">if</span>( !isset( $this -&gt; res[$field] ) ) {
+<a name="l00608"></a>00608                         trigger_error( <span class="stringliteral">"Pobierasz nieistniejacy surowiec $field !"</span>, E_USER_ERROR );
+<a name="l00609"></a>00609                 }
+<a name="l00610"></a>00610                 <span class="keywordflow">switch</span>( $field ) {
+<a name="l00611"></a>00611                         <span class="keywordflow">default</span> :
+<a name="l00612"></a>00612                                 <span class="keywordflow">return</span> $this -&gt; res[$field];
+<a name="l00613"></a>00613                 }
+<a name="l00614"></a>00614         }
+<a name="l00615"></a>00615         
+<a name="l00617"></a>00617 
+<a name="l00625"></a><a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">00625</a>         function <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>( $fields, $raw = NULL ) {
+<a name="l00626"></a>00626                 <span class="keywordflow">if</span>( $raw === NULL ) {
+<a name="l00627"></a>00627                         $raw = $this -&gt; RawReturn;
+<a name="l00628"></a>00628                 }
+<a name="l00629"></a>00629                 <span class="keywordflow">if</span>( !is_array( $fields ) ) {
+<a name="l00630"></a>00630                         $field = explode( <span class="stringliteral">","</span>, $fields );
+<a name="l00631"></a>00631                 }
+<a name="l00632"></a>00632                 $oldraw = $this -&gt; RawReturn;
+<a name="l00633"></a>00633                 $this -&gt; RawReturn = $raw;
+<a name="l00634"></a>00634                 foreach( $fields as $field ) {
+<a name="l00635"></a>00635                         $return[$field] = $this -&gt; $field;
+<a name="l00636"></a>00636                 }
+<a name="l00637"></a>00637                 $this -&gt; RawReturn = $oldraw;
+<a name="l00638"></a>00638                 <span class="keywordflow">return</span> $return;
+<a name="l00639"></a>00639         }
+<a name="l00640"></a>00640         
+<a name="l00642"></a>00642 
+<a name="l00652"></a><a class="code" href="classPlayer.html#669ef9389f97a6a1c2e0b35f69690d7f">00652</a>         function <a class="code" href="classPlayer.html#669ef9389f97a6a1c2e0b35f69690d7f">SetArray</a>( $fields, $values = NULL ) {
+<a name="l00653"></a>00653                 $status = TRUE;
+<a name="l00654"></a>00654                 foreach( $fields as $key =&gt; $field ) {
+<a name="l00655"></a>00655                         $ret = $this -&gt; $key = $field;
+<a name="l00656"></a>00656                         <span class="keywordflow">if</span>( $ret === FALSE ) {
+<a name="l00657"></a>00657                                 $status = FALSE;
+<a name="l00658"></a>00658                         }
+<a name="l00659"></a>00659                 }
+<a name="l00660"></a>00660                 <span class="keywordflow">return</span> $status;
+<a name="l00661"></a>00661         }
+<a name="l00662"></a>00662         
+<a name="l00664"></a><a class="code" href="classPlayer.html#84bba0aac7291d36897b02358bb3e182">00664</a>         function <a class="code" href="classPlayer.html#84bba0aac7291d36897b02358bb3e182">AwardExp</a>( $expgain, $quiet = FALSE ) {
+<a name="l00665"></a>00665                 $poziom = 0;
+<a name="l00666"></a>00666                 $ap = 0;
+<a name="l00667"></a>00667                 $pz = 0;
+<a name="l00668"></a>00668                 $energia = 0;
+<a name="l00669"></a>00669                 $texp = ($this -&gt; exp + $expgain);
+<a name="l00670"></a>00670                 $level = $this -&gt; level;
+<a name="l00671"></a>00671                 $expn = expnext( $level );
+<a name="l00672"></a>00672                 $rasa = $this -&gt; race;
+<a name="l00673"></a>00673                 <span class="keywordflow">while</span> ($texp &gt;= $expn) {
+<a name="l00674"></a>00674                         $poziom = ($poziom + 1);
+<a name="l00675"></a>00675                         $ap = ($ap + 6);
+<a name="l00676"></a>00676                         $krew=0;
+<a name="l00677"></a>00677                         $texp = ($texp - $expn);
+<a name="l00678"></a>00678                         $level = ($level + 1);
+<a name="l00679"></a>00679                         $expn = expnext( $level );
+<a name="l00680"></a>00680                         <span class="keywordflow">if</span> ($rasa == 'Czlowiek') {
+<a name="l00681"></a>00681                                 $pz = ($pz + 5);
+<a name="l00682"></a>00682                         }
+<a name="l00683"></a>00683                         <span class="keywordflow">if</span> ($rasa == 'Elf') {
+<a name="l00684"></a>00684                                 $pz = ($pz + 4);
+<a name="l00685"></a>00685                         }
+<a name="l00686"></a>00686                         <span class="keywordflow">if</span> ($rasa == 'Krasnolud') {
+<a name="l00687"></a>00687                                 $pz = ($pz + 6);
+<a name="l00688"></a>00688                         }
+<a name="l00689"></a>00689                         <span class="keywordflow">if</span> ($rasa == 'Hobbit') {
+<a name="l00690"></a>00690                                 $pz = ($pz + 3);
+<a name="l00691"></a>00691                         }
+<a name="l00692"></a>00692                         <span class="keywordflow">if</span> ($rasa == 'Jaszczuroczlek') {
+<a name="l00693"></a>00693                                 $pz = ($pz + 5);
+<a name="l00694"></a>00694                         }
+<a name="l00695"></a>00695                         <span class="keywordflow">if</span> ($rasa == 'Nieumarly') {
+<a name="l00696"></a>00696                                 $pz = ($pz + 4);
+<a name="l00697"></a>00697                         }
+<a name="l00698"></a>00698                                 <span class="keywordflow">if</span> ($rasa == 'Smokokrwisty') {
+<a name="l00699"></a>00699                                 $pz = ($pz + 5);
+<a name="l00700"></a>00700                         }
+<a name="l00701"></a>00701                         <span class="keywordflow">if</span> ($rasa == 'Wampir') {
+<a name="l00702"></a>00702                                 $pz = ($pz + 4);
+<a name="l00703"></a>00703                                 $krew = 5;
+<a name="l00704"></a>00704                         }
+<a name="l00705"></a>00705                         <span class="keywordflow">if</span> ($rasa == 'Wilkolak') {
+<a name="l00706"></a>00706                                 $pz = ($pz + 5);
+<a name="l00707"></a>00707                         }
+<a name="l00708"></a>00708                         <span class="keywordflow">if</span> ($rasa == 'Kurtr') {
+<a name="l00709"></a>00709                                 $pz = ($pz + 2);
+<a name="l00710"></a>00710                         }
+<a name="l00711"></a>00711                         <span class="keywordflow">if</span> ($rasa == 'Polelf') {
+<a name="l00712"></a>00712                                 $pz = ($pz + 4);
+<a name="l00713"></a>00713                         }
+<a name="l00714"></a>00714                         <span class="keywordflow">if</span> ($rasa == 'Polork') {
+<a name="l00715"></a>00715                                 $pz = ($pz + 7);
+<a name="l00716"></a>00716                         }
+<a name="l00717"></a>00717                         <span class="keywordflow">if</span> ($rasa == 'Drow') {
+<a name="l00718"></a>00718                                 $pz = ($pz + 5);
+<a name="l00719"></a>00719                         }
+<a name="l00720"></a>00720                         <span class="keywordflow">if</span> ($rasa == 'Nimfa') {
+<a name="l00721"></a>00721                                 $pz = ($pz + 3);
+<a name="l00722"></a>00722                         }
+<a name="l00723"></a>00723                         $energia = $energia + 0.3;
+<a name="l00724"></a>00724                         $maxenergy = $this -&gt; energy_max + $energia;
+<a name="l00725"></a>00725                         <span class="keywordflow">if</span> ($maxenergy &gt; 100) {
+<a name="l00726"></a>00726                                 $maxenergy = 100;
+<a name="l00727"></a>00727                         }
+<a name="l00728"></a>00728                 }
+<a name="l00729"></a>00729                 <span class="keywordflow">if</span> ($poziom &gt; 0) {
+<a name="l00730"></a>00730                         <span class="keywordflow">if</span>( $quiet === FALSE ) {
+<a name="l00731"></a>00731                                 $msg = <span class="stringliteral">"&lt;b&gt;Zdobyles poziom&lt;/b&gt;&lt;br&gt;"</span>;
+<a name="l00732"></a>00732                                 $msg.= $poziom.<span class="stringliteral">" Poziom(ow)&lt;br&gt;"</span>;
+<a name="l00733"></a>00733                                 $msg.= $ap.<span class="stringliteral">" AP&lt;br&gt;"</span>;
+<a name="l00734"></a>00734                                 $msg.= $pz.<span class="stringliteral">" Maksymalnych Punktow Zycia&lt;br&gt;"</span>;
+<a name="l00735"></a>00735                                 $msg.= $energia.<span class="stringliteral">" Maksymalnej Energii&lt;br&gt;"</span>;
+<a name="l00736"></a>00736                                 trigger_error( $msg, E_USER_NOTICE );
+<a name="l00737"></a>00737                         }
+<a name="l00738"></a>00738                                 <span class="comment">//$gained['exp'] = $texp;</span>
+<a name="l00739"></a>00739                                 <span class="comment">//$gained['level'] = $player -&gt; level + $poziom;</span>
+<a name="l00740"></a>00740                                 <span class="comment">//$gained['ap'] = $player -&gt; ap + $ap;</span>
+<a name="l00741"></a>00741                                 <span class="comment">//$gained['hp_max'] = $player -&gt; GetMisc( 'hp_max', TRUE ) + $pz;</span>
+<a name="l00742"></a>00742                                 <span class="comment">//$gained['max_krew'] = $player -&gt; max_krew + $krew;</span>
+<a name="l00743"></a>00743                                 <span class="comment">//if ($energia &gt; 0) {</span>
+<a name="l00744"></a>00744                                 <span class="comment">//      $gained['energy_max'] = $maxenergy;</span>
+<a name="l00745"></a>00745                                 <span class="comment">//$player -&gt; SetArray( $gained );</span>
+<a name="l00746"></a>00746                         <span class="comment">//$db -&gt; Execute("UPDATE players SET exp=".$texp." WHERE id=".$eid);</span>
+<a name="l00747"></a>00747                         <span class="comment">//$db -&gt; Execute("UPDATE players SET level=level+".$poziom." WHERE id=".$eid);</span>
+<a name="l00748"></a>00748                         <span class="comment">//$db -&gt; Execute("UPDATE players SET ap=ap+".$ap." WHERE id=".$eid);</span>
+<a name="l00749"></a>00749                         <span class="comment">//$db -&gt; Execute("UPDATE players SET max_hp=max_hp+".$pz." WHERE id=".$eid);</span>
+<a name="l00750"></a>00750                         <span class="comment">//$db -&gt; Execute("UPDATE players SET max_hp=max_hp+".$pz." WHERE id=".$eid);</span>
+<a name="l00751"></a>00751                         <span class="comment">//$db -&gt; Execute("UPDATE players SET max_krew=max_krew+".$krew." WHERE id=".$eid);</span>
+<a name="l00752"></a>00752                         $this -&gt; exp = $texp;
+<a name="l00753"></a>00753                         $this -&gt; level += $poziom;
+<a name="l00754"></a>00754                         $this -&gt; ap += $ap;
+<a name="l00755"></a>00755                         $this -&gt; hp_max += $pz;
+<a name="l00756"></a>00756                         <span class="keywordflow">if</span>( $krew &gt; 0 ) {
+<a name="l00757"></a>00757                                 $this -&gt; max_krew += $krew;
+<a name="l00758"></a>00758                         }
+<a name="l00759"></a>00759                         $this -&gt; energy_max += $energia;
+<a name="l00760"></a>00760                         <span class="comment">//$player -&gt; SetArray( array( 'exp'=&gt;$texp, 'level'=&gt;$player</span>
+<a name="l00761"></a>00761                         <span class="comment">//if ($energia &gt; 0) {</span>
+<a name="l00762"></a>00762                         <span class="comment">//      $db -&gt; Execute("UPDATE players SET max_energy=".$maxenergy." WHERE id=".$eid);</span>
+<a name="l00763"></a>00763                         <span class="comment">//      //$gained['energy_max'] = $maxenergy;</span>
+<a name="l00764"></a>00764                         <span class="comment">//}</span>
+<a name="l00765"></a>00765                         
+<a name="l00766"></a>00766                         <span class="comment">//if ($enemyid != 0) {</span>
+<a name="l00767"></a>00767                         <span class="comment">//      $db -&gt; Execute("INSERT INTO log (owner, log, czas) VALUES(".$eid.",'Podczas walki z &lt;b&gt;".$enemyuser." ID:".$enemyid."&lt;/b&gt;, zdobywasz poziom.','".$newdate."')");</span>
+<a name="l00768"></a>00768                         <span class="comment">//}</span>
+<a name="l00769"></a>00769                         <span class="comment">//PutSignal( $eid, 'misc' );</span>
+<a name="l00770"></a>00770                 } <span class="keywordflow">else</span> {
+<a name="l00771"></a>00771                         $this -&gt; exp = $texp;
+<a name="l00772"></a>00772                         <span class="comment">//$db -&gt; Execute("UPDATE players SET exp=".$texp." WHERE id=".$eid);</span>
+<a name="l00773"></a>00773                         <span class="comment">//PutSignal( $eid, 'misc' );</span>
+<a name="l00774"></a>00774                         <span class="comment">//$player -&gt; SetArray( array( 'exp' =&gt; $texp ) );;</span>
+<a name="l00775"></a>00775                 }
+<a name="l00776"></a>00776         }
+<a name="l00777"></a>00777         
+<a name="l00779"></a>00779 
+<a name="l00790"></a><a class="code" href="classPlayer.html#622c8e076c96f8ca96b1b288c85db7cd">00790</a>         function <a class="code" href="classPlayer.html#622c8e076c96f8ca96b1b288c85db7cd">EquipSearch</a>( $fields = NULL, $where = 'backpack' ) {
+<a name="l00791"></a>00791                 <span class="keywordflow">if</span>( $fields === NULL ) {
+<a name="l00792"></a>00792                         <span class="keywordflow">return</span> $this -&gt; $where;
+<a name="l00793"></a>00793                 }
+<a name="l00794"></a>00794                 $numfields = count( $fields );
+<a name="l00795"></a>00795                 $return = array ();
+<a name="l00796"></a>00796                 foreach( $this -&gt; $where as $key =&gt; $item ) {
+<a name="l00797"></a>00797                         <span class="keywordflow">if</span>( count( array_intersect_assoc( $item, $fields ) ) == $numfields ) {
+<a name="l00798"></a>00798                                 $return[$key] = $item;
+<a name="l00799"></a>00799                         }
+<a name="l00800"></a>00800                 }
+<a name="l00801"></a>00801                 <span class="keywordflow">return</span> $return;
+<a name="l00802"></a>00802         }
+<a name="l00803"></a>00803         
+<a name="l00805"></a>00805 
+<a name="l00817"></a><a class="code" href="classPlayer.html#9923488ffc0991a3aa1b1d8761d62f7b">00817</a>         <span class="keyword">public</span> function <a class="code" href="classPlayer.html#9923488ffc0991a3aa1b1d8761d62f7b">GetEquipped</a>( $what = 'all' ) {
+<a name="l00818"></a>00818                 <span class="keywordflow">if</span>( $what == 'all' ) {
+<a name="l00819"></a>00819                         $return = $this -&gt; equip;
+<a name="l00820"></a>00820                         <span class="keywordflow">return</span> $return;
+<a name="l00821"></a>00821                 }
+<a name="l00822"></a>00822                 <span class="keywordflow">else</span> {
+<a name="l00823"></a>00823                         <span class="keywordflow">if</span>( !is_array( $what ) ) {
+<a name="l00824"></a>00824                                 $what = array( $what );
+<a name="l00825"></a>00825                         }
+<a name="l00826"></a>00826                         <span class="comment">//print_r($what);</span>
+<a name="l00827"></a>00827                         $return = array();
+<a name="l00828"></a>00828                         foreach( $what as $field ) {
+<a name="l00829"></a>00829                                 <span class="keywordflow">if</span>( !empty( $this-&gt;equip[$field] ) ) {
+<a name="l00830"></a>00830                                         $return[$field] = $this-&gt;equip[$field];
+<a name="l00831"></a>00831                                 }
+<a name="l00832"></a>00832                                 <span class="keywordflow">else</span> {
+<a name="l00833"></a>00833                                         <span class="comment">//trigger_error( "Nie istnieje taka czesc ekwipunku $field !", E_USER_WARNING );</span>
+<a name="l00834"></a>00834                                         <span class="comment">//return array();</span>
+<a name="l00835"></a>00835                                         <span class="keywordflow">continue</span>;
+<a name="l00836"></a>00836                                 }
+<a name="l00837"></a>00837                         }
+<a name="l00838"></a>00838                         <span class="keywordflow">return</span> $return;
+<a name="l00839"></a>00839                 }
+<a name="l00840"></a>00840         }
+<a name="l00841"></a>00841         
+<a name="l00843"></a>00843 
+<a name="l00855"></a><a class="code" href="classPlayer.html#686ae09262518d5d48dae91923c6fc7d">00855</a>         function <a class="code" href="classPlayer.html#686ae09262518d5d48dae91923c6fc7d">SetEquip</a>( $what, $item, $fields ) {
+<a name="l00856"></a>00856                 <span class="keywordflow">if</span>( isset( $fields['<span class="keywordtype">id</span>'] ) ) {
+<a name="l00857"></a>00857                         trigger_error( <span class="stringliteral">"Ta funkcja nie zezwala na zmienianie pola 'id'  !"</span>, E_USER_WARNING );
+<a name="l00858"></a>00858                         <span class="keywordflow">return</span> FALSE;
+<a name="l00859"></a>00859                 }
+<a name="l00860"></a>00860                 $i =&amp; $this -&gt; $what;
+<a name="l00861"></a>00861                 <span class="comment">//print_r( $i );</span>
+<a name="l00862"></a>00862                 <span class="keywordflow">if</span>( empty( $i[$item] ) ) {
+<a name="l00863"></a>00863                         trigger_error( <span class="stringliteral">"W ekwipunku nie ma takiego przedmiotu $what -&gt; $item !"</span>, E_USER_WARNING );
+<a name="l00864"></a>00864                         <span class="keywordflow">return</span> FALSE;
+<a name="l00865"></a>00865                 }
+<a name="l00866"></a>00866                 foreach( $fields as $key =&gt; $val ) {
+<a name="l00867"></a>00867                         <span class="keywordflow">if</span>( !isset( $i[$item][$key] ) ) {
+<a name="l00868"></a>00868                                 trigger_error( <span class="stringliteral">"Proba zmiany nieistniejacego pola w $what -&gt; $item = $key !"</span>,E_USER_WARNING );
+<a name="l00869"></a>00869                                 unset( $fields[$key] );
+<a name="l00870"></a>00870                                 <span class="keywordflow">continue</span>;
+<a name="l00871"></a>00871                         }
+<a name="l00872"></a>00872                         $i[$item][$key] = $val;
+<a name="l00873"></a>00873                 }
+<a name="l00874"></a>00874                 <span class="keywordflow">switch</span>( $what ) {
+<a name="l00875"></a>00875                         <span class="keywordflow">case</span> 'equip' :
+<a name="l00876"></a>00876                                 $sql = $this -&gt; <a class="code" href="classPlayer.html#41d0617559aa17844328ae16cfeee396">SqlCreate</a>( <span class="stringliteral">"UPDATE"</span>, <span class="stringliteral">"equipment"</span>, $this -&gt; <a class="code" href="classPlayer.html#edca5d0255b18cae666639c5e6190ae5">TranslateFields</a>( $fields, $what ), <span class="stringliteral">"id={$i[$item]['id']}"</span> );
+<a name="l00877"></a>00877                                 <span class="keywordflow">break</span>;
+<a name="l00878"></a>00878                         <span class="keywordflow">case</span> 'backpack' :
+<a name="l00879"></a>00879                                 $sql = $this -&gt; <a class="code" href="classPlayer.html#41d0617559aa17844328ae16cfeee396">SqlCreate</a>( <span class="stringliteral">"UPDATE"</span>, <span class="stringliteral">"equipment"</span>, $this -&gt; <a class="code" href="classPlayer.html#edca5d0255b18cae666639c5e6190ae5">TranslateFields</a>( $fields, $what ), <span class="stringliteral">"id={$i[$item]['id']}"</span> );
+<a name="l00880"></a>00880                                 <span class="keywordflow">break</span>;
+<a name="l00881"></a>00881                         <span class="keywordflow">case</span> 'potions' :
+<a name="l00882"></a>00882                                 $sql = $this -&gt; <a class="code" href="classPlayer.html#41d0617559aa17844328ae16cfeee396">SqlCreate</a>( <span class="stringliteral">"UPDATE"</span>, <span class="stringliteral">"mikstury"</span>, $this -&gt; <a class="code" href="classPlayer.html#edca5d0255b18cae666639c5e6190ae5">TranslateFields</a>( $fields, $what ), <span class="stringliteral">"id={$i[$item]['id']}"</span> );
+<a name="l00883"></a>00883                                 <span class="keywordflow">break</span>;
+<a name="l00884"></a>00884                         <span class="keywordflow">default</span> :
+<a name="l00885"></a>00885                                 trigger_error( <span class="stringliteral">"Nieprawidlowa czesc w ekwipunku: $what !"</span>, E_USER_WARNING );
+<a name="l00886"></a>00886                                 <span class="keywordflow">return</span> FALSE;
+<a name="l00887"></a>00887                 }
+<a name="l00888"></a>00888                 $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( $sql );
+<a name="l00889"></a>00889                 <span class="keywordflow">return</span> TRUE;
+<a name="l00890"></a>00890         }
+<a name="l00891"></a>00891         
+<a name="l00893"></a>00893 
+<a name="l00900"></a><a class="code" href="classPlayer.html#699c6232b4a2b763b5735a83fe5656c1">00900</a>         function <a class="code" href="classPlayer.html#699c6232b4a2b763b5735a83fe5656c1">Unequip</a>( $what ) {
+<a name="l00901"></a>00901                 <span class="keywordflow">if</span>( !in_array( $what, array( 'weapon', 'armor', 'helm', 'shield', 'knee', 'arrows' ) ) ) {
+<a name="l00902"></a>00902                         trigger_error( <span class="stringliteral">"Proba zdjecia nieprawidlowej czesci ekwipunku $what !"</span>, E_USER_WARNING );
+<a name="l00903"></a>00903                         <span class="keywordflow">return</span> FALSE;
+<a name="l00904"></a>00904                 }
+<a name="l00905"></a>00905                 <span class="keywordflow">if</span>( !isset( $this -&gt; equip[$what]['<span class="keywordtype">id</span>'] ) ) {
+<a name="l00906"></a>00906                         trigger_error( <span class="stringliteral">"Czesc $what jest juz zdjeta !"</span>, E_USER_WARNING );
+<a name="l00907"></a>00907                         <span class="keywordflow">return</span> FALSE;
+<a name="l00908"></a>00908                 }
+<a name="l00909"></a>00909                 $item = $this -&gt; equip[$what];
+<a name="l00910"></a>00910                 <span class="keywordflow">if</span>( $item['type'] == <span class="charliteral">'B'</span> &amp;&amp; !empty( $this -&gt; equip['arrows']['<span class="keywordtype">id</span>'] ) ) {
+<a name="l00911"></a>00911                         $this -&gt; <a class="code" href="classPlayer.html#699c6232b4a2b763b5735a83fe5656c1">Unequip</a>( 'arrows' );
+<a name="l00912"></a>00912                 }
+<a name="l00913"></a>00913                 $search = $this -&gt; equip[$what];
+<a name="l00914"></a>00914                 unset( $search['<span class="keywordtype">id</span>'] );
+<a name="l00915"></a>00915                 unset( $search['amount'] );
+<a name="l00916"></a>00916                 unset( $search['status'] );
+<a name="l00917"></a>00917                 <span class="comment">//unset( $search['imagenum'] );</span>
+<a name="l00918"></a>00918                 unset( $search['img_file'] );
+<a name="l00919"></a>00919                 <span class="keywordflow">if</span>( $what == 'arrows' ) {
+<a name="l00920"></a>00920                         unset( $search['wt'] );
+<a name="l00921"></a>00921                         unset( $search['maxwt'] );
+<a name="l00922"></a>00922                 }
+<a name="l00923"></a>00923                 $try = ( $this -&gt; <a class="code" href="classPlayer.html#622c8e076c96f8ca96b1b288c85db7cd">EquipSearch</a>( $search ) );
+<a name="l00924"></a>00924                 <span class="keywordflow">if</span>( !empty( $try ) ) {
+<a name="l00925"></a>00925                         $key = NULL;
+<a name="l00926"></a>00926                         <span class="keywordflow">if</span>( $what == 'arrows' &amp;&amp; $item['wt'] &lt; 20 ) {
+<a name="l00927"></a>00927                                 foreach( $try as $k =&gt; $quiver ) {
+<a name="l00928"></a>00928                                         <span class="keywordflow">if</span>( $quiver['wt'] + $item['wt'] &lt;= 20 ) {
+<a name="l00929"></a>00929                                                 $key = $k;
+<a name="l00930"></a>00930                                                 <span class="keywordflow">break</span>;
+<a name="l00931"></a>00931                                         }
+<a name="l00932"></a>00932                                 }
+<a name="l00933"></a>00933                                 <span class="keywordflow">if</span>( $key ) {
+<a name="l00934"></a>00934                                         $try = array_shift( $try );
+<a name="l00935"></a>00935                                         $sql[] = <span class="stringliteral">"UPDATE equipment SET wt = wt + {$item['wt']} WHERE id={$try[$key]['id']}"</span>;
+<a name="l00936"></a>00936                                         $sql[] = <span class="stringliteral">"DELETE FROM equipment WHERE id={$item['id']}"</span>;
+<a name="l00937"></a>00937                                         $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( $sql ); 
+<a name="l00938"></a>00938                                         $this -&gt; backpack[$key]['wt'] += $item['wt'];
+<a name="l00939"></a>00939                                         unset( $this -&gt; equip[$what] );
+<a name="l00940"></a>00940                                 }
+<a name="l00941"></a>00941                                 <span class="keywordflow">else</span> {
+<a name="l00942"></a>00942                                         $try = array_shift( $try );
+<a name="l00943"></a>00943                                         $this -&gt;SqlExec( <span class="stringliteral">"UPDATE equipment SET `status`='U' WHERE id={$item['id']}"</span> );
+<a name="l00944"></a>00944                                         unset ( $this -&gt; equip[$what] );
+<a name="l00945"></a>00945                                         $this -&gt; backpack[] = $item;
+<a name="l00946"></a>00946                                 }
+<a name="l00947"></a>00947                         }
+<a name="l00948"></a>00948                         <span class="keywordflow">else</span> {
+<a name="l00949"></a>00949                                 $key = key( $try );
+<a name="l00950"></a>00950                                 $try = array_shift( $try );
+<a name="l00951"></a>00951                                 <span class="comment">//print_r($try);</span>
+<a name="l00952"></a>00952                                 $sql[] = <span class="stringliteral">"UPDATE equipment SET amount = amount + 1 WHERE id={$try['id']}"</span>;
+<a name="l00953"></a>00953                                 $sql[] = <span class="stringliteral">"DELETE FROM equipment WHERE id={$item['id']}"</span>;
+<a name="l00954"></a>00954                                 $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( $sql ); 
+<a name="l00955"></a>00955                                 $this -&gt; backpack[$key]['amount']++;
+<a name="l00956"></a>00956                                 unset( $this -&gt; equip[$what] );
+<a name="l00957"></a>00957                         }
+<a name="l00958"></a>00958                 }
+<a name="l00959"></a>00959                 <span class="keywordflow">else</span> {
+<a name="l00960"></a>00960                         $this -&gt;SqlExec( <span class="stringliteral">"UPDATE equipment SET `status`='U' WHERE id={$item['id']}"</span> );
+<a name="l00961"></a>00961                         unset ( $this -&gt; equip[$what] );
+<a name="l00962"></a>00962                         $this -&gt; backpack[] = $item;
+<a name="l00963"></a>00963                 }
+<a name="l00964"></a>00964                 <span class="keywordflow">if</span>( $item['type'] == <span class="charliteral">'Z'</span> &amp;&amp; $this -&gt; mana &gt; $this -&gt; mana_max ) {
+<a name="l00965"></a>00965                         $this -&gt; mana = $this -&gt; mana_max;
+<a name="l00966"></a>00966                 }
+<a name="l00967"></a>00967                 <span class="keywordflow">return</span> TRUE;
+<a name="l00968"></a>00968         }
+<a name="l00969"></a>00969         
+<a name="l00971"></a>00971 
+<a name="l00980"></a><a class="code" href="classPlayer.html#ee4672e2550342da08ceef6abc6482c4">00980</a>         function <a class="code" href="classPlayer.html#ee4672e2550342da08ceef6abc6482c4">Equip</a>( $iid ) {
+<a name="l00981"></a>00981                 $item = $this -&gt; <a class="code" href="classPlayer.html#622c8e076c96f8ca96b1b288c85db7cd">EquipSearch</a>( array( '<span class="keywordtype">id</span>' =&gt; $iid ) );
+<a name="l00982"></a>00982                 <span class="keywordflow">if</span>( empty( $item ) ) {
+<a name="l00983"></a>00983                         trigger_error( <span class="stringliteral">"Nie posiadasz takiego przedmiotu !"</span>, E_USER_WARNING );
+<a name="l00984"></a>00984                         <span class="keywordflow">return</span> FALSE;
+<a name="l00985"></a>00985                 }
+<a name="l00986"></a>00986                 
+<a name="l00987"></a>00987                 $key = key( $item );
+<a name="l00988"></a>00988                 $item = array_shift( $item );
+<a name="l00989"></a>00989                 
+<a name="l00990"></a>00990                 <span class="comment">// TODO ! sprawdzenie warunkow</span>
+<a name="l00991"></a>00991                 
+<a name="l00992"></a>00992                 $what = '';
+<a name="l00993"></a>00993                 <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'W'</span>, <span class="charliteral">'B'</span>, <span class="charliteral">'S'</span> ) ) ) {
+<a name="l00994"></a>00994                         $what = 'weapon';
+<a name="l00995"></a>00995                 }
+<a name="l00996"></a>00996                 <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'A'</span>, <span class="charliteral">'Z'</span> ) ) ) {
+<a name="l00997"></a>00997                         $what = 'armor';
+<a name="l00998"></a>00998                 }
+<a name="l00999"></a>00999                 <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'H'</span> ) ) ) {
+<a name="l01000"></a>01000                         $what = 'helm';
+<a name="l01001"></a>01001                 }
+<a name="l01002"></a>01002                 <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'D'</span> ) ) ) {
+<a name="l01003"></a>01003                         $what = 'shield';
+<a name="l01004"></a>01004                 }
+<a name="l01005"></a>01005                 <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'N'</span> ) ) ) {
+<a name="l01006"></a>01006                         $what = 'knee';
+<a name="l01007"></a>01007                 }
+<a name="l01008"></a>01008                 <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'R'</span> ) ) ) {
+<a name="l01009"></a>01009                         $what = 'arrows';
+<a name="l01010"></a>01010                 }
+<a name="l01011"></a>01011                 <span class="keywordflow">if</span>( empty( $what ) ) {
+<a name="l01012"></a>01012                         trigger_error( <span class="stringliteral">"Nie mozna zalozyc tego przedmiotu !"</span>, E_USER_WARNING );
+<a name="l01013"></a>01013                         <span class="keywordflow">return</span> FALSE;
+<a name="l01014"></a>01014                 }
+<a name="l01015"></a>01015                 
+<a name="l01016"></a>01016                 <span class="keywordflow">if</span>( isset( $this -&gt; equip[$what] ) ) {
+<a name="l01017"></a>01017                         $this -&gt; <a class="code" href="classPlayer.html#699c6232b4a2b763b5735a83fe5656c1">Unequip</a>( $what );
+<a name="l01018"></a>01018                 }
+<a name="l01019"></a>01019                 
+<a name="l01020"></a>01020                 
+<a name="l01021"></a>01021                 <span class="keywordflow">if</span>( $item['amount'] == 1 ) {
+<a name="l01022"></a>01022                         $this -&gt;SqlExec( <span class="stringliteral">"UPDATE equipment SET `status`='E' WHERE id={$item['id']}"</span> );
+<a name="l01023"></a>01023                         unset( $this -&gt; backpack[$key] );
+<a name="l01024"></a>01024                         $this -&gt; equip[$what] = $item;
+<a name="l01025"></a>01025                         $this -&gt; equip[$what]['status'] = <span class="charliteral">'E'</span>;
+<a name="l01026"></a>01026                 }
+<a name="l01027"></a>01027                 <span class="keywordflow">else</span> {
+<a name="l01028"></a>01028                         $toadd = $item;
+<a name="l01029"></a>01029                         unset( $toadd['<span class="keywordtype">id</span>'] );
+<a name="l01030"></a>01030                         unset( $toadd['costbase'] );
+<a name="l01031"></a>01031                         $toadd['amount'] = 1;
+<a name="l01032"></a>01032                         unset( $toadd['img_file'] );
+<a name="l01033"></a>01033                         $toadd['status'] = <span class="charliteral">'E'</span>;
+<a name="l01034"></a>01034                         
+<a name="l01035"></a>01035                         $sql['insert'] = $this -&gt; <a class="code" href="classPlayer.html#41d0617559aa17844328ae16cfeee396">SqlCreate</a>( <span class="stringliteral">"INSERT"</span>, <span class="stringliteral">"equipment"</span>, $toadd );
+<a name="l01036"></a>01036                         $sql['update'] = <span class="stringliteral">"UPDATE equipment SET amount = amount - 1 WHERE id={$item['id']}"</span>;
+<a name="l01037"></a>01037                         $result = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( $sql );
+<a name="l01038"></a>01038                         <span class="comment">//print_r( $result );</span>
+<a name="l01039"></a>01039                         $this -&gt; backpack[$key]['amount']--;
+<a name="l01040"></a>01040                         $this -&gt; equip[$what] = $item;
+<a name="l01041"></a>01041                         $this -&gt; equip[$what]['amount'] = 1;
+<a name="l01042"></a>01042                         $this -&gt; equip[$what]['<span class="keywordtype">id</span>'] = $result['insert'];
+<a name="l01043"></a>01043                 }
+<a name="l01044"></a>01044                 <span class="keywordflow">return</span> TRUE;
+<a name="l01045"></a>01045         }
+<a name="l01046"></a>01046         
+<a name="l01048"></a>01048 
+<a name="l01069"></a><a class="code" href="classPlayer.html#c468e1187cd44b931cd31f27b322ffe0">01069</a>         function <a class="code" href="classPlayer.html#c468e1187cd44b931cd31f27b322ffe0">EquipAdd</a>( $iid, $type = 'backpack', $table = 'items', $field = '<span class="keywordtype">id</span>' ) {
+<a name="l01070"></a>01070                 <span class="keywordflow">if</span>( is_array( $iid ) ) {
+<a name="l01071"></a>01071                         <span class="keywordflow">if</span>( $type == 'backpack' ) {
+<a name="l01072"></a>01072                                 $needed = array( 'name', 'power', 'type', 'cost', 'minlev', 'zr', 'wt', 'szyb', 'maxwt', 'magic', 'poison', 'amount', 'twohand', 'imagenum', 'prefix' );
+<a name="l01073"></a>01073                         }
+<a name="l01074"></a>01074                         elseif( $type == 'potions' ) {
+<a name="l01075"></a>01075                                 $needed = array( 'name', 'type', 'efekt', 'power', 'amount', 'prefix', 'cost', 'imagenum' );
+<a name="l01076"></a>01076                         }
+<a name="l01077"></a>01077                         elseif( $type == 'spells' ) {
+<a name="l01078"></a>01078                                 $needed = array( 'name', 'cost', 'minlev', 'type', 'power' );
+<a name="l01079"></a>01079                         }
+<a name="l01080"></a>01080                         <span class="keywordflow">else</span> {
+<a name="l01081"></a>01081                                 trigger_error( <span class="stringliteral">"Nieoblugiwany typ przedmiotu $type !"</span>, E_USER_WARNING );
+<a name="l01082"></a>01082                                 <span class="keywordflow">return</span> FALSE;
+<a name="l01083"></a>01083                         }
+<a name="l01084"></a>01084                         foreach( $needed as $req ) {
+<a name="l01085"></a>01085                                 <span class="keywordflow">if</span>( !isset( $iid[$req] ) ) {
+<a name="l01086"></a>01086                                         trigger_error( <span class="stringliteral">"Nie mozna dodac przedmiotu ! Niepelna tablica wejsciowa ( $req ) !"</span>, E_USER_WARNING );
+<a name="l01087"></a>01087                                         <span class="keywordflow">return</span> FALSE;
+<a name="l01088"></a>01088                                 }
+<a name="l01089"></a>01089                                 $toadd[$req] = $iid[$req];
+<a name="l01090"></a>01090                         }
+<a name="l01091"></a>01091                         <span class="keywordflow">if</span>( $type == 'backpack' ) {
+<a name="l01092"></a>01092                                 $toadd['owner'] = $this -&gt;id;
+<a name="l01093"></a>01093                                 $toadd['status'] = <span class="charliteral">'U'</span>;
+<a name="l01094"></a>01094                                 $tableadd = 'equipment';
+<a name="l01095"></a>01095                         }
+<a name="l01096"></a>01096                         elseif( $type == 'potions' ) {
+<a name="l01097"></a>01097                                 $toadd['owner'] = $this -&gt; id;
+<a name="l01098"></a>01098                                 $toadd['status'] = <span class="charliteral">'K'</span>;
+<a name="l01099"></a>01099                                 $tableadd = 'mikstury';
+<a name="l01100"></a>01100                         }
+<a name="l01101"></a>01101                         elseif( $type == 'spells' ) {
+<a name="l01102"></a>01102                                 $toadd['owner'] = $this -&gt; id;
+<a name="l01103"></a>01103                                 $toadd['status'] = <span class="charliteral">'U'</span>;
+<a name="l01104"></a>01104                                 $tableadd = 'czary';
+<a name="l01105"></a>01105                                 <span class="comment">//$item = $this -&gt; DetranslateFields( $toadd, 'spells' );</span>
+<a name="l01106"></a>01106                                 <span class="comment">//"SELECT id, gracz AS owner, nazwa AS name, cena AS cost, poziom AS level, typ AS `type`, obr AS power, status FROM czary WHERE gracz={$this-&gt;id}"</span>
+<a name="l01107"></a>01107                                 <span class="comment">//$search = array( 'gracz' =&gt; $toadd['owner'], 'nazwa' =&gt; $toadd['owner'], 'cena' =&gt; $toadd</span>
+<a name="l01108"></a>01108                         }
+<a name="l01109"></a>01109                         <span class="keywordflow">if</span>( empty( $search ) ) {
+<a name="l01110"></a>01110                                 $search = $toadd;
+<a name="l01111"></a>01111                                 unset( $search['amount'] );
+<a name="l01112"></a>01112                         }
+<a name="l01113"></a>01113                         $try = $this -&gt; <a class="code" href="classPlayer.html#622c8e076c96f8ca96b1b288c85db7cd">EquipSearch</a>( $search, $type );
+<a name="l01114"></a>01114                         <span class="keywordflow">if</span>( $try ) {
+<a name="l01115"></a>01115                                 <span class="comment">//print_r($try);</span>
+<a name="l01116"></a>01116                                 $key = key( $try );
+<a name="l01117"></a>01117                                 $try = array_shift( $try );
+<a name="l01118"></a>01118                                 <span class="keywordflow">if</span>( $type == 'backpack' ) {
+<a name="l01119"></a>01119                                         $this -&gt; backpack[$key]['amount'] += $toadd['amount'];
+<a name="l01120"></a>01120                                         $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"UPDATE $tableadd SET amount=amount+{$toadd['amount']} WHERE `$field`='{$this-&gt;backpack[$key]['id']}'"</span> );
+<a name="l01121"></a>01121                                 }
+<a name="l01122"></a>01122                                 elseif( $type == 'potions' ) {
+<a name="l01123"></a>01123                                         $this -&gt; potions[$key]['amount'] += $toadd['amount'];
+<a name="l01124"></a>01124                                         $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"UPDATE $tableadd SET amount=amount+{$toadd['amount']} WHERE `$field`='{$this-&gt;potions[$key]['id']}'"</span> );
+<a name="l01125"></a>01125                                 }
+<a name="l01126"></a>01126                                 elseif( $type == 'spells' ) {
+<a name="l01127"></a>01127                                         trigger_error( <span class="stringliteral">"Mozesz miec tylko jeden taki czar !"</span>, E_USER_WARNING );
+<a name="l01128"></a>01128                                         <span class="keywordflow">return</span> FALSE;
+<a name="l01129"></a>01129                                         <span class="comment">//$this -&gt; potions[$key]['amount'] += $toadd['amount'];</span>
+<a name="l01130"></a>01130                                         <span class="comment">//$this -&gt; SqlExec( "UPDATE $tableadd SET amount=amount+{$toadd['amount']} WHERE `$field`='{$this-&gt;potions[$key]['id']}'" );</span>
+<a name="l01131"></a>01131                                 }
+<a name="l01132"></a>01132                                 
+<a name="l01133"></a>01133                         }
+<a name="l01134"></a>01134                         <span class="keywordflow">else</span> {
+<a name="l01135"></a>01135                                 <span class="comment">//if( empty( $item ) ) {</span>
+<a name="l01136"></a>01136                                 $item = $toadd;
+<a name="l01137"></a>01137                                 <span class="comment">//}</span>
+<a name="l01138"></a>01138                                 $sql = $this -&gt; <a class="code" href="classPlayer.html#41d0617559aa17844328ae16cfeee396">SqlCreate</a>( 'INSERT', $tableadd, $this -&gt; <a class="code" href="classPlayer.html#94f50a1e56f82f31164532a07c6fa81b">DetranslateFields</a>( $item, $type ) );
+<a name="l01139"></a>01139                                 $insertid = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( $sql );
+<a name="l01140"></a>01140                                 <span class="comment">//print_r( $insertid );</span>
+<a name="l01141"></a>01141                                 $toadd['<span class="keywordtype">id</span>'] = $insertid;
+<a name="l01142"></a>01142                                 <span class="keywordflow">if</span>( $type == 'backpack' ) {
+<a name="l01143"></a>01143                                         <span class="keywordflow">if</span>( !empty( $iid['img_file'] ) ) {
+<a name="l01144"></a>01144                                                 $toadd['img_file'] = $iid['img_file'];
+<a name="l01145"></a>01145                                         }
+<a name="l01146"></a>01146                                         <span class="keywordflow">else</span> {
+<a name="l01147"></a>01147                                                 <a class="code" href="classPlayer.html#9efe823c0b4bec547d05ba2643371455">$res</a> = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT img_file FROM item_images WHERE id={$toadd['imagenum']}"</span> );
+<a name="l01148"></a>01148                                                 <span class="keywordflow">if</span>( isset( <a class="code" href="classPlayer.html#9efe823c0b4bec547d05ba2643371455">$res</a> -&gt; fields['img_file'] ) ) {
+<a name="l01149"></a>01149                                                         $toadd['img_file'] = <a class="code" href="classPlayer.html#9efe823c0b4bec547d05ba2643371455">$res</a> -&gt; fields['img_file'];
+<a name="l01150"></a>01150                                                 }
+<a name="l01151"></a>01151                                                 <span class="keywordflow">else</span> {
+<a name="l01152"></a>01152                                                         $toadd['img_file'] = '';
+<a name="l01153"></a>01153                                                 }
+<a name="l01154"></a>01154                                         }
+<a name="l01155"></a>01155                                 }
+<a name="l01156"></a>01156                                 array_push( $this -&gt; $type, $toadd );
+<a name="l01157"></a>01157                         }
+<a name="l01158"></a>01158                         <span class="comment">//}</span>
+<a name="l01159"></a>01159                         <span class="keywordflow">return</span> TRUE;
+<a name="l01160"></a>01160                 }
+<a name="l01161"></a>01161                 <span class="keywordflow">else</span> {
+<a name="l01162"></a>01162                         $item = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT * FROM $table WHERE `$field`='$iid'"</span> );
+<a name="l01163"></a>01163                         <span class="keywordflow">if</span>( empty( $item -&gt; fields[$field] ) ) {
+<a name="l01164"></a>01164                                 trigger_error( <span class="stringliteral">"Nie istnieje przedmiot $fields=$iid w tabeli $table !"</span>, E_USER_ERROR );
+<a name="l01165"></a>01165                                 <span class="keywordflow">return</span> FALSE;
+<a name="l01166"></a>01166                         }
+<a name="l01167"></a>01167                         $item = array_shift( $item -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>() );
+<a name="l01168"></a>01168                         print_r( $item );
+<a name="l01169"></a>01169                         $item = $this -&gt; <a class="code" href="classPlayer.html#edca5d0255b18cae666639c5e6190ae5">TranslateFields</a>( $item, $type );
+<a name="l01170"></a>01170                         $this -&gt; <a class="code" href="classPlayer.html#c468e1187cd44b931cd31f27b322ffe0">EquipAdd</a>( $item, $type );
+<a name="l01171"></a>01171                 }
+<a name="l01172"></a>01172         }
+<a name="l01173"></a>01173         
+<a name="l01175"></a>01175 
+<a name="l01183"></a><a class="code" href="classPlayer.html#a5982ece752e5cf75159c2caffaec53a">01183</a>         function <a class="code" href="classPlayer.html#a5982ece752e5cf75159c2caffaec53a">EquipDelete</a>( $iid, $type = 'backpack' ) {
+<a name="l01184"></a>01184                 $try = $this -&gt; <a class="code" href="classPlayer.html#622c8e076c96f8ca96b1b288c85db7cd">EquipSearch</a>( array( '<span class="keywordtype">id</span>' =&gt; $iid ), $type );
+<a name="l01185"></a>01185                 <span class="keywordflow">if</span>( !empty( $try ) ) {
+<a name="l01186"></a>01186                         <span class="comment">//print_r( $try );</span>
+<a name="l01187"></a>01187                         $key = key( $try );
+<a name="l01188"></a>01188                         $try = current( $try );
+<a name="l01189"></a>01189                         <span class="keywordflow">if</span>( in_array( $type, array( 'backpack', 'equip' ) ) ) {
+<a name="l01190"></a>01190                                 $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"DELETE FROM equipment WHERE id={$try['id']}"</span> );
+<a name="l01191"></a>01191                                 $item =&amp; $this -&gt; $type;
+<a name="l01192"></a>01192                                 unset( $item[$key] );
+<a name="l01193"></a>01193                                 <span class="comment">//echo "\$this -&gt; {$type}[{$key}]";</span>
+<a name="l01194"></a>01194                         }
+<a name="l01195"></a>01195                         elseif( $type == 'potions' ) {
+<a name="l01196"></a>01196                                 $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"DELETE FROM mikstury WHERE id={$try['id']}"</span> );
+<a name="l01197"></a>01197                                 $item =&amp; $this -&gt; $type;
+<a name="l01198"></a>01198                                 unset( $item[$key] );
+<a name="l01199"></a>01199                                 <span class="comment">//echo "\$this -&gt; {$type}[{$key}]";</span>
+<a name="l01200"></a>01200                         }
+<a name="l01201"></a>01201                         <span class="keywordflow">else</span> {
+<a name="l01202"></a>01202                                 trigger_error( <span class="stringliteral">"Nieprawidlowy typ przedmiotu do usuniecia !"</span>, E_USER_WARING );
+<a name="l01203"></a>01203                                 <span class="keywordflow">return</span> FALSE;
+<a name="l01204"></a>01204                         }
+<a name="l01205"></a>01205                         <span class="keywordflow">return</span> TRUE;
+<a name="l01206"></a>01206                 }
+<a name="l01207"></a>01207                 <span class="keywordflow">else</span> {
+<a name="l01208"></a>01208                         trigger_error( <span class="stringliteral">"Nie mozna usunac przedmiotu $iid - nie znaleziono !"</span>, E_USER_WARNING );
+<a name="l01209"></a>01209                         <span class="keywordflow">return</span> FALSE;
+<a name="l01210"></a>01210                 }
+<a name="l01211"></a>01211         }
+<a name="l01212"></a>01212         
+<a name="l01214"></a>01214 
+<a name="l01221"></a><a class="code" href="classPlayer.html#6c5c6695dc579aba83b3795de60e059f">01221</a>         function <a class="code" href="classPlayer.html#6c5c6695dc579aba83b3795de60e059f">PotionDrink</a>( $iid ) {
+<a name="l01222"></a>01222                 $potion = $this -&gt; <a class="code" href="classPlayer.html#622c8e076c96f8ca96b1b288c85db7cd">EquipSearch</a>( array( '<span class="keywordtype">id</span>' =&gt; $iid ), 'potions' );
+<a name="l01223"></a>01223                 <span class="keywordflow">if</span>( $potion ) {
+<a name="l01224"></a>01224                         $key = key( $potion );
+<a name="l01225"></a>01225                         $potion = array_shift( $potion );
+<a name="l01226"></a>01226                         <span class="keywordflow">switch</span>( $potion['type'] ) {
+<a name="l01227"></a>01227                                 <span class="keywordflow">case</span> <span class="charliteral">'M'</span> :
+<a name="l01228"></a>01228                                         <span class="keywordflow">if</span>( $this -&gt; mana == $this -&gt; mana_max ) {
+<a name="l01229"></a>01229                                                 trigger_error( <span class="stringliteral">"Nie musisz uzupelniac many !"</span>, E_USER_NOTICE );
+<a name="l01230"></a>01230                                                 <span class="keywordflow">return</span> FALSE;
+<a name="l01231"></a>01231                                         }
+<a name="l01232"></a>01232                                         <span class="keywordflow">if</span>( $this -&gt; mana + $potion['power'] &gt;= $this -&gt; mana_max ) {
+<a name="l01233"></a>01233                                                 $this -&gt; mana = $this -&gt; mana_max;
+<a name="l01234"></a>01234                                         }
+<a name="l01235"></a>01235                                         <span class="keywordflow">else</span> {
+<a name="l01236"></a>01236                                                 $this -&gt; mana += $potion['power'];
+<a name="l01237"></a>01237                                         }
+<a name="l01238"></a>01238                                         <span class="keywordflow">break</span>;
+<a name="l01239"></a>01239                                 <span class="keywordflow">case</span> <span class="charliteral">'Z'</span> :
+<a name="l01240"></a>01240                                         <span class="keywordflow">if</span>( $this -&gt; hp == $this -&gt; hp_max ) {
+<a name="l01241"></a>01241                                                 trigger_error( <span class="stringliteral">"Nie musisz sie leczyc !"</span>, E_USER_NOTICE );
+<a name="l01242"></a>01242                                                 <span class="keywordflow">return</span> FALSE;
+<a name="l01243"></a>01243                                         }
+<a name="l01244"></a>01244                                         <span class="keywordflow">if</span>( $this -&gt; hp + $potion['power'] &gt;= $this -&gt; hp_max ) {
+<a name="l01245"></a>01245                                                 $this -&gt; hp = $this -&gt; hp_max;
+<a name="l01246"></a>01246                                         }
+<a name="l01247"></a>01247                                         <span class="keywordflow">else</span> {
+<a name="l01248"></a>01248                                                 $this -&gt; hp += $potion['power'];
+<a name="l01249"></a>01249                                         }
+<a name="l01250"></a>01250                                         <span class="keywordflow">break</span>;
+<a name="l01251"></a>01251                                 <span class="keywordflow">case</span> <span class="charliteral">'W'</span> :
+<a name="l01252"></a>01252                                                 <span class="keywordflow">if</span>( $this -&gt; hp != 0 ) {
+<a name="l01253"></a>01253                                                         trigger_error( <span class="stringliteral">"Nie ma potrzeby wskrzeszania !"</span>, E_USER_WARNING );
+<a name="l01254"></a>01254                                                         <span class="keywordflow">return</span> FALSE;
+<a name="l01255"></a>01255                                                 }
+<a name="l01256"></a>01256                                                 $this -&gt; hp = 1;
+<a name="l01257"></a>01257                                                 $pd = ceil($this -&gt; exp / 100) * 2;
+<a name="l01258"></a>01258                                                 $this -&gt; exp -= $pd;
+<a name="l01259"></a>01259                                                 trigger_error( <span class="stringliteral">"Wrociles do zycia ale straciles $pd doswiadczenia"</span>, E_USER_NOTICE );
+<a name="l01260"></a>01260                                         <span class="keywordflow">break</span>;
+<a name="l01261"></a>01261                                 <span class="keywordflow">default</span> :
+<a name="l01262"></a>01262                                         trigger_error(<span class="stringliteral">" Nieprawidlowy typ mikstury - {$potion['type']} !"</span>,E_USER_WARNING );
+<a name="l01263"></a>01263                                         <span class="keywordflow">return</span> FALSE;
+<a name="l01264"></a>01264                                         <span class="keywordflow">break</span>;
+<a name="l01265"></a>01265                         }
+<a name="l01266"></a>01266                         <span class="keywordflow">if</span>( $potion['amount'] &lt;= 1 ) {
+<a name="l01267"></a>01267                                 $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"DELETE FROM mikstury WHERE id={$potion['id']}"</span> );
+<a name="l01268"></a>01268                                 unset( $this -&gt; potions[$key] );
+<a name="l01269"></a>01269                                 <span class="keywordflow">return</span> TRUE;
+<a name="l01270"></a>01270                         }
+<a name="l01271"></a>01271                         <span class="keywordflow">else</span> {
+<a name="l01272"></a>01272                                 $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"UPDATE mikstury SET amount = amount -1 WHERE id={$potion['id']}"</span> );
+<a name="l01273"></a>01273                                 $this -&gt; potions[$key]['amount']--;
+<a name="l01274"></a>01274                                 <span class="keywordflow">return</span> TRUE;
+<a name="l01275"></a>01275                         }
+<a name="l01276"></a>01276                 }
+<a name="l01277"></a>01277                 <span class="keywordflow">else</span> {
+<a name="l01278"></a>01278                         trigger_error( <span class="stringliteral">"Mikstura $iid nie znaleziona !"</span>, E_USER_WARNING );
+<a name="l01279"></a>01279                         <span class="keywordflow">return</span> FALSE;
+<a name="l01280"></a>01280                 }
+<a name="l01281"></a>01281         }
+<a name="l01282"></a>01282         
+<a name="l01284"></a>01284 
+<a name="l01291"></a><a class="code" href="classPlayer.html#ccc7e6644b0630118ee6797366afb930">01291</a>         function <a class="code" href="classPlayer.html#ccc7e6644b0630118ee6797366afb930">SpellActivate</a>( $sid ) {
+<a name="l01292"></a>01292                 $spell = $this -&gt; <a class="code" href="classPlayer.html#622c8e076c96f8ca96b1b288c85db7cd">EquipSearch</a>( array( '<span class="keywordtype">id</span>' =&gt; $sid ), 'spells' );
+<a name="l01293"></a>01293                 <span class="keywordflow">if</span>( empty( $spell ) ) {
+<a name="l01294"></a>01294                         trigger_error( <span class="stringliteral">"Nie moge odnalezc czaru !"</span>, E_USER_WARNING );
+<a name="l01295"></a>01295                         <span class="keywordflow">return</span> FALSE;
+<a name="l01296"></a>01296                 }
+<a name="l01297"></a>01297                 $key = key( $spell );
+<a name="l01298"></a>01298                 $spell = array_shift( $spell );
+<a name="l01299"></a>01299                 <span class="keywordflow">if</span>( !in_array( $this -&gt; clas, array( 'Mag', 'Druid', 'Kaplan' ) ) ) {
+<a name="l01300"></a>01300                         trigger_error( <span class="stringliteral">"Nie nalezysz do klasy ktora potrafi rzucac czary !"</span>, E_USER_WARNING );
+<a name="l01301"></a>01301                         <span class="keywordflow">return</span> FALSE;
+<a name="l01302"></a>01302                 }
+<a name="l01303"></a>01303                 <span class="keywordflow">if</span>( $spell['minlev'] &gt; $this -&gt; level ) {
+<a name="l01304"></a>01304                         trigger_error( <span class="stringliteral">"Masz za niski poziom zeby uzywac tego czaru !"</span>, E_USER_WARNING );
+<a name="l01305"></a>01305                         <span class="keywordflow">return</span> FALSE;
+<a name="l01306"></a>01306                 }
+<a name="l01307"></a>01307                 <span class="keywordflow">if</span>( $spell['type'] == <span class="charliteral">'U'</span> ) {
+<a name="l01308"></a>01308                         trigger_error( <span class="stringliteral">"Nie mozna aktywowac czarow ulepszajacych !"</span>, E_USER_WARNING );
+<a name="l01309"></a>01309                         <span class="keywordflow">return</span> FALSE;
+<a name="l01310"></a>01310                 }
+<a name="l01311"></a>01311                 elseif( $spell['type'] == <span class="charliteral">'B'</span> ) {
+<a name="l01312"></a>01312                         $what = 'spellatk';
+<a name="l01313"></a>01313                 }
+<a name="l01314"></a>01314                 elseif( $spell['type'] == <span class="charliteral">'O'</span> ) {
+<a name="l01315"></a>01315                         $what = 'spelldef';
+<a name="l01316"></a>01316                 }
+<a name="l01317"></a>01317                 <span class="keywordflow">if</span>( !empty( $this -&gt; equip[$what] ) ) {
+<a name="l01318"></a>01318                         $this -&gt; <a class="code" href="classPlayer.html#0dd61630ab431b6b35afa617dab18e15">SpellDeactivate</a>( $what );
+<a name="l01319"></a>01319                 }
+<a name="l01320"></a>01320                 $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"UPDATE czary SET `status`='E' WHERE id={$spell['id']}"</span> );
+<a name="l01321"></a>01321                 $this -&gt; equip[$what] = $spell;
+<a name="l01322"></a>01322                 unset( $this -&gt; spells[$key] );
+<a name="l01323"></a>01323                 <span class="keywordflow">return</span> TRUE;
+<a name="l01324"></a>01324         }
+<a name="l01325"></a>01325         
+<a name="l01327"></a>01327 
+<a name="l01334"></a><a class="code" href="classPlayer.html#0dd61630ab431b6b35afa617dab18e15">01334</a>         function <a class="code" href="classPlayer.html#0dd61630ab431b6b35afa617dab18e15">SpellDeactivate</a>( $what ) {
+<a name="l01335"></a>01335                 <span class="keywordflow">if</span>( !in_array( $what, array( 'spellatk', 'spelldef' ) ) ) {
+<a name="l01336"></a>01336                         trigger_error( <span class="stringliteral">"Nie mozna deaktywowac tego typu czaru: $what !"</span>, E_USER_WARNING );
+<a name="l01337"></a>01337                         <span class="keywordflow">return</span> FALSE;
+<a name="l01338"></a>01338                 }
+<a name="l01339"></a>01339                 <span class="keywordflow">if</span>( empty( $this -&gt; equip[$what] ) ) {
+<a name="l01340"></a>01340                         trigger_error( <span class="stringliteral">"Ten rodzaj czaru jest juz zdeaktywowany !"</span>, E_USER_WARNING );
+<a name="l01341"></a>01341                         <span class="keywordflow">return</span> FALSE;
+<a name="l01342"></a>01342                 }
+<a name="l01343"></a>01343                 $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"UPDATE czary SET `status`='U' WHERE id={$this-&gt;equip[$what]['id']}"</span> );
+<a name="l01344"></a>01344                 $this -&gt; spells[] = $this -&gt; equip[$what];
+<a name="l01345"></a>01345                 unset( $this -&gt; equip[$what] );
+<a name="l01346"></a>01346                 <span class="keywordflow">return</span> TRUE;
+<a name="l01347"></a>01347         }
+<a name="l01348"></a>01348 
+<a name="l01349"></a>01349 
+<a name="l01350"></a>01350         
+<a name="l01352"></a>01352 
+<a name="l01360"></a><a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">01360</a>         function <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( $sql ) {
+<a name="l01361"></a>01361                 global $db;
+<a name="l01362"></a>01362                 <span class="keywordflow">if</span>( !is_array( $sql ) ) {
+<a name="l01363"></a>01363                         <span class="keywordflow">if</span>( $this -&gt; SqlDebug === TRUE ) {
+<a name="l01364"></a>01364                                 trigger_error( <span class="stringliteral">"Wykonuje zapytanie: $sql"</span>, E_USER_NOTICE );
+<a name="l01365"></a>01365                         }
+<a name="l01366"></a>01366                         <span class="comment">//echo $sql;</span>
+<a name="l01367"></a>01367                         $return = $db -&gt; Execute( $sql ) or trigger_error( <span class="stringliteral">"Nie moge wykonac zapytania: $sql&lt;br&gt;"</span>.$db -&gt; ErrorMsg(), E_USER_ERROR );
+<a name="l01368"></a>01368                         <span class="keywordflow">if</span>( strcasecmp( substr( $sql, 0, 6 ), 'INSERT' ) === 0 ) {
+<a name="l01369"></a>01369                                         $return = $db -&gt; Insert_ID();
+<a name="l01370"></a>01370                                 }
+<a name="l01371"></a>01371                         <span class="keywordflow">return</span> $return;
+<a name="l01372"></a>01372                 }
+<a name="l01373"></a>01373                 <span class="keywordflow">else</span> {
+<a name="l01374"></a>01374                         foreach( $sql as $key =&gt; $query ) {
+<a name="l01375"></a>01375                                 <span class="keywordflow">if</span>( $this -&gt; SqlDebug === TRUE ) {
+<a name="l01376"></a>01376                                         trigger_error( <span class="stringliteral">"Wykonuje zapytanie: [$key] =&gt; $query"</span>, E_USER_NOTICE );
+<a name="l01377"></a>01377                                 }
+<a name="l01378"></a>01378                                 
+<a name="l01379"></a>01379                                 $return[$key] = $db -&gt; Execute( $query ) or trigger_error( <span class="stringliteral">"Nie moge wykonac zapytania: [$key] =&gt; $query&lt;br&gt;"</span>.$db -&gt; ErrorMsg(), E_USER_ERROR );
+<a name="l01380"></a>01380                                 <span class="keywordflow">if</span>( strcasecmp( substr( $query, 0, 6 ), 'INSERT' ) === 0 ) {
+<a name="l01381"></a>01381                                         $return[$key] = $db -&gt; Insert_ID();
+<a name="l01382"></a>01382                                 }
+<a name="l01383"></a>01383 <span class="comment">//                              print_r( $db );</span>
+<a name="l01384"></a>01384                         }
+<a name="l01385"></a>01385                         <span class="keywordflow">return</span> $return;
+<a name="l01386"></a>01386                 }
+<a name="l01387"></a>01387         }
+<a name="l01388"></a>01388         
+<a name="l01390"></a>01390 
+<a name="l01410"></a><a class="code" href="classPlayer.html#41d0617559aa17844328ae16cfeee396">01410</a>         function <a class="code" href="classPlayer.html#41d0617559aa17844328ae16cfeee396">SqlCreate</a>( $type, $table, $fields = NULL, $where = NULL ) {
+<a name="l01411"></a>01411                 $type = strtoupper( $type );
+<a name="l01412"></a>01412                 <span class="keywordflow">switch</span>( $type ) {
+<a name="l01413"></a>01413                         <span class="keywordflow">case</span> 'SELECT' :
+<a name="l01414"></a>01414                                 <span class="keywordflow">if</span>( $fields == NULL )
+<a name="l01415"></a>01415                                         $fields = <span class="charliteral">'*'</span>;
+<a name="l01416"></a>01416                                 <span class="keywordflow">if</span>( is_array( $fields ) ) {
+<a name="l01417"></a>01417                                         $pola = '';
+<a name="l01418"></a>01418                                         foreach( $fields as $key =&gt; $field ) {
+<a name="l01419"></a>01419                                                 $pola[] = <span class="stringliteral">"`$field`"</span>;
+<a name="l01420"></a>01420                                         }
+<a name="l01421"></a>01421                                         $fields = implode( <span class="stringliteral">", "</span>, $pola );
+<a name="l01422"></a>01422                                 }
+<a name="l01423"></a>01423                                 <span class="keywordflow">if</span>( is_array( $where ) ) {
+<a name="l01424"></a>01424                                         $pola = '';
+<a name="l01425"></a>01425                                         foreach( $where as $key =&gt; $field ) {
+<a name="l01426"></a>01426                                                 $pola[] = <span class="stringliteral">"`$key`='$field'"</span>;
+<a name="l01427"></a>01427                                         }
+<a name="l01428"></a>01428                                         $where = implode( <span class="stringliteral">" AND "</span>, $pola );
+<a name="l01429"></a>01429                                 }
+<a name="l01430"></a>01430                                 $sql = <span class="stringliteral">"SELECT $fields FROM $table"</span>.(($where)?<span class="stringliteral">" WHERE $where"</span>:<span class="stringliteral">""</span>);
+<a name="l01431"></a>01431                                 <span class="keywordflow">break</span>;
+<a name="l01432"></a>01432                         <span class="keywordflow">case</span> 'INSERT' :
+<a name="l01433"></a>01433                                 <span class="keywordflow">if</span>( $fields === NULL )
+<a name="l01434"></a>01434                                         trigger_error( <span class="stringliteral">"Skladnia INSERT wymaga podania parametru \$fields !"</span>, E_USER_ERROR );
+<a name="l01435"></a>01435                                 <span class="keywordflow">if</span>( !is_array( $fields ) )
+<a name="l01436"></a>01436                                         trigger_error( <span class="stringliteral">"Uzywajac INSERT musisz podac \$fields jako tablice !"</span>, E_USER_ERROR );
+<a name="l01437"></a>01437                                 foreach( $fields as $key =&gt; $field ) {
+<a name="l01438"></a>01438                                         $pola[] = <span class="stringliteral">"`$key`"</span>;
+<a name="l01439"></a>01439                                         $wart[] = <span class="stringliteral">"'$field'"</span>;
+<a name="l01440"></a>01440                                 }
+<a name="l01441"></a>01441                                 $pola = implode( <span class="stringliteral">", "</span>, $pola );
+<a name="l01442"></a>01442                                 $wart = implode( <span class="stringliteral">", "</span>, $wart );
+<a name="l01443"></a>01443                                 $sql = <span class="stringliteral">"INSERT INTO $table($pola) VALUES($wart)"</span>;
+<a name="l01444"></a>01444                                 <span class="keywordflow">break</span>;
+<a name="l01445"></a>01445                         <span class="keywordflow">case</span> 'UPDATE' :
+<a name="l01446"></a>01446                                 <span class="keywordflow">if</span>( $fields === NULL )
+<a name="l01447"></a>01447                                         trigger_error( <span class="stringliteral">"Skladnia UPDATE wymaga podania parametru \$fields !"</span>, E_USER_ERROR );
+<a name="l01448"></a>01448                                 <span class="keywordflow">if</span>( is_array( $fields ) ) {
+<a name="l01449"></a>01449                                         foreach( $fields as $key =&gt; $field ) {
+<a name="l01450"></a>01450                                                 $pola[] = <span class="stringliteral">"`$key`='$field'"</span>;
+<a name="l01451"></a>01451                                         }
+<a name="l01452"></a>01452                                         $fields = implode( <span class="stringliteral">", "</span>, $pola );
+<a name="l01453"></a>01453                                 }
+<a name="l01454"></a>01454                                 <span class="keywordflow">if</span>( is_array( $where ) ) {
+<a name="l01455"></a>01455                                         $pola = '';
+<a name="l01456"></a>01456                                         foreach( $where as $key =&gt; $field ) {
+<a name="l01457"></a>01457                                                 $pola[] = <span class="stringliteral">"`$key`='$field'"</span>;
+<a name="l01458"></a>01458                                         }
+<a name="l01459"></a>01459                                         $where = implode( <span class="stringliteral">" AND "</span>, $pola );
+<a name="l01460"></a>01460                                 }
+<a name="l01461"></a>01461                                 $sql = <span class="stringliteral">"UPDATE $table SET $fields"</span>.(($where)?<span class="stringliteral">" WHERE $where"</span>:<span class="stringliteral">""</span>);
+<a name="l01462"></a>01462                                 <span class="keywordflow">break</span>;
+<a name="l01463"></a>01463                         <span class="keywordflow">case</span> 'DELETE' :
+<a name="l01464"></a>01464                                 <span class="keywordflow">if</span>( $where === NULL )
+<a name="l01465"></a>01465                                         trigger_error( <span class="stringliteral">"Uzycie zapytania DELETE bez klauzy WHERE !!"</span>, E_USER_WARNING );
+<a name="l01466"></a>01466                                 <span class="keywordflow">if</span>( is_array( $where ) ) {
+<a name="l01467"></a>01467                                         $pola = '';
+<a name="l01468"></a>01468                                         foreach( $where as $key =&gt; $field ) {
+<a name="l01469"></a>01469                                                 $pola[] = <span class="stringliteral">"`$key`='$field'"</span>;
+<a name="l01470"></a>01470                                         }
+<a name="l01471"></a>01471                                         $where = implode( <span class="stringliteral">" AND "</span>, $pola );
+<a name="l01472"></a>01472                                 }
+<a name="l01473"></a>01473                                 $sql = <span class="stringliteral">"DELETE FROM $table"</span>.(($where)?<span class="stringliteral">" WHERE $where"</span>:<span class="stringliteral">""</span>);
+<a name="l01474"></a>01474                                 <span class="keywordflow">break</span>;
+<a name="l01475"></a>01475                         <span class="keywordflow">default</span> :
+<a name="l01476"></a>01476                                 trigger_error( <span class="stringliteral">"Nieobslugiwany typ zapytan $type !"</span>, E_USER_ERROR );
+<a name="l01477"></a>01477                                 <span class="keywordflow">break</span>;
+<a name="l01478"></a>01478                 }
+<a name="l01479"></a>01479                 <span class="keywordflow">return</span> $sql;
+<a name="l01480"></a>01480         }
+<a name="l01481"></a>01481 
+<a name="l01483"></a>01483 
+<a name="l01514"></a><a class="code" href="classPlayer.html#897510a6bada397fc6edb56e71bfea4b">01514</a>         function <a class="code" href="classPlayer.html#897510a6bada397fc6edb56e71bfea4b">__wakeup</a>() {
+<a name="l01515"></a>01515                 $old = $this -&gt; SqlDebug;
+<a name="l01516"></a>01516                 $this -&gt; SqlDebug = FALSE;
+<a name="l01517"></a>01517                 $ret = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT DISTINCT `type` FROM wakeup WHERE pid={$this -&gt; id}"</span> );
+<a name="l01518"></a>01518                 <span class="keywordflow">if</span>( $ret -&gt; fields['type'] ) {
+<a name="l01519"></a>01519                         $this -&gt; Reloaded = '';
+<a name="l01520"></a>01520                         $ret = $ret -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>();
+<a name="l01521"></a>01521                         foreach( $ret as $signal ) {
+<a name="l01522"></a>01522                                 <span class="keywordflow">switch</span>( $signal['type'] ) {
+<a name="l01523"></a>01523                                         <span class="keywordflow">case</span> 'res':
+<a name="l01524"></a>01524                                                 $this -&gt; res = array();
+<a name="l01525"></a>01525                                                 $resources = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT * FROM resources WHERE id={$this -&gt; id}"</span> );
+<a name="l01526"></a>01526                                                 
+<a name="l01527"></a>01527                                                 $resources = array_shift( $resources -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>() );
+<a name="l01528"></a>01528                                                 foreach( $this -&gt; dbres as $key =&gt; $val ) {
+<a name="l01529"></a>01529                                                         $this -&gt; res[$key] = $resources[$val];
+<a name="l01530"></a>01530                                                 }
+<a name="l01531"></a>01531                                                 $this -&gt; Reloaded .= 'Uwaga ! Niespojnosc surowcow ... przeladowuje ...&lt;br&gt;';
+<a name="l01532"></a>01532                                                 <span class="keywordflow">break</span>;
+<a name="l01533"></a>01533                                         <span class="keywordflow">case</span> 'skills' :
+<a name="l01534"></a>01534                                                 $stats = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( $this -&gt; <a class="code" href="classPlayer.html#41d0617559aa17844328ae16cfeee396">SqlCreate</a>( 'SELECT', 'players', <span class="charliteral">'*'</span>, <span class="stringliteral">"`id`='{$this -&gt;id}'"</span> ) );
+<a name="l01535"></a>01535                                                 <span class="comment">//print_r( $stats );</span>
+<a name="l01536"></a>01536                                                 $stats = array_shift( $stats -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>() );
+<a name="l01537"></a>01537                                                 
+<a name="l01538"></a>01538                                                 $this -&gt; skill = array();
+<a name="l01539"></a>01539                                                 foreach( $this -&gt;dbskill as $key =&gt; $val ) {
+<a name="l01540"></a>01540                                                         $this -&gt; skill[$key] = $stats[$val];
+<a name="l01541"></a>01541                                                 }
+<a name="l01542"></a>01542                                                 <span class="comment">//print_r( $this -&gt; skill );</span>
+<a name="l01543"></a>01543                                                 $this -&gt; Reloaded .= 'Uwaga ! Niespojnosc umiejetnosci ... przeladowuje ...&lt;br&gt;';
+<a name="l01544"></a>01544                                                 <span class="keywordflow">break</span>;
+<a name="l01545"></a>01545                                         <span class="keywordflow">case</span> 'misc' :
+<a name="l01546"></a>01546                                                 $id = $this -&gt; id;
+<a name="l01547"></a>01547                                                 $this -&gt; misc = array();
+<a name="l01548"></a>01548                                                 $stats = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT p.*, r.name AS rankname, t.name AS tribe_name FROM players p JOIN ranks r ON r.id=p.rid LEFT JOIN tribes t ON t.id=p.tribe WHERE p.id=$id"</span> );
+<a name="l01549"></a>01549                                                 $stats = array_shift( $stats -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>() );
+<a name="l01550"></a>01550                                                 foreach( $this -&gt;dbmisc as $key =&gt; $val ) {
+<a name="l01551"></a>01551                                                         $this -&gt; misc[$key] = $stats[$val];
+<a name="l01552"></a>01552                                                 }
+<a name="l01553"></a>01553                                                 $this -&gt; misc['mana_max'] = 0;
+<a name="l01554"></a>01554                                                 $this -&gt; misc['rankname'] = $stats['rankname'];
+<a name="l01555"></a>01555                                                 $this -&gt; misc['tribe_name'] = $stats['tribe_name'];
+<a name="l01556"></a>01556                                                 $this -&gt; Reloaded .= 'Uwaga ! Niespojnosc danych ... przeladowuje ...&lt;br&gt;';
+<a name="l01557"></a>01557                                                 <span class="keywordflow">break</span>;
+<a name="l01558"></a>01558                                         <span class="keywordflow">case</span> 'pot' :
+<a name="l01559"></a>01559                                                 <a class="code" href="classPlayer.html#ab8b5e00241856cea4699ba15b8b3254">$potions</a> = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT * FROM mikstury WHERE gracz={$this -&gt; id} AND `status`='K'"</span> );
+<a name="l01560"></a>01560                                                 $this -&gt; potions = $this -&gt; <a class="code" href="classPlayer.html#edca5d0255b18cae666639c5e6190ae5">TranslateFields</a>( <a class="code" href="classPlayer.html#ab8b5e00241856cea4699ba15b8b3254">$potions</a> -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>() );
+<a name="l01561"></a>01561                                                 $this -&gt; Reloaded .= 'Uwaga ! Niespojnosc mikstur ... przeladowuje ...&lt;br&gt;';
+<a name="l01562"></a>01562                                                 <span class="keywordflow">break</span>;
+<a name="l01563"></a>01563                                         <span class="keywordflow">case</span> 'back':
+<a name="l01564"></a>01564                                                 <a class="code" href="classPlayer.html#9f7db9db2d43e1fe6b03abc6df7ede0e">$backpack</a> = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT e.*, i.img_file FROM equipment e LEFT JOIN item_images i ON e.imagenum=i.id WHERE e.owner={$this-&gt;id} AND e.`status`='U'"</span> );
+<a name="l01565"></a>01565                                                 $this -&gt; backpack = <a class="code" href="classPlayer.html#9f7db9db2d43e1fe6b03abc6df7ede0e">$backpack</a> -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>();
+<a name="l01566"></a>01566                                                 $this -&gt; Reloaded .= 'Uwaga ! Niespojnosc plecaka ... przeladowuje ...&lt;br&gt;';
+<a name="l01567"></a>01567                                                 <span class="keywordflow">break</span>;
+<a name="l01568"></a>01568                                         <span class="keywordflow">case</span> 'equip':
+<a name="l01569"></a>01569                                                 $worn = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT e.*, i.img_file FROM equipment e LEFT JOIN item_images i ON e.imagenum=i.id WHERE e.owner={$this-&gt;id} AND e.`status`='E'"</span> );
+<a name="l01570"></a>01570                                                 $worn = $worn -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>();
+<a name="l01571"></a>01571                                                 <span class="comment">//print_r( $worn );</span>
+<a name="l01572"></a>01572                                                 $this -&gt; equip = array();
+<a name="l01573"></a>01573                                                 foreach( $worn as $item ) {
+<a name="l01574"></a>01574                                                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'W'</span>, <span class="charliteral">'B'</span>, <span class="charliteral">'S'</span> ) ) ) {
+<a name="l01575"></a>01575                                                                 $this -&gt;equip['weapon'] = $item;
+<a name="l01576"></a>01576                                                         }
+<a name="l01577"></a>01577                                                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'A'</span>, <span class="charliteral">'Z'</span> ) ) ) {
+<a name="l01578"></a>01578                                                                 $this -&gt;equip['armor'] = $item;
+<a name="l01579"></a>01579                                                         }
+<a name="l01580"></a>01580                                                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'H'</span> ) ) ) {
+<a name="l01581"></a>01581                                                                 $this -&gt;equip['helm'] = $item;
+<a name="l01582"></a>01582                                                         }
+<a name="l01583"></a>01583                                                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'D'</span> ) ) ) {
+<a name="l01584"></a>01584                                                                 $this -&gt;equip['shield'] = $item;
+<a name="l01585"></a>01585                                                         }
+<a name="l01586"></a>01586                                                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'N'</span> ) ) ) {
+<a name="l01587"></a>01587                                                                 $this -&gt;equip['knee'] = $item;
+<a name="l01588"></a>01588                                                         }
+<a name="l01589"></a>01589                                                         <span class="keywordflow">if</span>( in_array( $item['type'], array( <span class="charliteral">'R'</span> ) ) ) {
+<a name="l01590"></a>01590                                                                 $this -&gt;equip['arrows'] = $item;
+<a name="l01591"></a>01591                                                         }
+<a name="l01592"></a>01592                                                 }
+<a name="l01593"></a>01593                                                 $this -&gt; Reloaded .= 'Uwaga ! Niespojnosc ekwipunku ... przeladowuje ...&lt;br&gt;';
+<a name="l01594"></a>01594                                                 <span class="keywordflow">break</span>;
+<a name="l01595"></a>01595                                         <span class="keywordflow">case</span> 'spells':
+<a name="l01596"></a>01596                                                 <a class="code" href="classPlayer.html#8aff3f22fa90045388ca1a58d8d21a9a">$spells</a> = $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"SELECT id, gracz AS owner, nazwa AS name, cena AS cost, poziom AS minlev, typ AS `type`, obr AS power, status FROM czary WHERE gracz={$this-&gt;id} AND `status`='U'"</span> );
+<a name="l01597"></a>01597                                                 $this -&gt; spells = $this -&gt; <a class="code" href="classPlayer.html#edca5d0255b18cae666639c5e6190ae5">TranslateFields</a>( <a class="code" href="classPlayer.html#8aff3f22fa90045388ca1a58d8d21a9a">$spells</a> -&gt; <a class="code" href="classPlayer.html#00de850cda85bd5959af168c5d2af202">GetArray</a>() );
+<a name="l01598"></a>01598                                                 $this -&gt; Reloaded .= 'Uwaga ! Niespojnosc czarow ... przeladowuje ...&lt;br&gt;';
+<a name="l01599"></a>01599                                                 <span class="keywordflow">break</span>;
+<a name="l01600"></a>01600                                         <span class="keywordflow">default</span> :
+<a name="l01601"></a>01601                                                 $this -&gt; Reloaded .= <span class="stringliteral">"Uwaga ! Niespojnosc danych lecz sygnal {$signal['type']} nieobslugiwany !&lt;br&gt;"</span>;
+<a name="l01602"></a>01602                                 }
+<a name="l01603"></a>01603                         }
+<a name="l01604"></a>01604                         <span class="comment">//$this -&gt; _InitEquip();</span>
+<a name="l01605"></a>01605                         $this -&gt; <a class="code" href="classPlayer.html#b438b643a0d1e796952b6ab89f752f6e">SqlExec</a>( <span class="stringliteral">"DELETE FROM wakeup WHERE pid={$this -&gt; id}"</span> );
+<a name="l01606"></a>01606                 }
+<a name="l01607"></a>01607                 <span class="keywordflow">else</span> {
+<a name="l01608"></a>01608                         $this -&gt; Reloaded = NULL;
+<a name="l01609"></a>01609                 }
+<a name="l01610"></a>01610                 <span class="comment">//$ret -&gt; Close();</span>
+<a name="l01611"></a>01611                 $this -&gt; SqlDebug = $old;
+<a name="l01612"></a>01612         }
+<a name="l01613"></a>01613 
+<a name="l01615"></a>01615 
+<a name="l01625"></a><a class="code" href="classPlayer.html#94f50a1e56f82f31164532a07c6fa81b">01625</a>         function <a class="code" href="classPlayer.html#94f50a1e56f82f31164532a07c6fa81b">DetranslateFields</a>( $fields, $type ) {
+<a name="l01626"></a>01626                 <span class="keywordflow">switch</span> ( $type ) {
+<a name="l01627"></a>01627                         <span class="keywordflow">case</span> 'items' :
+<a name="l01628"></a>01628                         <span class="keywordflow">case</span> 'backpack' :
+<a name="l01629"></a>01629                                 <span class="keywordflow">return</span> $fields;
+<a name="l01630"></a>01630                                 <span class="keywordflow">break</span>;
+<a name="l01631"></a>01631                         <span class="keywordflow">case</span> 'potions' :
+<a name="l01632"></a>01632                                 $translation = array( '<span class="keywordtype">id</span>' =&gt; '<span class="keywordtype">id</span>', 'owner' =&gt; 'gracz', 'prefix' =&gt; 'prefix', 'name' =&gt; 'nazwa', 'type' =&gt; 'typ', 'efekt' =&gt; 'efekt', 'status' =&gt; 'status', 'cost' =&gt; 'cena', 'power' =&gt; 'moc', 'amount' =&gt; 'amount', 'imagenum' =&gt; 'imagenum' );
+<a name="l01633"></a>01633                                 <span class="keywordflow">break</span>;
+<a name="l01634"></a>01634                         <span class="keywordflow">case</span> 'spells' :
+<a name="l01635"></a>01635                                 $translation = array( '<span class="keywordtype">id</span>' =&gt; '<span class="keywordtype">id</span>', 'name' =&gt; 'nazwa', 'owner' =&gt; 'gracz', 'cost' =&gt; 'cena', 'minlev' =&gt; 'poziom', 'type' =&gt; 'typ', 'power' =&gt; 'obr', 'status' =&gt; 'status' );
+<a name="l01636"></a>01636                                 <span class="keywordflow">break</span>;
+<a name="l01637"></a>01637                         <span class="keywordflow">default</span> :
+<a name="l01638"></a>01638                                 trigger_error( <span class="stringliteral">"Detranslacja nazw nie obsluguje typu: $type !"</span>, E_USER_WARNING );
+<a name="l01639"></a>01639                                 <span class="keywordflow">return</span> FALSE;
+<a name="l01640"></a>01640                 }
+<a name="l01641"></a>01641                 $return = array();
+<a name="l01642"></a>01642                 foreach( $fields as $key =&gt; $val ) {
+<a name="l01643"></a>01643                         <span class="keywordflow">if</span>( empty( $translation[$key] ) ) {
+<a name="l01644"></a>01644                                 trigger_error( <span class="stringliteral">"Proba transjacji klucza $key dla ktorego nie ma tlumaczenia ! Pomijam!"</span>, E_USER_ERROR );
+<a name="l01645"></a>01645                                 <span class="keywordflow">continue</span>;
+<a name="l01646"></a>01646                         }
+<a name="l01647"></a>01647                         $return[$translation[$key]] = $val;
+<a name="l01648"></a>01648                 }
+<a name="l01649"></a>01649                 <span class="keywordflow">return</span> $return;
+<a name="l01650"></a>01650         }
+<a name="l01651"></a>01651 
+<a name="l01653"></a>01653 
+<a name="l01662"></a><a class="code" href="classPlayer.html#edca5d0255b18cae666639c5e6190ae5">01662</a>         function <a class="code" href="classPlayer.html#edca5d0255b18cae666639c5e6190ae5">TranslateFields</a>( $fields, $type ) {
+<a name="l01663"></a>01663                 <span class="keywordflow">switch</span> ( $type ) {
+<a name="l01664"></a>01664                         <span class="keywordflow">case</span> 'backpack' :
+<a name="l01665"></a>01665                         <span class="keywordflow">case</span> 'equip' :
+<a name="l01666"></a>01666                                 <span class="keywordflow">return</span> $fields;
+<a name="l01667"></a>01667                                 <span class="keywordflow">break</span>;
+<a name="l01668"></a>01668                         <span class="keywordflow">case</span> 'potions' :
+<a name="l01669"></a>01669                                 $translation = array( '<span class="keywordtype">id</span>' =&gt; '<span class="keywordtype">id</span>', 'gracz' =&gt; 'owner', 'prefix' =&gt; 'prefix', 'nazwa' =&gt; 'name', 'typ' =&gt; 'type', 'efekt' =&gt; 'efekt', 'status' =&gt; 'status', 'cena' =&gt; 'cost', 'moc' =&gt; 'power', 'amount' =&gt; 'amount', 'imagenum' =&gt; 'imagenum' );
+<a name="l01670"></a>01670                                 <span class="keywordflow">break</span>;
+<a name="l01671"></a>01671                         <span class="keywordflow">case</span> 'spells' :
+<a name="l01672"></a>01672                                 $translation = array( '<span class="keywordtype">id</span>' =&gt; '<span class="keywordtype">id</span>', 'nazwa' =&gt; 'name', 'gracz' =&gt; 'owner', 'cena' =&gt; 'cost', 'poziom' =&gt; 'minlev', 'typ' =&gt; 'type', 'obr' =&gt; 'power', 'status' =&gt; 'status' );
+<a name="l01673"></a>01673                                 <span class="keywordflow">break</span>;
+<a name="l01674"></a>01674                         <span class="keywordflow">default</span> :
+<a name="l01675"></a>01675                                 trigger_error( <span class="stringliteral">"Translacja nazw nie obsluguje typu: $type !"</span>, E_USER_WARNING );
+<a name="l01676"></a>01676                                 <span class="keywordflow">return</span> FALSE;
+<a name="l01677"></a>01677                 }
+<a name="l01678"></a>01678                 $return = array();
+<a name="l01679"></a>01679                 foreach( $fields as $k =&gt; $val ) {
+<a name="l01680"></a>01680                         <span class="keywordflow">if</span>( empty( $translation[$k] ) ) {
+<a name="l01681"></a>01681                                 trigger_error( <span class="stringliteral">"Proba transjacji klucza $k dla ktorego nie ma tlumaczenia ! Pomijam!"</span>, E_USER_ERROR );
+<a name="l01682"></a>01682                                 <span class="keywordflow">continue</span>;
+<a name="l01683"></a>01683                         }
+<a name="l01684"></a>01684                         $return[$translation[$k]] = $val;
+<a name="l01685"></a>01685                 }
+<a name="l01686"></a>01686                 <span class="keywordflow">return</span> $return;
+<a name="l01687"></a>01687         }
+<a name="l01688"></a>01688 }
+<a name="l01689"></a>01689 
+<a name="l01690"></a>01690 ?&gt;
+</pre></div><hr size="1"><address style="align: right;"><small>Wygenerowano Wed Jan 24 21:54:54 2007 dla KaraTur Class programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.7 </small></address>
+</body>
+</html>

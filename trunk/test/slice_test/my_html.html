@@ -1,0 +1,205 @@
+<html>
+	<head>
+		<title>Slice test</title>
+	</head>
+	<body>
+	<style type="text/css">
+	body{
+	background:black;
+	}
+	.main_window{
+	width:870px;
+	margin:0px auto;
+	
+	}
+	.win_top_left{
+	width:181px;
+	height:28;
+	background:url( 'images/win_top_left.gif' );
+	}
+	.win_top_mid{
+	width:432px;
+	height:28px;
+	padding-top:0px;
+	background:url( 'images/win_top_mid_1.gif' );
+	vertical-align:bottom;
+	text-align:center;
+	}
+	.win_top_right{
+	width:251px;
+	height:28;
+	background:url( 'images/win_top_right.gif' );
+	}
+	.win_mid_left{
+	vertical-align:top;
+	background:url( 'images/side_left_bg.gif' );
+	margin:0px;
+	padding:0px;
+	}
+	hr.side_left_top{
+	margin:0px;
+	padding:0px;
+	border:none;
+	width:181px;
+	height:14;
+	background:url( 'images/side_left_top.gif' );
+	}
+	hr.side_left_sep{
+	padding:0px;
+	margin:0px;
+	border:none;
+	width:181px;
+	height:22px;
+	background:url( 'images/side_left_sep.gif' );
+	}
+	hr.side_left_end{
+	margin:0px;
+	border:none;
+	width:181px;
+	height:24px;
+	background:url( 'images/side_left_end.gif' );
+	}
+	div.side_left_content{
+	font-size:10px;
+	font-family:verdana;
+	color:black;
+	width:148px;
+	background:url( 'images/side_left_mid_1.gif' ) black;
+	padding:0px;
+	margin:0px;
+	padding-left: 22px;
+	padding-right: 11px;
+	}
+	.win_mid_main{
+	vertical-align:top;
+	background:url( 'images/main_content.gif' );
+	}
+	hr.main_top{
+	margin:0px;
+	border:none;
+	width:438px;
+	height:14px;
+	background:url( 'images/main_top.gif' );
+	}
+	.main_content{
+	font-size:10px;
+	font-family:verdana;
+	color:white;
+	width:417px;
+	padding-left:11px;
+	padding-right:10px;
+	background:url( 'images/main_content.gif' );
+	}
+	hr.main_bottom{
+	margin:0px;
+	border:none;
+	width:438px;
+	height:12px;
+	background:url( 'images/main_bottom.gif' );
+	}
+	.win_mid_right{
+	vertical-align:top;
+	background:url( 'images/side_right_bg.gif' );
+	}
+	hr.side_right_top{
+	margin:0px;
+	border:none;
+	width:251px;
+	height:14px;
+	background:url( 'images/side_right_top.gif' );
+	}
+	div.side_right_content{
+	font-size:10px;
+	font-family:verdana;
+	color:white;
+	width:219px;
+	background:url( 'images/side_right_mid.gif' ) black;
+	padding-left: 11px;
+	padding-right: 21px;
+	}
+	hr.side_right_end{
+	margin:0px;
+	border:none;
+	width:251px;
+	height:24px;
+	background:url( 'images/side_right_end.gif' );
+	}
+	.main_footer{
+	font-size:9px;
+	font-family:verdana;
+	color:#fbfa9e;
+	font-style:italic;
+	width:417px;
+	padding-left:11px;
+	padding-right:10px;
+	background:url( 'images/main_content.gif' );
+	text-align:center;
+	}
+	.win_bottom{
+	width:870px;
+	height:22px;
+	background:url( 'images/win_bottom.gif' );
+	}
+	
+	
+	a.main_link{
+	display:block;
+	width:36px;
+	float:left;
+	background:url( 'images/btn/btn.gif' );
+	margin:0px 2px 0px 2px;
+	}
+	a.main_link:hover{
+	background:url( 'images/btn/btn_hover.gif' );
+	}
+	.main_link_img {
+	border:none;
+	}
+	</style>
+	<div class="main_window">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="win_top_left"></td>
+				<td class="win_top_mid">
+					<div style="border:none;margin:0px auto;width:80px">
+					<a href="#" class="main_link"><img class="main_link_img" src="images/btn/avatar.gif"/></a>
+					<a href="#" class="main_link"><img class="main_link_img" src="images/btn/edit.gif"/></a>
+					</div>
+				</td>
+				<td class="win_top_right"></td>
+			</tr>
+			<tr>
+				<td class="win_mid_left">
+				<hr class="side_left_top"/>
+				<div class="side_left_content">¶mieszna sobie tre¶æ . . . . . . . . . . . .<br/><br/>o co tu dodaæ ?</div>
+				<hr class="side_left_sep"/>
+				<div class="side_left_content">¶mieszna sobie tre¶æ . . . . . . . . . . . .<br/><br/>o co tu dodaæ ?<br/><br/>no ze teges<br/>¿e bardzo</div>
+				<hr class="side_left_end"/>
+				</td>
+				<td class="win_mid_main">
+				<hr class="main_top"/>
+				<div class="main_content">bleblebleble<br/><br/>fooo<br/>
+				<br/>dadada<br/><br/>gg<br/><br/>llll</div>
+				</td>
+				<td class="win_mid_right">
+				<hr class="side_right_top"/>
+				<div class="side_right_content">¶mieszna sobie tre¶æ . . . . . . . . . . . .<br/><br/>o co tu dodaæ ?</div>
+				<hr class="side_right_end"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="win_mid_left">
+				</td>
+				<td class="win_mid_main">
+				<div class="main_footer">Created by KaraTur Team 2006-2007</div>
+				</td>
+				<td class="win_mid_right">
+				</td>
+			</tr>
+			<tr>
+				<td class="win_bottom" colspan="3"></td>
+			</tr>
+		</table>
+	</div>
+	</body>
+</html>

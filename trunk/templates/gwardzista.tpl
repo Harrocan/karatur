@@ -1,0 +1,1 @@
+<br>Gwardzistow mozna spotakac wsrod przedstawicieli wszelkich ras Kara-Tur. Najczesciej sa ochroniarzami lub wojownikami jakiejs armii. Straznicy Krolewscy sa przez zlosliwych nazywani wlasnie Gwardzistami. Nie mamy zadnych okazow. Jesli ktokolwiek posiada interesujacy malunek, atrape proszony jest o napisanie listu do Uriela Tempness- id2. Przewidziana nagroda.

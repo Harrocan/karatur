@@ -1,0 +1,14 @@
+drwxr-xr-x    2 ivan     ivan         4096 Jan 25 18:53 .
+drwxr-xr-x   13 ivan     ivan         4096 Jan 25 18:49 ..
+-rwxrwxrwx    1 ivan     ivan         2003 Jan 25 18:53 datadict-access.inc.php
+-rwxrwxrwx    1 ivan     ivan         3936 Jan 25 18:53 datadict-db2.inc.php
+-rwxrwxrwx    1 ivan     ivan         3812 Jan 25 18:53 datadict-firebird.inc.php
+-rwxrwxrwx    1 ivan     ivan         2515 Jan 25 18:53 datadict-generic.inc.php
+-rwxrwxrwx    1 ivan     ivan         1369 Jan 25 18:53 datadict-ibase.inc.php
+-rwxrwxrwx    1 ivan     ivan         1730 Jan 25 18:53 datadict-informix.inc.php
+-rwxrwxrwx    1 ivan     ivan         7393 Jan 25 18:53 datadict-mssql.inc.php
+-rwxrwxrwx    1 ivan     ivan         4666 Jan 25 18:53 datadict-mysql.inc.php
+-rwxrwxrwx    1 ivan     ivan         7224 Jan 25 18:53 datadict-oci8.inc.php
+-rwxrwxrwx    1 ivan     ivan        12062 Jan 25 18:53 datadict-postgres.inc.php
+-rwxrwxrwx    1 ivan     ivan         3172 Jan 25 18:53 datadict-sapdb.inc.php
+-rwxrwxrwx    1 ivan     ivan         5793 Jan 25 18:53 datadict-sybase.inc.php

@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-2">
+<title>KaraTur Class: Dokumentacja pliku /var/www/localhost/htdocs/karatur/class/player.class.php</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Wygenerowano przez Doxygen 1.4.7 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Strona&nbsp;główna</span></a></li>
+    <li><a href="annotated.html"><span>Struktury&nbsp;Danych</span></a></li>
+    <li id="current"><a href="files.html"><span>Pliki</span></a></li>
+    <li><a href="pages.html"><span>Dodatkowe&nbsp;strony</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;<u>S</u>zukaj&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Lista&nbsp;plików</span></a></li>
+    <li><a href="globals.html"><span>Globalne</span></a></li>
+  </ul></div>
+<h1>Dokumentacja pliku /var/www/localhost/htdocs/karatur/class/player.class.php</h1>
+<p>
+<a href="player_8class_8php-source.html">Idź do kodu źródłowego tego pliku.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Struktury danych</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html">Player</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Klasa obsugujaca gracza.  <a href="classPlayer.html#_details">Więcej...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>player.class.php</h2></td></tr>
+<tr><td colspan="2">Kombajn Do Zbierania Kur Po Wioskach ... czyli : <br>
+ Nowa klasa <a class="el" href="classPlayer.html">Player</a> - zajmuje sie w sumie wszystkim. Graczem, ekwipunkiem, miksturami, surowcami ... <br>
+ Jeszcze tylko herbaty nie zaparza ... ale to juz wkrotce <br>
+ (C) 2006-2007 Kara-Tur Team based on Vallheru Team<p>
+<dl compact><dt><b>Autor:</b></dt><dd>IvaN &lt;<a href="mailto:ivan@o2.pl">ivan@o2.pl</a>&gt; </dd></dl>
+<dl compact><dt><b>Wersja:</b></dt><dd>0.3 beta </dd></dl>
+<dl compact><dt><b>Od:</b></dt><dd>08.01.2007 </dd></dl>
+<br><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8class_8php.html#c625587784814fd03bc1d0e5de5346ab">$oldatr</a> = array( 'strength' =&gt; 'str', 'agility' =&gt; 'dex', 'inteli' =&gt; 'int', 'cond' =&gt; 'con', 'speed' =&gt; 'spd', 'wisdom' =&gt; 'wis' )</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8class_8php.html#654c161ae73521e57e756e3d92850435">$dbatr</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8class_8php.html#c198076c40d5645191a51eff31a6d86f">$oldskill</a> = array( 'attack' =&gt; 'melee', 'magic' =&gt; 'cast', 'shoot' =&gt; 'ranged', 'gotowanie' =&gt; 'cook' )</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8class_8php.html#d77c08c1b7d145cdd62022fb9d7f6a7a">$dbskill</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8class_8php.html#8896f020c45a717ce712b28f5d6ac279">$oldmisc</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8class_8php.html#f400cbb2eef5c04b0538e6f21dc965cc">$dbmisc</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8class_8php.html#2e81acff48c938f9ef64847451a12cbc">$oldres</a> = array( 'credits' =&gt; 'gold', 'platinum' =&gt; 'mithril', 'ryby' =&gt; 'fish', 'ziemniaki' =&gt; 'potato' )</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8class_8php.html#916b661aad76392cea20367071c667ce">$dbres</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8class_8php.html#3a4c8daa05d89c946b1b38e86b1c2aa2">$dbmoved</a> = array( 'credits', 'platinum', 'bank', 'ryby', 'grzyby', 'ziemniaki' )</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="player_8class_8php.html#b4d4212f3c62b203ae27f48a9a2c9e9e">$oldtrash</a> = array( 'rank', 'aktorstwo', 'aktor', 'bles', 'chaos', 'soul' )</td></tr>
+
+</table>
+<hr><h2>Dokumentacja zmiennych</h2>
+<a class="anchor" name="654c161ae73521e57e756e3d92850435"></a><!-- doxytag: member="player.class.php::$dbatr" ref="654c161ae73521e57e756e3d92850435" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$dbatr          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Wartość początkowa:</b><div class="fragment"><pre class="fragment"> array( 'str' =&gt; 'strength',
+                                'dex' =&gt; 'agility',
+                                'con' =&gt; 'wytrz',
+                                'spd' =&gt; 'szyb',
+                                '<span class="keywordtype">int</span>' =&gt; 'inteli',
+                                'wis' =&gt; 'wisdom' )
+</pre></div>
+<p>
+Definicja w linii <a class="el" href="player_8class_8php-source.html#l00019">19</a> pliku <a class="el" href="player_8class_8php-source.html">player.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="f400cbb2eef5c04b0538e6f21dc965cc"></a><!-- doxytag: member="player.class.php::$dbmisc" ref="f400cbb2eef5c04b0538e6f21dc965cc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$dbmisc          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="player_8class_8php-source.html#l00039">39</a> pliku <a class="el" href="player_8class_8php-source.html">player.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="3a4c8daa05d89c946b1b38e86b1c2aa2"></a><!-- doxytag: member="player.class.php::$dbmoved" ref="3a4c8daa05d89c946b1b38e86b1c2aa2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$dbmoved = array( 'credits', 'platinum', 'bank', 'ryby', 'grzyby', 'ziemniaki' )          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="player_8class_8php-source.html#l00126">126</a> pliku <a class="el" href="player_8class_8php-source.html">player.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="916b661aad76392cea20367071c667ce"></a><!-- doxytag: member="player.class.php::$dbres" ref="916b661aad76392cea20367071c667ce" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$dbres          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Wartość początkowa:</b><div class="fragment"><pre class="fragment"> array( 'gold' =&gt; 'gold',
+                                'bank' =&gt; 'bank',
+                                'mithril' =&gt; 'mithril',
+                                'copper' =&gt; 'copper',
+                                'iron' =&gt; 'iron',
+                                'coal' =&gt; 'coal',
+                                'adamantium' =&gt; 'adamantium',
+                                'meteor' =&gt; 'meteor',
+                                'crystal' =&gt; 'crystal',
+                                'wood' =&gt; 'wood',
+                                'illani' =&gt; 'illani',
+                                'illanias' =&gt; 'illanias',
+                                'nutari' =&gt; 'nutari',
+                                'dynallca' =&gt; 'dynallca',
+                                'fish' =&gt; 'fish',
+                                'grzyby' =&gt; 'grzyb',
+                                'potato' =&gt; 'potato' )
+</pre></div>
+<p>
+Definicja w linii <a class="el" href="player_8class_8php-source.html#l00108">108</a> pliku <a class="el" href="player_8class_8php-source.html">player.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="d77c08c1b7d145cdd62022fb9d7f6a7a"></a><!-- doxytag: member="player.class.php::$dbskill" ref="d77c08c1b7d145cdd62022fb9d7f6a7a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$dbskill          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Wartość początkowa:</b><div class="fragment"><pre class="fragment"> array( 'smith' =&gt; 'ability',
+                                        'melee' =&gt; 'atak',
+                                        'miss' =&gt; 'unik',
+                                        'cast' =&gt; 'magia',
+                                        'alchemy' =&gt; 'alchemia',
+                                        'ranged' =&gt; 'shoot',
+                                        'fletcher' =&gt; 'fletcher',
+                                        'leadership' =&gt; 'leadership',
+                                        'cook' =&gt; 'gotowanie' )
+</pre></div>
+<p>
+Definicja w linii <a class="el" href="player_8class_8php-source.html#l00027">27</a> pliku <a class="el" href="player_8class_8php-source.html">player.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="c625587784814fd03bc1d0e5de5346ab"></a><!-- doxytag: member="player.class.php::$oldatr" ref="c625587784814fd03bc1d0e5de5346ab" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oldatr = array( 'strength' =&gt; 'str', 'agility' =&gt; 'dex', 'inteli' =&gt; 'int', 'cond' =&gt; 'con', 'speed' =&gt; 'spd', 'wisdom' =&gt; 'wis' )          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="player_8class_8php-source.html#l00018">18</a> pliku <a class="el" href="player_8class_8php-source.html">player.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="8896f020c45a717ce712b28f5d6ac279"></a><!-- doxytag: member="player.class.php::$oldmisc" ref="8896f020c45a717ce712b28f5d6ac279" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oldmisc          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Wartość początkowa:</b><div class="fragment"><pre class="fragment"> array( 'max_hp' =&gt; 'hp_max', 'max_energy' =&gt; 'energy_max', 'tribe' =&gt; 'tribe_id', 'immunited' =&gt; 'immu',
+                                        'pw' =&gt; 'faith' )
+</pre></div>
+<p>
+Definicja w linii <a class="el" href="player_8class_8php-source.html#l00037">37</a> pliku <a class="el" href="player_8class_8php-source.html">player.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="2e81acff48c938f9ef64847451a12cbc"></a><!-- doxytag: member="player.class.php::$oldres" ref="2e81acff48c938f9ef64847451a12cbc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oldres = array( 'credits' =&gt; 'gold', 'platinum' =&gt; 'mithril', 'ryby' =&gt; 'fish', 'ziemniaki' =&gt; 'potato' )          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="player_8class_8php-source.html#l00107">107</a> pliku <a class="el" href="player_8class_8php-source.html">player.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="c198076c40d5645191a51eff31a6d86f"></a><!-- doxytag: member="player.class.php::$oldskill" ref="c198076c40d5645191a51eff31a6d86f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oldskill = array( 'attack' =&gt; 'melee', 'magic' =&gt; 'cast', 'shoot' =&gt; 'ranged', 'gotowanie' =&gt; 'cook' )          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="player_8class_8php-source.html#l00026">26</a> pliku <a class="el" href="player_8class_8php-source.html">player.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="b4d4212f3c62b203ae27f48a9a2c9e9e"></a><!-- doxytag: member="player.class.php::$oldtrash" ref="b4d4212f3c62b203ae27f48a9a2c9e9e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$oldtrash = array( 'rank', 'aktorstwo', 'aktor', 'bles', 'chaos', 'soul' )          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="player_8class_8php-source.html#l00128">128</a> pliku <a class="el" href="player_8class_8php-source.html">player.class.php</a>.
+</div>
+</div><p>
+<hr size="1"><address style="align: right;"><small>Wygenerowano Wed Jan 24 21:54:54 2007 dla KaraTur Class programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.7 </small></address>
+</body>
+</html>

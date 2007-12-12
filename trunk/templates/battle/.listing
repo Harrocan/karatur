@@ -1,0 +1,11 @@
+drwxr-xr-x    2 ivan     ivan         4096 Jan 25 19:40 .
+drwxrwxrwx    3 ivan     ivan         8192 Jun 18 12:09 ..
+-rw-r--r--    1 ivan     ivan           76 Jan 25 19:40 battlefinish.tpl
+-rw-r--r--    1 ivan     ivan           58 Jan 25 19:40 battlefinish.tpl~
+-rw-r--r--    1 ivan     ivan          427 Jan 25 19:40 battleprepare.tpl
+-rw-r--r--    1 ivan     ivan          419 Jan 25 19:40 battleprepare.tpl~
+-rw-r--r--    1 ivan     ivan           14 Jan 25 19:40 roundend.tpl
+-rw-r--r--    1 ivan     ivan           52 Jan 25 19:40 roundprepare.tpl
+-rw-r--r--    1 ivan     ivan           48 Jan 25 19:40 roundprepare.tpl~
+-rw-rw-rw-    1 ivan     ivan           10 Jan 25 19:40 turn.tpl
+-rw-rw-rw-    1 ivan     ivan           16 Jan 25 19:40 turn.tpl~

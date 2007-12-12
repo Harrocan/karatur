@@ -1,0 +1,327 @@
+<html>
+	<head>
+		<title>Kara-Tur 2</title>
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta name="copyright" content="Copyright by KaraTur-Team" />
+		<meta name="author" content="Author: ivan-q at o2.pl" />
+		<meta name="distribution" content="global" />
+		<meta name="description" content="MMORPG game through web browser based on d20 and D&amp;D rules in the world of Faerun" />
+		<meta name="keywords" content="MMORPG,D&amp;D,D&D,RPG,3.5E,game,web-browser,roleplaying,faerun,karatur,kara-tur" />
+		<link rel="stylesheet" href="stylesheet.css" />
+		
+		<link rel="shortcut icon" href="images/ikonka_KT.gif" type="image/gif" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	</head>
+	<body onload="initMap()">
+
+		
+<script type="text/javascript">
+	function $( id ) {
+		if( document.getElementById ) {
+			return document.getElementById( id );
+		}
+		return "BITCH";
+	}
+	
+	function _addRow( type ) {
+		var tab = $( 'div_tab' );
+		var toAdd = document.createElement( 'div' );
+		toAdd.setAttribute( 'name', 'tab_row' );
+		toAdd.className='div_tab_row';
+		for( var i = 0; i<mapArea.right-mapArea.left; i++ ) {
+			var cell = document.createElement( 'div' );
+			cell.className = 'div_tab_cell';
+			cell.innerHTML = 'l';
+			toAdd.appendChild( cell );
+		}
+		
+		if( type == 'first' ) {
+			var node = document.getElementsByName( 'tab_row' )[0];
+			if( !node ) {
+				node = $( 'tab_foot');
+			}
+			tab.insertBefore( toAdd, node );
+		}
+		if( type == 'last' ) {
+			tab.insertBefore( toAdd, $( 'tab_foot') );
+		}
+		return toAdd;
+		
+	}
+	
+	function _delRow( type ) {
+		var tab = $( 'div_tab' );
+		var rows = document.getElementsByName( 'tab_row' );
+		if( type == 'last' ) {
+			var toDel = rows[rows.length-1];
+		}
+		if( type == 'first' ) {
+			var toDel = rows[0];
+		}
+		toDel.parentNode.removeChild( toDel );
+	}
+	
+	function _addCol( type ) {
+		var rows = document.getElementsByName( 'tab_row' );
+		var ret = new Array();
+		for( var i = 0; i < rows.length; i++ ) {
+			var row = rows[i];
+			var toAdd = document.createElement( 'div' );
+			toAdd.className = 'div_tab_cell';
+			toAdd.innerHTML = 'l';
+			if( type=='first' ) {
+				row.insertBefore( toAdd, row.childNodes[0] );
+			}
+			if( type=='last' ) {
+				row.insertBefore( toAdd, row.childNodes[row.childNodes.length] );
+			}
+			ret.push( toAdd );
+		}
+		return ret;
+	}
+	
+	function _delCol( type ) {
+		var rows = document.getElementsByName( 'tab_row' );
+		for( var i = 0; i < rows.length; i++ ) {
+			var row = rows[i];
+			if( type == 'first' ) {
+				var toDel = row.childNodes[0];
+			}
+			if( type == 'last' ) {
+				var toDel = row.childNodes[row.childNodes.length-1];
+			}
+			toDel.parentNode.removeChild( toDel );
+		}
+	}
+	
+	var mapArea;
+
+	function initMap() {
+		if( mapArea ) {
+			return;
+		}
+		mapArea = new Object();
+		mapArea.left = 0;
+		mapArea.top = 0;
+		mapArea.right = 8;
+		mapArea.bottom = 10;
+		mapArea.cellSize = 20;
+		mapArea.margin = 0;
+		mapArea.cellTotalSize = mapArea.cellSize + mapArea.margin;
+		
+		var diff = mapArea.right - mapArea.left;
+		var width = diff * ( mapArea.cellTotalSize );
+		$( 'div_tab' ).style.width = width+'px';
+		
+		for( var i = 0; i < mapArea.bottom; i++ ) {
+			var node = _addRow( 'last' );
+			var cells = node.childNodes;
+			for( var j = 0; j < mapArea.right; j++ ) {
+				var data = getDataForCell( i, j );
+				cells[j].innerHTML = data;
+			}
+		}
+		
+		var okno = $( 'div_window' );
+		var clipRect = new Object();
+		clipRect.top = mapArea.cellTotalSize;
+		clipRect.left = mapArea.cellTotalSize;
+		clipRect.bottom = (mapArea.bottom - mapArea.top - 1) * mapArea.cellTotalSize;
+		clipRect.right = (mapArea.right - mapArea.left - 1) * mapArea.cellTotalSize;
+		var clipStyle = "rect(" + clipRect.top + "px, " + clipRect.right + "px, " + clipRect.bottom + "px, " + clipRect.left + "px)";
+		okno.style.top = '0px';
+		okno.style.left = '0px';
+		okno.style.clip = clipStyle;
+	}
+	
+	function _moveMap( dir ) {
+		if( !mapArea ) {
+			return;
+		}
+		switch( dir ) {
+			case 'down': {
+				mapArea.top++;
+				mapArea.bottom++;
+				_delRow( 'first' );
+				var node = _addRow( 'last' );
+				var cells = node.childNodes;
+				for( var j = 0; j < mapArea.right - mapArea.left; j++ ) {
+					var y = mapArea.left + j;
+					var data = getDataForCell( mapArea.bottom -1, y );
+					cells[j].innerHTML = data;
+				}
+				break;
+			}
+			case 'up': {
+				if( mapArea.top < 1 ) {
+					return;
+				}
+				mapArea.top--;
+				mapArea.bottom--;
+				_delRow( 'last' );
+				var node = _addRow( 'first' );
+				var cells = node.childNodes;
+				for( var j = 0; j < mapArea.right - mapArea.left; j++ ) {
+					var y = mapArea.left + j;
+					var data = getDataForCell( mapArea.top, y );
+					cells[j].innerHTML = data;
+				}
+				break;
+			}
+			case 'right': {
+				mapArea.left++;
+				mapArea.right++;
+				_delCol( 'first' );
+				var cells = _addCol( 'last' );
+				for( var j = 0; j < mapArea.bottom - mapArea.top; j++ ) {
+					var x = mapArea.top + j;
+					var data = getDataForCell( x, mapArea.right -1 );
+					cells[j].innerHTML = data;
+				}
+				break;
+			}
+			case 'left': {
+				if( mapArea.left < 1 ) {
+					return;
+				}
+				mapArea.left--;
+				mapArea.right--;
+				_delCol( 'last' );
+				var cells = _addCol( 'first' );
+				for( var j = 0; j < mapArea.bottom - mapArea.top; j++ ) {
+					var x = mapArea.top + j;
+					var data = getDataForCell( x, mapArea.left );
+					cells[j].innerHTML = data;
+				}
+				break;
+			}
+		}
+	}
+	
+	function getDataForCell( x, y ) {
+		//return x + "." + y;
+		return "<img src='../mapa-big/"+x+"_"+y+".png' style='width:20px;height:20px'/>";
+	}
+	
+	function _scroll( dir, timeout, left ) {
+		var regDim = /rect\((\d*)px, (\d*)px, (\d*)px, (\d*)px\)/;
+		var regInt = /([\d-]*)px/;
+		var okno = $( 'div_window' );
+
+		var dims = regDim.exec( okno.style.clip );
+		var posCoord = new Object();
+		posCoord.top = Number( regInt.exec( okno.style.top )[1] );
+		posCoord.left = Number( regInt.exec( okno.style.left )[1] );
+		var clipRect = new Object();
+		clipRect.top = Number( dims[1] );
+		clipRect.right = Number( dims[2] );
+		clipRect.bottom = Number( dims[3] );
+		clipRect.left = Number( dims[4] );
+		var vstep = 0;
+		var hstep = 0;
+		var step = 1;
+		switch( dir ) {
+			case 'up': {
+				hstep = -1 * step;
+				break;
+			}
+			case 'down' : {
+				hstep = step;
+				break;
+			}
+			case 'left': {
+				vstep = -1 * step;
+				break;
+			}
+			case 'right': {
+				vstep = step;
+				break;
+			}
+		}
+		if( left > 0 ) {
+			clipRect.right += vstep;
+			clipRect.left += vstep;
+			clipRect.top += hstep;
+			clipRect.bottom += hstep;
+			left -= step;
+			posCoord.left -= vstep;
+			posCoord.top -= hstep;
+			var clipStyle = "rect(" + clipRect.top + "px, " + clipRect.right + "px, " + clipRect.bottom + "px, " + clipRect.left + "px)";
+			okno.style.top = posCoord.top + 'px';
+			okno.style.left = posCoord.left + 'px';
+			okno.style.clip = clipStyle;
+			
+			setTimeout( "_scroll('" + dir + "', " + timeout + ", " + left + ")", timeout );
+		}
+		else {
+			_finishScroll( dir );
+		}
+	}
+	
+	function _finishScroll( dir ) {
+		
+		var okno = $( 'div_window' );
+		var clipRect = new Object();
+		clipRect.top = mapArea.cellTotalSize;
+		clipRect.left = mapArea.cellTotalSize;
+		clipRect.bottom = (mapArea.bottom - mapArea.top - 1) * mapArea.cellTotalSize;
+		clipRect.right = (mapArea.right - mapArea.left - 1) * mapArea.cellTotalSize;
+		var clipStyle = "rect(" + clipRect.top + "px, " + clipRect.right + "px, " + clipRect.bottom + "px, " + clipRect.left + "px)";
+		_moveMap( dir );
+		okno.style.clip = clipStyle;
+		okno.style.top = '0px';
+		okno.style.left = '0px';
+		
+		
+		
+		
+	}
+	
+	function startScroll( dir ) {
+		var scrollAmount = mapArea.cellTotalSize;
+		var scrollSpeed = 40;
+		_scroll( dir, scrollSpeed, scrollAmount );
+	}
+</script>
+<style type="text/css">
+	#div_tab{
+
+	background:red;
+	width: 162px;
+	}
+	.div_tab_row{
+	position:static;
+	/*padding:2px;*/
+	background:green;
+	
+	clear:both;
+	}
+	.div_tab_cell{
+	position:static;
+	text-align:center;
+	vertical-align:middle;
+	width:20px;
+	height:20px;
+	background:blue;
+	/*margin:1px 0px 0px 1px;*/
+	/*margin:1px;*/
+	float:left;
+	font-size:0.8em;
+	}
+</style>
+
+
+<div onclick="startScroll( 'up' )">w gore</div>
+<div onclick="startScroll( 'down' )">w dol</div>
+<div onclick="startScroll( 'left' )">w lewo</div>
+<div onclick="startScroll( 'right' )">w prawo</div>
+
+<div style="border:solid;position:relative;width:280px;height:280px">
+<div id="div_window" style="position:absolute">
+<div id="div_tab">
+	<div id="tab_foot" class="div_tab_row"></div>
+</div>
+</div>
+</div>
+</body>
+</html>
