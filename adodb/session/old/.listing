@@ -1,0 +1,6 @@
+drwxr-xr-x    2 ivan     ivan         4096 Jan 25 18:52 .
+drwxr-xr-x    3 ivan     ivan         4096 Jan 25 18:49 ..
+-rwxrwxrwx    1 ivan     ivan         8986 Jan 25 18:52 adodb-cryptsession.php
+-rwxrwxrwx    1 ivan     ivan        14217 Jan 25 18:52 adodb-session-clob.php
+-rwxrwxrwx    1 ivan     ivan        13569 Jan 25 18:52 adodb-session.php
+-rwxrwxrwx    1 ivan     ivan         1426 Jan 25 18:52 crypt.inc.php

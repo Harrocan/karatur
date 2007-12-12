@@ -1,0 +1,159 @@
+2007-01-25
+
+	* Poprawienie areny walk i zwiedzania gor/lasu/dolin pod katem nowej walki
+	* dodanie obrazkow do mikstur
+
+2007-01-24 <ivan-q@o2.pl>
+
+	* Bugfixy w walce - usuwanie uszkodzonych broni i prawidlowe zachowanie w przypadku
+	  ich braku
+	* Przebudowanie banku oraz drobne poprawki
+	* Dokonczenie modyfikacji pozostalych plikow.
+
+2007-01-23 <ivan-q@o2.pl>
+
+	* Przystosowanie do nowej klasy nastepujacych plikow :
+		* hotel.php, sklepy.php, pary.php, ogl.php, ogloszenia.php
+		  ziemniaki.php, kuchnia.php, ashop.php, login.php, logout.php, account.php
+		  oraz okolo 80 innych
+	* Naprawienie kaplicy [rozwody i wyswietlanie ksiezy]
+	* Naprawienie dzialania ogloszeni i zamkniecie calosci w jednym pliku
+	* Drobne poprawki w wielu plikach
+
+2007-01-21 <ivan-q@o2.pl>
+
+	* Bugfixy w nowym module walk [konczenie walki przy 0 HP, poprawne
+	  aplikowanie zmian]
+
+2007-01-19 <ivan-q@o2.pl>
+
+	* Stworzenie nowego, niezwyke plastycznego systemu walki - battle.class.php
+	  oraz utworzenie do niego klas przeciwnikow - Fighter_player i
+	  Fighter_monster opartych na abstrakcyjnej klasie Fighter.
+	* Przystosowanie do nowej klasy nastepujacych plikow :
+		* outposts.php [pobieznie ze wzgledu naplanowana przebudowe], tribes.php
+		  tribearmor.php, tribeware.php, school.php
+	* Wylaczenie w straznicach mozliwosci wyciagania zlota
+
+2007-01-18 <ivan-q@o2.pl>
+
+	* Przystosowanie do nowej klasy nastepujacych plikow :
+		* hmarket.php, pmarket.php
+	* Przystosowanie wiesci do wspolpracy z nowym forum oraz dodanie
+	  kolumny starterid
+	* Optymalizacja bazaru z przedmiotami
+	* Techniczne poprawki w city.php
+
+2007-01-17 <ivan-q@o2.pl>
+
+	* Przystosowanie do nowej klasy nastepujacych plikow :
+		* lumbermill.php, imarket.php
+	* W klasie Player :
+		* dodano system awansowania na poziomy
+		* Normalizacja nazewnictwa pol - obejmuje mikstury i czary obecnie
+	* Optymalizacja kowal.php, lumbermill.php
+	* Likwidacja mozliwosci czesciowego wykonywania przedmiotow.
+	* Modernizacja tabel z ekwipunkiem, z planami u kowala, w tartaku
+	  i u alchemika
+	* Na bazarze z przedmiotami zapamietywanie ceny sprzed 'wystawienia'
+	  przedmiotu
+
+2007-01-16 <ivan-q@o2.pl>
+
+	* Przystosowanie do nowej klasy nastepujacych plikow :
+		* kowal.php (+ optymalizacja kodu)
+	* Dodanie w sklepach mozliwosci zakupu okreslonej ilosci przedmiotow na raz
+	  oraz optymalizacja kodu shop.php
+	* Dodano do globalnej bazy przedmiotow obsluge grotow
+
+2007-01-14  <ivan-q@o2.pl>
+
+	* Przystosowanie do nowej klasy nastepujacych plikow :
+		* wieza.php, praca.php, warehouse.php, vote.php, msklep.php
+	* Modyfikacja systemu sklepow pod katem miniaturek i obrazkow przedmiotow
+	  (shopadm.php, shop.php, items.php)
+	* Dodanie efektu 'magicznego' do skryptu skladajacego obrazki
+	* Naprawienie systemu sadownictwa i slubow (Aegnor)
+	* Bugfixy w umagicznianiu przedmiotow
+	* Optymalizacja generatora miast
+	* Dodanie wartosci procentowych do paskow expa, zycia i many
+
+2007-01-12  <ivan-q@o2.pl>
+
+	* Przystosowanie do nowej klasy nastepujacych plikow :
+		* panel.php, shop.php, grid.php, hospital.php, hotel.php, house.php[~],
+		  jail.php, kar.php, karty.php, kat.php, logout.php, view.php
+		  stats.php
+	* W klasie Player :
+		* system sygnalizacji zmian - wersja beta obejmujaca statystyki,
+		  surowce, mikstury, czary, plecak
+		* dokonczenie zarzadzania czarami. To jednak nie byl bug ;)
+		* przeszlo 1,5k linii kodu *slini sie* ;P
+		* Wstepne dodanie obslugi obrazkow
+	* Dodanie bugtracka
+	* Wprowadzenie licznikow odwiedzin stron
+	* Wprowadzenie podgladu zrodla plikow z katalogu glownego
+	* Techniczne poprawki w : chat.php, mail.php, zgloszenia.php, forum.php,
+	  info.php, prawa.php, log.php, items.php
+	* Dodanie uprawnien 'edrace', 'edclass'
+	* Dodanie miniatury w overlibsach po prawej
+	* Zwiekszenie dopuszczalego avatara do 380x300px
+	* Drobne przebudowanie podgladu graczy
+	* Wstepne dodanie obrazkow do broni i modyfikacja equip.php pod
+	  tym katem.
+	* Ustawianie obrazkow w panelu przedmiotow (items.php)
+	* Dodanie skryptu rysujacego zniszczenie przedmiotu 'w tle'
+
+2007-01-11  <ivan-q@o2.pl>
+
+	* Przystosowanie do nowej klasy nastepujacych plikow :
+		* checkexp.php, stats.php, equip.php, zloto.php, checkexp.php
+		  czary.php [prawie. Bug ?]
+	* Istotne zmodyfikowanie walki w funkcje.php
+	* Wprowadzenie wlasnego error_handler
+	* W klasie Player :
+		* Dodano niemalze kompletna obsluge czarow [pozostalo umagicznianie]
+		* Dodanie modulu zwracajacego podstawowe statystyki uzywane w walce
+		  czyli attack, damage, armor, miss, critical
+	* Aktualizacja Smarty ( 2.6.16 ) oraz Adodb ( 4.93 )
+	* Drobne techniczne poprawki w kilku plkiach m.in - foot.php, stats.php,
+	  zloto.php, head.php
+
+2007-01-10  <ivan-q@o2.pl>
+
+	* Przystosowanie do nowej klasy nastepujacych plikow : 
+		* alchemik.php, ap.php, core.php, deity.php, explore.php,
+		  turnfight.php, funkcje.php, farm.php (calosc do przetestowania)
+	* Przebuowana klasa Player [ciagle w trakcie] :
+		* Dzialanie w sesjach
+		* Zarzadzanie ekwipunkiem
+		* Zarzadzanie miksturami
+		* Zarzadzanie surowcami
+		* Wprowadzenie systemu 'sygnalizacji zmiany ekwipunku' - do testow
+	* Wszystkie surowce przeniesione do tabeli `resource`
+	* Dodanie opcji ssania krwi (Aegnor)
+
+wczesniejsze  <ivan-q@o2.pl>
+
+	* Zmienienie systemu mikstur z procentow na punkty
+	* Wprowadzenie systemu zgloszen na 'wspolna skrzynke'
+	* Dodanie kredytow i lokat w banku
+	* Napisanie nowego, efektywniejszego systemy wewnetrzenego forum
+	* Zmiana alchemi - dziala podobnie jak dla rzemieslnikow kowalstwo,
+	  tylko daje mniejsze premie
+	* Poprawnione dzialanie klas Kaplan i Druid [czary w walce]
+	* Usuniecie walki turowej
+	* Stworzenie nowego systemu szkol opartego na bazie MySQL
+	* Stworzenie nowego systemu sklepow opartego na bazie MySQL
+	* Stworzenie generatora miast
+	* Lochy - dzialanie oparte na kolumnie `jail` a nie wpisie w `location`
+	* W Magazynach Krolewskich mozna juz takze kupowac surowce
+	* Zmiana systemu rang na system oparty na bazie MySQL
+	* Stworzenie paneli do edycji mapy
+	* Przepisanie karczmy na odrobine inna i bardziej efektywna.
+	* Zmiana systemu wedrowki na autorski system mapy
+	* Drobne bugfixy w wielu plikach
+
+=====================================================================
+------------------------ ^^ KARA-TUR TEAM ^^ ------------------------
+=====================================================================

@@ -1,0 +1,20 @@
+.combatModeOn {
+color: red;
+}
+.combatModeOff {
+color: gray;
+}
+.target {
+border-style:solid;
+border-color:red;
+border-width:1px;
+}
+.tab_map td {
+background-repeat:no-repeat;
+}
+.fov_hidden {
+background-image: url( '../images/map/fov_hidden.gif' );
+}
+.fov_none {
+background: none;
+}

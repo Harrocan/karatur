@@ -1,0 +1,9 @@
+drwxr-xr-x    4 ivan     ivan         4096 Jan 25 19:01 .
+drwxr-xr-x   30 ivan     ivan        12288 Jun 18 13:02 ..
+-rwxrwxrwx    1 ivan     ivan        12747 Jan 25 19:01 Config_File.class.php
+-rwxrwxrwx    1 ivan     ivan        63248 Jan 25 19:01 Smarty.class.php
+-rwxrwxrwx    1 ivan     ivan        91847 Jan 25 19:01 Smarty_Compiler.class.php
+-rwxrwxrwx    1 ivan     ivan        92498 Jan 25 19:01 Smarty_Compiler.class.php~
+-rwxrwxrwx    1 ivan     ivan         3562 Jan 25 19:01 debug.tpl
+drwxr-xr-x    2 ivan     ivan         4096 Jan 25 19:03 internals
+drwxr-xr-x    2 ivan     ivan         4096 Jan 25 19:02 plugins

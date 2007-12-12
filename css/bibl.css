@@ -1,0 +1,79 @@
+.tekst{
+font-style:italic;
+}
+.bibl-menu{
+position:relative;
+display:block;
+background:url('../images/layout_bibl/perg_top3.png');
+width: 77px;
+text-align:center;
+color:white;
+padding-left:13px;
+padding-top:12px;
+height: 38px;
+}
+div.bibl-menu:hover{
+background:url('../images/layout_bibl/perg_top.png');
+}
+div.bibl-menu:hover div.bibl-list{
+display:block;
+}
+.bibl-roll3{
+width:150px;
+height:39;
+left:7px;
+background:url('../images/layout_bibl/perg_top2.png');
+}
+.bibl-roll4{
+width:170px;
+height:44px;
+right:25px;
+background:url('../images/layout_bibl/perg_top4.png');
+}
+.bibl-list{
+display:none;
+position:absolute;
+top:48px;
+width:150px;
+left:3px;
+}
+.bibl-roll{
+width:166px;
+height:52;
+left:7px;
+background:url('../images/layout_bibl/perg_bot.png');
+}
+.bibl-roll2{
+width:150px;
+height:52;
+left:7px;
+background:url('../images/layout_bibl/perg_bot2.png');
+}
+.bibl-autor {
+cursor:default;
+color:black;
+background:url('../images/layout_bibl/perg_mid.png');
+position:relative;
+}
+div.bibl-autor:hover {
+background:#400000;
+}
+.bibl-title-list{
+display:none;
+list-style-position:inside;
+position:absolute;
+top:-40px;
+width:150px;
+left:146px;
+}
+div.bibl-autor:hover div.bibl-title-list {
+display:block;
+}
+.bibl-title {
+background:url('../images/layout_bibl/perg_mid.png');
+cursor:default;
+position:relative;
+}
+div.bibl-title:hover {
+background:#400000;
+}

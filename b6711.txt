@@ -1,0 +1,154 @@
+0
+Thragor: test
+0
+Thragor: i jak ?
+0
+Thragor: bez polskich znakow ~~
+0
+Thragor: d&#243;pa
+0
+Z&#243;zi&#322;: d&#243;pa
+0
+Z&#243;zi&#322;: &#243;&#211;&#243;
+0
+Thragor: test
+0
+Thragor: l
+0
+mie&#322;: kk
+0
+ma&#108;y: hehehe
+0
+m&#243;&#108;: no ale nadal nie mozna pisac polskich znaczkow <img src='images/smile.gif' border=0 align='absmiddle'>
+0
+jo&#108;: mm
+0
+jo&#108;: mm
+0
+jo&#108;: test
+0
+jo&#108;: <img src='images/smile.gif' border=0 align='absmiddle'>
+0
+kroffa: pfff
+0
+kroffa: zzz
+0
+kroffa: mm
+0
+kroffa: mm
+0
+kroffa: ff
+0
+b&#378;dzium: <img src='images/smile.gif' border=0 align='absmiddle'>
+0
+kroffa: cholera no ~~
+0
+Iss: no panowie myslcie
+0
+b&#378;dzium: hehe - ciii Iss <img src='images/wink.gif' border=0 align='absmiddle'>
+0
+kroffa: *usmiecha sie*
+0
+Iss: a no racja bo nastepnym podpadne <img src='images/tongue.gif' border=0 align='absmiddle'>
+0
+kroffa: *u¶miecha siê*
+0
+kroffa: oho ... czyzbym mial jakis krzak ?
+0
+kroffa: *u&#322;miecha si&#322;*
+0
+b&#378;dzium: *chowa Iss za siebie* - nie tykac - jest pod ochrona *u&#322;miecha si&#322;*
+0
+Iss: wiesz, ze sama sobie poradze w razie czego <img src='images/tongue.gif' border=0 align='absmiddle'>
+0
+b&#378;dzium: wiem <img src='images/wink.gif' border=0 align='absmiddle'>
+0
+b&#108;&#261;d: ff
+0
+b&#108;&#261;d: ~~
+0
+b&#108;&#261;d: &gt;.&lt;
+0
+IvaN: grrrr
+0
+Thragor: test
+0
+Kovu: ivan 
+0
+Thragor: co ?
+0
+Kovu: aby to na pewni jest test ?~~
+0
+Kovu: a xco robi tu iss??
+0
+Thragor: haczyk jest taki ... nie ma polskich liter
+0
+Thragor: Iss se siedzi ... nie bornie jej
+0
+Iss: juz znikam... nie krzyczcie <img src='images/wink.gif' border=0 align='absmiddle'>
+0
+Thragor: z tymi letarmi jest tak ze jak wpiszesz cos z literkami to wogole polyka wiadomosc
+0
+Thragor: *literkami
+0
+Kovu: ~~
+0
+Kovu: powiem tak..
+0
+Kovu: NIE!!
+0
+Thragor: ale ... czat jest szybki, lekki
+0
+Kovu: n
+0
+Kovu: i
+0
+Kovu: e
+0
+Thragor: i moze byc dowolnie koloryzowany
+0
+Thragor: bedzie mial wszystko to co stary
+0
+Kovu: nie podoba mi sie .. wiem ze jest do przebudowy ale mi sie nie podoba
+0
+Thragor: nawet zastepowanie usmiechow
+0
+Thragor: narazie sa emotki ale ich nie bedzie
+0
+Kovu: wsyzstklo ?
+0
+Thragor: wszystko a nawet wiecej bedzie mogl miec
+0
+Kovu: czyli zamiast *u&#322;miecha si&#322;* bedzie *usmiecha sie* i beda kolo\\ry zielone pomiedzy ** ??
+0
+Thragor: jak widzisz juz jest zastepowwaneie usmiechow 
+0
+Thragor: tylko narazie niepoprawny napis dalem
+0
+Kovu: *u&#322;miecha si&#322;**u&#322;miecha si&#322;**u&#322;miecha si&#322;*
+0
+Thragor: daltego tak mi na nim zalezy
+0
+Kovu: jak bedzie wygladalo normalnie to ok .. i zzeby nie trza bylo niku wpisywac na poczatku to tez git
+0
+Thragor: to jest zawanswany system AJAX
+0
+Thragor: dlatego caly czas go badam i robie rozne zabiegi
+0
+Kovu: jak bedzie mial wsyzstko co stary to ok zgasdzakl m sie ale przed wypuiszczeniem ma byc pokazany mnie
+0
+Thragor: z tym logowaniem prawdopodobnie tez bedzie sie dalo cos zrobic
+0
+Thragor: no wiem ze bedzie pokazany .... najpierw trzeba go jeszcze ostro dopracowac
+0
+Thragor: ale zasade dzialania widzisz .... nie wiem czy wiesz ... ale to jest wszystki pisane w PHP
+0
+Thragor: a strona sie nie odswieza
+0
+Thragor: to jest naprawde ostry bajer <img src='images/wink.gif' border=0 align='absmiddle'>
+0
+Thragor: do gory po lewej masz kolorystyke ... spr&#243;buj sobie <img src='images/wink.gif' border=0 align='absmiddle'>
+0
+Thragor: to obsluguje dynamiczne zmienie shitow
+0
+Thragor: hh

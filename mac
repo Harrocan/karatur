@@ -1,0 +1,1 @@
+/sbin/ip n s | awk '{print$1,$5}' |grep -w $1 |awk '{print $2}'

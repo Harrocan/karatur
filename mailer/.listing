@@ -1,0 +1,7 @@
+drwxr-xr-x    3 ivan     ivan         4096 Jan 25 19:35 .
+drwxr-xr-x   30 ivan     ivan        12288 Jun 18 13:02 ..
+-rwxrwxrwx    1 ivan     ivan        45356 Jan 25 19:35 class.phpmailer.php
+-rwxrwxrwx    1 ivan     ivan        33387 Jan 25 19:35 class.smtp.php
+-rwxrwxrwx    1 ivan     ivan          169 Jan 25 19:35 index.htm
+drwxr-xr-x    2 ivan     ivan         4096 Jan 25 19:35 language
+-rwxrwxrwx    1 ivan     ivan          375 Jan 25 19:35 mailerconfig.php

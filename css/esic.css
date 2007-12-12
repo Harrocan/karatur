@@ -1,0 +1,60 @@
+* {
+color: #904141;
+font-family: verdana;
+font-size: 10px;
+}
+table {
+border-spacing: 0px;
+/*border-collapse: collapse;*/
+}
+.td {
+border-top: solid #904141 1px;
+border-bottom: solid #904141 1px;
+border-left: solid #904141 1px;
+border-right: solid #904141 1px;
+}
+.title {
+color: #ffffff;
+font-size: 14px;
+font-weight:bold;
+font-style:italic;
+}
+.border {
+background:#490000;
+width:1px;
+height:2px;
+}
+b {
+color: #ab2020;
+}
+input, textarea, select {
+color: #904141;
+font-size: 10 px;
+background: black;
+border: solid gray 1px;
+}
+a {
+text-decoration: none;
+text-transform: none;
+color: lightgrey;
+font-size: 10px;
+}
+a:hover {
+text-decoration: none;
+text-transform: none;
+color: red;
+font-size: 10px;
+}
+body {
+background: #000000;
+}
+body, iframe, select, textarea {
+scrollbar-face-color: black;
+scrollbar-highlight-color: gray; 
+scrollbar-shadow-color: gray; 
+scrollbar-3dlight-color: black; 
+scrollbar-arrow-color: gray;
+scrollbar-track-color: black; 
+scrollbar-darkshadow-color: black; 
+scrollbar-base-color: black;
+}

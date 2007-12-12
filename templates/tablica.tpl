@@ -1,0 +1,3 @@
+<br><br>Oto tablica informacyjna na ktorej znajduja sie wazne krolewskie wiesci:<br><br><br><br>
+<i>Wladcy informuja iz reklamy pokazywane nad miastem sa ukazywane po: poinformowaniu Uriel'a listownie o checi zamieszczeina tam swej reklamy (w liscie zawarte winno byc na ile dni ma byc dana reklama i czego, oraz tresc tej reklamy nie przekraczajaca 40 znakow) i wplacie sumy Tyraelowi (koszt reklamy na jeden dzien wynosi 10000 sztuk zlota przy czym kazdy nastepny dzien to dodatkowe 5000 sztuk zlota)</i>
+<br><br><a href="city.php">przeczytawszy wiesci po krotkim namysleniu postanawiasz odejsc.</a>

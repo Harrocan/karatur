@@ -1,0 +1,998 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-2">
+<title>KaraTur Class: Dokumentacja klasy Fighter</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Wygenerowano przez Doxygen 1.4.7 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Strona&nbsp;główna</span></a></li>
+    <li id="current"><a href="annotated.html"><span>Struktury&nbsp;Danych</span></a></li>
+    <li><a href="files.html"><span>Pliki</span></a></li>
+    <li><a href="pages.html"><span>Dodatkowe&nbsp;strony</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;<u>S</u>zukaj&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Struktury&nbsp;danych</span></a></li>
+    <li><a href="functions.html"><span>Pola&nbsp;danych</span></a></li>
+  </ul></div>
+<h1>Dokumentacja klasy Fighter</h1><!-- doxytag: class="Fighter" -->Klasa obsugujaca gracza.  
+<a href="#_details">Więcej...</a>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Metody publiczne</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#e1f22e8132d46d36f2a80eaa438cfcf9">CombatGetVal</a> ($val)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#8357a9848c2bb7a54a155dfa091628cf">CombatEquipWt</a> ($what, $amount)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#9ad7f5bc9a6125d4bc717543b3cc67bb">AwardExp</a> ($exp)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#ba21a412bcf266cebd27242c40d8467c">AwardSkill</a> ($skills)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#836b5eaff9e81e0d442503c8afbfb39a">GetWpnType</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#6cf296bc4cfadba623234962e9fd5cab">ApplyChanges</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#2d8311152558f2db2851ad7f8c5c109c">SqlExec</a> ($sql)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#b9a5d5c17d09613a08b6e81d9a043d4e">__construct</a> ($pid)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#5c4b23b5a8357c7068762695540644a7">__get</a> ($val)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#6f6fb1b76d74b1660d6cbccff7b3520e">__set</a> ($field, $val)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#ccc7e20c14f662b14e659aa0b0c8e503">GetStat</a> ($stat)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#9ad7f5bc9a6125d4bc717543b3cc67bb">AwardExp</a> ($exp)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#ba21a412bcf266cebd27242c40d8467c">AwardSkill</a> ($skills)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#836b5eaff9e81e0d442503c8afbfb39a">GetWpnType</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#325bec9be03e4451193f8ab3a75eb7ea">CombatGetVal</a> ($field)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Modul walki - zwraca statystyki do walki.  <a href="#325bec9be03e4451193f8ab3a75eb7ea"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#8357a9848c2bb7a54a155dfa091628cf">CombatEquipWt</a> ($what, $amount)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Zmienianie wytrzymalosci broni.  <a href="#8357a9848c2bb7a54a155dfa091628cf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#6cf296bc4cfadba623234962e9fd5cab">ApplyChanges</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#caa055f718134a97550c54369e1db579">Restart</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#6226a01a9ca90ea1bc0af10dd0ffeddf">__construct</a> ($mid, $name=NULL)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#5c4b23b5a8357c7068762695540644a7">__get</a> ($val)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#6f6fb1b76d74b1660d6cbccff7b3520e">__set</a> ($field, $val)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#9ad7f5bc9a6125d4bc717543b3cc67bb">AwardExp</a> ($exp)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#ba21a412bcf266cebd27242c40d8467c">AwardSkill</a> ($skills)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#ccc7e20c14f662b14e659aa0b0c8e503">GetStat</a> ($stat)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#836b5eaff9e81e0d442503c8afbfb39a">GetWpnType</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#325bec9be03e4451193f8ab3a75eb7ea">CombatGetVal</a> ($field)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Modul walki - zwraca statystyki do walki.  <a href="#325bec9be03e4451193f8ab3a75eb7ea"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#8357a9848c2bb7a54a155dfa091628cf">CombatEquipWt</a> ($what, $amount)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Zmienianie wytrzymalosci broni.  <a href="#8357a9848c2bb7a54a155dfa091628cf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#6cf296bc4cfadba623234962e9fd5cab">ApplyChanges</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#caa055f718134a97550c54369e1db579">Restart</a> ()</td></tr>
+
+<tr><td colspan="2"><br><h2>Pola danych</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#3d09ccbfaf355264e7f9f8ca01825e97">$SqlDebug</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#d343627a12e8e41e10d4c9c6527c4471">$pl</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#d1a762b0b748ce352ca33c4eede22d90">$equip</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#87132d9a8114b40fb59103463eb28359">$type</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Atrybuty prywatne</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#ad9215acff8f2f5e046b3d64e9aab4b0">$fatugie</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#c5a41b273ab3c44e7aee9400b307a7bc">$stats</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#13a012aa4198885f1ec7cbb9dd8eb27a">$statarr</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#935c849225d6d6a9d59bd9754fae4abd">$sync</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFighter.html#ec050fd66a311379b830a8dca5008996">$dbstats</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Opis szczegółowy</h2>
+Klasa obsugujaca gracza. 
+<p>
+Zarzadza statystykami walki gracza i zajmuje sie kalkulowaniem wszystkiego 
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00021">21</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.<hr><h2>Dokumentacja konstruktora i destruktora</h2>
+<a class="anchor" name="b9a5d5c17d09613a08b6e81d9a043d4e"></a><!-- doxytag: member="Fighter::__construct" ref="b9a5d5c17d09613a08b6e81d9a043d4e" args="($pid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::__construct           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>pid</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00068">68</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="6226a01a9ca90ea1bc0af10dd0ffeddf"></a><!-- doxytag: member="Fighter::__construct" ref="6226a01a9ca90ea1bc0af10dd0ffeddf" args="($mid, $name=NULL)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::__construct           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>mid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>name</em> = <code>NULL</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00414">414</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<hr><h2>Dokumentacja funkcji składowych</h2>
+<a class="anchor" name="5c4b23b5a8357c7068762695540644a7"></a><!-- doxytag: member="Fighter::__get" ref="5c4b23b5a8357c7068762695540644a7" args="($val)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::__get           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>val</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00433">433</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="5c4b23b5a8357c7068762695540644a7"></a><!-- doxytag: member="Fighter::__get" ref="5c4b23b5a8357c7068762695540644a7" args="($val)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::__get           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>val</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00087">87</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="6f6fb1b76d74b1660d6cbccff7b3520e"></a><!-- doxytag: member="Fighter::__set" ref="6f6fb1b76d74b1660d6cbccff7b3520e" args="($field, $val)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::__set           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>val</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00437">437</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="6f6fb1b76d74b1660d6cbccff7b3520e"></a><!-- doxytag: member="Fighter::__set" ref="6f6fb1b76d74b1660d6cbccff7b3520e" args="($field, $val)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::__set           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>val</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00091">91</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="6cf296bc4cfadba623234962e9fd5cab"></a><!-- doxytag: member="Fighter::ApplyChanges" ref="6cf296bc4cfadba623234962e9fd5cab" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::ApplyChanges           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00563">563</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="6cf296bc4cfadba623234962e9fd5cab"></a><!-- doxytag: member="Fighter::ApplyChanges" ref="6cf296bc4cfadba623234962e9fd5cab" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::ApplyChanges           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00365">365</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="6cf296bc4cfadba623234962e9fd5cab"></a><!-- doxytag: member="Fighter::ApplyChanges" ref="6cf296bc4cfadba623234962e9fd5cab" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::ApplyChanges           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [abstract]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9ad7f5bc9a6125d4bc717543b3cc67bb"></a><!-- doxytag: member="Fighter::AwardExp" ref="9ad7f5bc9a6125d4bc717543b3cc67bb" args="($exp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::AwardExp           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>exp</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00448">448</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="9ad7f5bc9a6125d4bc717543b3cc67bb"></a><!-- doxytag: member="Fighter::AwardExp" ref="9ad7f5bc9a6125d4bc717543b3cc67bb" args="($exp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::AwardExp           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>exp</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00132">132</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="9ad7f5bc9a6125d4bc717543b3cc67bb"></a><!-- doxytag: member="Fighter::AwardExp" ref="9ad7f5bc9a6125d4bc717543b3cc67bb" args="($exp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::AwardExp           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>exp</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [abstract]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ba21a412bcf266cebd27242c40d8467c"></a><!-- doxytag: member="Fighter::AwardSkill" ref="ba21a412bcf266cebd27242c40d8467c" args="($skills)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::AwardSkill           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>skills</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00451">451</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="ba21a412bcf266cebd27242c40d8467c"></a><!-- doxytag: member="Fighter::AwardSkill" ref="ba21a412bcf266cebd27242c40d8467c" args="($skills)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::AwardSkill           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>skills</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00139">139</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="ba21a412bcf266cebd27242c40d8467c"></a><!-- doxytag: member="Fighter::AwardSkill" ref="ba21a412bcf266cebd27242c40d8467c" args="($skills)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::AwardSkill           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>skills</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [abstract]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8357a9848c2bb7a54a155dfa091628cf"></a><!-- doxytag: member="Fighter::CombatEquipWt" ref="8357a9848c2bb7a54a155dfa091628cf" args="($what, $amount)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::CombatEquipWt           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>what</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>amount</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Zmienianie wytrzymalosci broni. 
+<p>
+'Uszkadzanie' broni. Teoretycznie przydatne tylko w walce. Zmniejsza wytrzymalosc noszonego ekwipunku i sprawdza czy juz sie zepsul kompletnie.<p>
+<dl compact><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>[what]</em>&nbsp;</td><td>okreslenie czesci ekwipunku do 'uszkodzenia' </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>[amount]</em>&nbsp;</td><td>o ile zmiejszyc wytrzmalosc przedmiotu</td></tr>
+  </table>
+</dl>
+<dl compact><dt><b>Zwraca:</b></dt><dd>TRUE lub FALSE w przypadku niepowodzenia </dd></dl>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00560">560</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="8357a9848c2bb7a54a155dfa091628cf"></a><!-- doxytag: member="Fighter::CombatEquipWt" ref="8357a9848c2bb7a54a155dfa091628cf" args="($what, $amount)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::CombatEquipWt           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>what</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>amount</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Zmienianie wytrzymalosci broni. 
+<p>
+'Uszkadzanie' broni. Teoretycznie przydatne tylko w walce. Zmniejsza wytrzymalosc noszonego ekwipunku i sprawdza czy juz sie zepsul kompletnie.<p>
+<dl compact><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>[what]</em>&nbsp;</td><td>okreslenie czesci ekwipunku do 'uszkodzenia' </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>[amount]</em>&nbsp;</td><td>o ile zmiejszyc wytrzmalosc przedmiotu</td></tr>
+  </table>
+</dl>
+<dl compact><dt><b>Zwraca:</b></dt><dd>TRUE lub FALSE w przypadku niepowodzenia </dd></dl>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00339">339</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="8357a9848c2bb7a54a155dfa091628cf"></a><!-- doxytag: member="Fighter::CombatEquipWt" ref="8357a9848c2bb7a54a155dfa091628cf" args="($what, $amount)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::CombatEquipWt           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>what</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>amount</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [abstract]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="325bec9be03e4451193f8ab3a75eb7ea"></a><!-- doxytag: member="Fighter::CombatGetVal" ref="325bec9be03e4451193f8ab3a75eb7ea" args="($field)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::CombatGetVal           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>field</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Modul walki - zwraca statystyki do walki. 
+<p>
+Wstepny modul do walki. Zwraca podstawowe [i wystarczajace] dane do walki. Obecnie zwraca : 'armor' - sumaryczna wartosc pancerza z uzglednieniem wszystkich modyfikatorow, tych z czaru obronnego takze 'damage' - obrazenia jakie postac zada. Sama uwzglednia czy to czar, luk czy bron. takze sama wprowadza zmienna losowa do obrazen. Trzeba pamietac ze czar ma wyzszy priorytet niz bron ! 'critical' - szansa na krytyk. Kalkulowana w oparciu o dzierzona bron. 'miss' - szansa na unikniecie, obliczana z uwzglednieniem premii i kar 'attack' - szansa na zadanie ciosu. Takze uwzglednia wszelkie mozliwosci, tak jak i bron jaka sie uzywa<p>
+<dl compact><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>[field]</em>&nbsp;</td><td>Wartosc jaka chce sie uzyskac. Patrz wyzej.</td></tr>
+  </table>
+</dl>
+<dl compact><dt><b>Zwraca:</b></dt><dd>Obliczona zadana wartosc </dd></dl>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00508">508</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="325bec9be03e4451193f8ab3a75eb7ea"></a><!-- doxytag: member="Fighter::CombatGetVal" ref="325bec9be03e4451193f8ab3a75eb7ea" args="($field)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::CombatGetVal           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>field</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Modul walki - zwraca statystyki do walki. 
+<p>
+Wstepny modul do walki. Zwraca podstawowe [i wystarczajace] dane do walki. Obecnie zwraca : 'armor' - sumaryczna wartosc pancerza z uzglednieniem wszystkich modyfikatorow, tych z czaru obronnego takze 'damage' - obrazenia jakie postac zada. Sama uwzglednia czy to czar, luk czy bron. takze sama wprowadza zmienna losowa do obrazen. Trzeba pamietac ze czar ma wyzszy priorytet niz bron ! 'critical' - szansa na krytyk. Kalkulowana w oparciu o dzierzona bron. 'miss' - szansa na unikniecie, obliczana z uwzglednieniem premii i kar 'attack' - szansa na zadanie ciosu. Takze uwzglednia wszelkie mozliwosci, tak jak i bron jaka sie uzywa<p>
+<dl compact><dt><b>Parametry:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>[field]</em>&nbsp;</td><td>Wartosc jaka chce sie uzyskac. Patrz wyzej.</td></tr>
+  </table>
+</dl>
+<dl compact><dt><b>Zwraca:</b></dt><dd>Obliczona zadana wartosc </dd></dl>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00173">173</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="e1f22e8132d46d36f2a80eaa438cfcf9"></a><!-- doxytag: member="Fighter::CombatGetVal" ref="e1f22e8132d46d36f2a80eaa438cfcf9" args="($val)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::CombatGetVal           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>val</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [abstract]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ccc7e20c14f662b14e659aa0b0c8e503"></a><!-- doxytag: member="Fighter::GetStat" ref="ccc7e20c14f662b14e659aa0b0c8e503" args="($stat)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::GetStat           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>stat</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00455">455</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="ccc7e20c14f662b14e659aa0b0c8e503"></a><!-- doxytag: member="Fighter::GetStat" ref="ccc7e20c14f662b14e659aa0b0c8e503" args="($stat)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::GetStat           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>stat</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00100">100</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="836b5eaff9e81e0d442503c8afbfb39a"></a><!-- doxytag: member="Fighter::GetWpnType" ref="836b5eaff9e81e0d442503c8afbfb39a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::GetWpnType           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00487">487</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="836b5eaff9e81e0d442503c8afbfb39a"></a><!-- doxytag: member="Fighter::GetWpnType" ref="836b5eaff9e81e0d442503c8afbfb39a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::GetWpnType           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00148">148</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="836b5eaff9e81e0d442503c8afbfb39a"></a><!-- doxytag: member="Fighter::GetWpnType" ref="836b5eaff9e81e0d442503c8afbfb39a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::GetWpnType           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [abstract]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="caa055f718134a97550c54369e1db579"></a><!-- doxytag: member="Fighter::Restart" ref="caa055f718134a97550c54369e1db579" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::Restart           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00566">566</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="caa055f718134a97550c54369e1db579"></a><!-- doxytag: member="Fighter::Restart" ref="caa055f718134a97550c54369e1db579" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::Restart           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00401">401</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="2d8311152558f2db2851ad7f8c5c109c"></a><!-- doxytag: member="Fighter::SqlExec" ref="2d8311152558f2db2851ad7f8c5c109c" args="($sql)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::SqlExec           </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>sql</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00030">30</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<hr><h2>Dokumentacja pól</h2>
+<a class="anchor" name="ec050fd66a311379b830a8dca5008996"></a><!-- doxytag: member="Fighter::$dbstats" ref="ec050fd66a311379b830a8dca5008996" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::$dbstats<code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00413">413</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="d1a762b0b748ce352ca33c4eede22d90"></a><!-- doxytag: member="Fighter::$equip" ref="d1a762b0b748ce352ca33c4eede22d90" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::$equip          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00062">62</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="ad9215acff8f2f5e046b3d64e9aab4b0"></a><!-- doxytag: member="Fighter::$fatugie" ref="ad9215acff8f2f5e046b3d64e9aab4b0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::$fatugie<code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00064">64</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="d343627a12e8e41e10d4c9c6527c4471"></a><!-- doxytag: member="Fighter::$pl" ref="d343627a12e8e41e10d4c9c6527c4471" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::$pl          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00061">61</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="3d09ccbfaf355264e7f9f8ca01825e97"></a><!-- doxytag: member="Fighter::$SqlDebug" ref="3d09ccbfaf355264e7f9f8ca01825e97" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::$SqlDebug          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00029">29</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="13a012aa4198885f1ec7cbb9dd8eb27a"></a><!-- doxytag: member="Fighter::$statarr" ref="13a012aa4198885f1ec7cbb9dd8eb27a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::$statarr<code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00066">66</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="c5a41b273ab3c44e7aee9400b307a7bc"></a><!-- doxytag: member="Fighter::$stats" ref="c5a41b273ab3c44e7aee9400b307a7bc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::$stats<code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00065">65</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="935c849225d6d6a9d59bd9754fae4abd"></a><!-- doxytag: member="Fighter::$sync" ref="935c849225d6d6a9d59bd9754fae4abd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::$sync<code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00067">67</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<a class="anchor" name="87132d9a8114b40fb59103463eb28359"></a><!-- doxytag: member="Fighter::$type" ref="87132d9a8114b40fb59103463eb28359" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fighter::$type          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definicja w linii <a class="el" href="fighter_8class_8php-source.html#l00063">63</a> pliku <a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a>.
+</div>
+</div><p>
+<hr>Dokumentacja dla tej klasy została wygenerowana z pliku:<ul>
+<li>/var/www/localhost/htdocs/karatur/class/<a class="el" href="fighter_8class_8php-source.html">fighter.class.php</a></ul>
+<hr size="1"><address style="align: right;"><small>Wygenerowano Wed Jan 24 21:54:55 2007 dla KaraTur Class programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.7 </small></address>
+</body>
+</html>

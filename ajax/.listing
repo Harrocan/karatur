@@ -1,0 +1,9 @@
+drwxr-xr-x    2 ivan     ivan         4096 Jun  8 16:25 .
+drwxr-xr-x   30 ivan     ivan        12288 Jun 18 13:02 ..
+-rw-r--r--    1 ivan     ivan         1256 Jun  8 15:55 ajax_base.php
+-rw-r--r--    1 ivan     ivan         9332 Jun  8 15:55 ajax_chat.php
+-rw-r--r--    1 ivan     ivan         3093 May  3 01:27 ajax_combatMap.php
+-rw-r--r--    1 ivan     ivan         2520 Jun  8 16:25 ajax_head.php
+-rw-r--r--    1 ivan     ivan          590 Jun  8 15:11 ajax_mail.php
+-rw-r--r--    1 ivan     ivan         5075 Jun  1 13:57 ajax_mapa.php
+-rw-r--r--    1 ivan     ivan         2135 May 14 16:45 ajax_zgloszenia.php

@@ -1,0 +1,444 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-2">
+<title>KaraTur Class: Plik źródłowy /var/www/localhost/htdocs/karatur/class/battle.class.php</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Wygenerowano przez Doxygen 1.4.7 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Strona&nbsp;główna</span></a></li>
+    <li><a href="annotated.html"><span>Struktury&nbsp;Danych</span></a></li>
+    <li id="current"><a href="files.html"><span>Pliki</span></a></li>
+    <li><a href="pages.html"><span>Dodatkowe&nbsp;strony</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;<u>S</u>zukaj&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Lista&nbsp;plików</span></a></li>
+    <li><a href="globals.html"><span>Globalne</span></a></li>
+  </ul></div>
+<h1>/var/www/localhost/htdocs/karatur/class/battle.class.php</h1><a href="battle_8class_8php.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="battle_8class_8php.html#768c3c4f2905afdddbbedcb0533b3a57">00003</a> define( '<a class="code" href="battle_8class_8php.html#768c3c4f2905afdddbbedcb0533b3a57">B_BATTLE_NONE</a>', -1 );
+<a name="l00004"></a><a class="code" href="battle_8class_8php.html#95643aefb6c33888828d34f41bcd3c7b">00004</a> define( '<a class="code" href="battle_8class_8php.html#95643aefb6c33888828d34f41bcd3c7b">B_BATTLE_BEGIN</a>', 2 );
+<a name="l00005"></a><a class="code" href="battle_8class_8php.html#d8f7f4b1979a65df7c86ecd1c2301727">00005</a> define( '<a class="code" href="battle_8class_8php.html#d8f7f4b1979a65df7c86ecd1c2301727">B_BATTLE_END</a>', 0 );
+<a name="l00006"></a><a class="code" href="battle_8class_8php.html#6409a91745cf895d0e21c67c7d23ee8d">00006</a> define( '<a class="code" href="battle_8class_8php.html#6409a91745cf895d0e21c67c7d23ee8d">B_BATTLE_CONT</a>', 1 );
+<a name="l00007"></a>00007 
+<a name="l00008"></a><a class="code" href="battle_8class_8php.html#817088adffee6bb42ac49e5bd5f73518">00008</a> define( '<a class="code" href="battle_8class_8php.html#817088adffee6bb42ac49e5bd5f73518">B_ROUND_END</a>', 3);
+<a name="l00009"></a><a class="code" href="battle_8class_8php.html#5c272bbe5cc7bc88c485f3435e289133">00009</a> define( '<a class="code" href="battle_8class_8php.html#5c272bbe5cc7bc88c485f3435e289133">B_ROUND_CONT</a>', 4);
+<a name="l00010"></a><a class="code" href="battle_8class_8php.html#4a056ce565960c279740dca37d203ee2">00010</a> define( '<a class="code" href="battle_8class_8php.html#4a056ce565960c279740dca37d203ee2">B_ROUND_BEGIN</a>', 5);
+<a name="l00011"></a><a class="code" href="classBattle.html">00011</a> <span class="keyword">class </span><a class="code" href="classBattle.html">Battle</a> {
+<a name="l00012"></a><a class="code" href="classBattle.html#cb4ece1bc3a4d4ed1c2592fd95be0cd4">00012</a>         <span class="keyword">public</span> <a class="code" href="classBattle.html#cb4ece1bc3a4d4ed1c2592fd95be0cd4">$figures</a>;
+<a name="l00013"></a><a class="code" href="classBattle.html#99708777031460ed01ce1f5e5a1d6663">00013</a>         <span class="keyword">public</span> <a class="code" href="classBattle.html#99708777031460ed01ce1f5e5a1d6663">$groups</a>;
+<a name="l00014"></a><a class="code" href="classBattle.html#423d537bb695673bfcf4e8cac35ca9ce">00014</a>         <span class="keyword">public</span> <a class="code" href="classBattle.html#423d537bb695673bfcf4e8cac35ca9ce">$afterbattle</a>;
+<a name="l00015"></a><a class="code" href="classBattle.html#d5c2a1d2430facac03bec1ffbbfe88b7">00015</a>         <span class="keyword">private</span> <a class="code" href="classBattle.html#d5c2a1d2430facac03bec1ffbbfe88b7">$inbattle</a>;
+<a name="l00016"></a><a class="code" href="classBattle.html#23ce2812b452656e964bf9a488ff31c0">00016</a>         <span class="keyword">public</span> <a class="code" href="classBattle.html#23ce2812b452656e964bf9a488ff31c0">$currentnum</a>;
+<a name="l00017"></a><a class="code" href="classBattle.html#032dcda0a2b15d3f6a6f9dc775f7f5ed">00017</a>         <span class="keyword">public</span> <a class="code" href="classBattle.html#032dcda0a2b15d3f6a6f9dc775f7f5ed">$current</a>;
+<a name="l00018"></a><a class="code" href="classBattle.html#4a1098cdb976ed43677e20c8c0b1262a">00018</a>         <span class="keyword">public</span> <a class="code" href="classBattle.html#4a1098cdb976ed43677e20c8c0b1262a">$amount</a>;
+<a name="l00019"></a><a class="code" href="classBattle.html#04c0eaee5fd23ee03b2b93cc2958036b">00019</a>         <span class="keyword">public</span> <a class="code" href="classBattle.html#04c0eaee5fd23ee03b2b93cc2958036b">$status</a>;
+<a name="l00020"></a><a class="code" href="classBattle.html#b7157c301dd1ca7cdccc651055c613b4">00020</a>         <span class="keyword">public</span> <a class="code" href="classBattle.html#b7157c301dd1ca7cdccc651055c613b4">$roundstatus</a>;
+<a name="l00021"></a><a class="code" href="classBattle.html#63f05f36eaaafa2aff6bf057b30a31c2">00021</a>         <span class="keyword">public</span> <a class="code" href="classBattle.html#63f05f36eaaafa2aff6bf057b30a31c2">$type</a>;
+<a name="l00022"></a>00022         <span class="comment">//public $smarty;</span>
+<a name="l00023"></a><a class="code" href="classBattle.html#d62e91c024e716ba586fd1c8f98753b4">00023</a>         <span class="keyword">public</span> <a class="code" href="classBattle.html#d62e91c024e716ba586fd1c8f98753b4">$round</a>;
+<a name="l00024"></a><a class="code" href="classBattle.html#598153a4e65d8354b6ee311899085f33">00024</a>         function <a class="code" href="classBattle.html#598153a4e65d8354b6ee311899085f33">__construct</a>( <a class="code" href="classBattle.html#63f05f36eaaafa2aff6bf057b30a31c2">$type</a> ) {
+<a name="l00025"></a>00025                 <span class="keywordflow">if</span>( !in_array( <a class="code" href="classBattle.html#63f05f36eaaafa2aff6bf057b30a31c2">$type</a>, array( 'pvp', 'pvm' ) ) ) {
+<a name="l00026"></a>00026                         trigger_error( <span class="stringliteral">"Nieobslugwany typ walki $type !"</span>, E_USER_ERROR );
+<a name="l00027"></a>00027                         $this -&gt; figures = NULL;
+<a name="l00028"></a>00028                         <span class="keywordflow">return</span> FALSE;
+<a name="l00029"></a>00029                 }
+<a name="l00030"></a>00030                 $this -&gt; type = <a class="code" href="classBattle.html#63f05f36eaaafa2aff6bf057b30a31c2">$type</a>;
+<a name="l00031"></a>00031                 $this -&gt; figures = array();
+<a name="l00032"></a>00032                 $this -&gt; groups = array();
+<a name="l00033"></a>00033                 $this -&gt; afterbattle = array();
+<a name="l00034"></a>00034                 $this -&gt; amount = 0;
+<a name="l00035"></a>00035                 $this -&gt; status = <a class="code" href="battle_8class_8php.html#768c3c4f2905afdddbbedcb0533b3a57">B_BATTLE_NONE</a>;
+<a name="l00036"></a>00036                 $this -&gt; current = NULL;
+<a name="l00037"></a>00037                 $this -&gt; currentnum = 0;
+<a name="l00038"></a>00038                 <span class="comment">//global $smarty;</span>
+<a name="l00039"></a>00039                 <span class="comment">//$this -&gt; smarty =&amp; $smarty;</span>
+<a name="l00040"></a>00040         }
+<a name="l00041"></a>00041 
+<a name="l00042"></a><a class="code" href="classBattle.html#fe42e5ec395e2b18d31b9897a8e0290f">00042</a>         function <a class="code" href="classBattle.html#fe42e5ec395e2b18d31b9897a8e0290f">FigureAdd</a>( <a class="code" href="classBattle.html#cb4ece1bc3a4d4ed1c2592fd95be0cd4">$figures</a>, $group ) {
+<a name="l00043"></a>00043                 <span class="keywordflow">if</span>( !is_array( <a class="code" href="classBattle.html#cb4ece1bc3a4d4ed1c2592fd95be0cd4">$figures</a> ) ) {
+<a name="l00044"></a>00044                         <a class="code" href="classBattle.html#cb4ece1bc3a4d4ed1c2592fd95be0cd4">$figures</a> = array( <a class="code" href="classBattle.html#cb4ece1bc3a4d4ed1c2592fd95be0cd4">$figures</a> );
+<a name="l00045"></a>00045                 }
+<a name="l00046"></a>00046                 $types = array( 'Fighter_player', 'Fighter_monster' );
+<a name="l00047"></a>00047                 foreach( <a class="code" href="classBattle.html#cb4ece1bc3a4d4ed1c2592fd95be0cd4">$figures</a> as $figure ) {
+<a name="l00048"></a>00048                         <span class="keywordflow">if</span>( !in_array( get_class( $figure ), $types ) ) {
+<a name="l00049"></a>00049                                 trigger_error( <span class="stringliteral">"Nie moge dodac tego typu obiektu "</span>.get_class( $figure ).<span class="stringliteral">" !"</span>, E_USER_ERROR );
+<a name="l00050"></a>00050                                 <span class="keywordflow">return</span> FALSE;
+<a name="l00051"></a>00051                         }
+<a name="l00052"></a>00052                         $insert = count( $this -&gt; figures );
+<a name="l00053"></a>00053                         $this -&gt; figures[<span class="stringliteral">"$insert"</span>] = array( 'figure' =&gt; $figure, 'group' =&gt; $group );
+<a name="l00054"></a>00054                         <span class="comment">//if( empty( $this -&gt; groups[$group] ) ) {</span>
+<a name="l00055"></a>00055                         <span class="comment">//      $this -&gt; groups[$group] = array( $insert );</span>
+<a name="l00056"></a>00056                         <span class="comment">//}</span>
+<a name="l00057"></a>00057                         <span class="comment">//else {</span>
+<a name="l00058"></a>00058                         <span class="comment">//      $this -&gt; groups[$group][] = $insert;</span>
+<a name="l00059"></a>00059                         <span class="comment">//}</span>
+<a name="l00060"></a>00060                         $this -&gt; amount ++;
+<a name="l00061"></a>00061                 }
+<a name="l00062"></a>00062         }
+<a name="l00063"></a>00063 
+<a name="l00064"></a><a class="code" href="classBattle.html#91fc6cbe0484f4dfcd820d9c3cd794bd">00064</a>         function <a class="code" href="classBattle.html#91fc6cbe0484f4dfcd820d9c3cd794bd">PickTarget</a>( $num, $group ) {
+<a name="l00065"></a>00065                 $grs = array_keys( $this -&gt; groups );
+<a name="l00066"></a>00066                 <span class="keywordflow">if</span>( count( $this -&gt; groups ) &lt; 2 ) {
+<a name="l00067"></a>00067                         <span class="keywordflow">return</span> NULL;
+<a name="l00068"></a>00068                 }
+<a name="l00069"></a>00069                 <span class="comment">//print_r( $this -&gt; groups);</span>
+<a name="l00070"></a>00070                 <span class="keywordflow">do</span> {
+<a name="l00071"></a>00071                         $rgrp = array_rand( $this -&gt; groups );
+<a name="l00072"></a>00072                         <span class="comment">//$gr = $grs[rand( 0, count( $grs )-1 )];</span>
+<a name="l00073"></a>00073                 } <span class="keywordflow">while</span>( $rgrp == $group );
+<a name="l00074"></a>00074                 <span class="comment">//$fgs = count( $this -&gt; groups[$gr] ) - 1;</span>
+<a name="l00075"></a>00075                 $rkey = array_rand( $this -&gt; groups[$rgrp] );
+<a name="l00076"></a>00076                 <span class="comment">//$target = $this -&gt; groups[$gr][rand( 0, $fgs )];</span>
+<a name="l00077"></a>00077                 <span class="comment">//} while( empty( $target ) );</span>
+<a name="l00078"></a>00078                 <span class="keywordflow">return</span> $this -&gt; groups[$rgrp][$rkey];
+<a name="l00079"></a>00079         }
+<a name="l00080"></a>00080 
+<a name="l00081"></a><a class="code" href="classBattle.html#d72bb105e7773ee99804e86ad45a8dbe">00081</a>         function <a class="code" href="classBattle.html#d72bb105e7773ee99804e86ad45a8dbe">BattleStart</a>() {
+<a name="l00082"></a>00082                 foreach( $this -&gt; figures as $key =&gt; $item ) {
+<a name="l00083"></a>00083                         $this -&gt; figures[$key]['exp'] = 0;
+<a name="l00084"></a>00084                         $this -&gt; figures[$key]['gold'] = 0;
+<a name="l00085"></a>00085                         $this -&gt; figures[$key]['gain'] = array( 'melee'=&gt;0, 'ranged'=&gt;0, 'cast'=&gt;0, 'miss'=&gt;0 );
+<a name="l00086"></a>00086                 }
+<a name="l00087"></a>00087         }
+<a name="l00088"></a>00088 
+<a name="l00089"></a><a class="code" href="classBattle.html#5c77727bd937c7b188917822a327d190">00089</a>         function <a class="code" href="classBattle.html#5c77727bd937c7b188917822a327d190">BattlePrepare</a>() {
+<a name="l00090"></a>00090                 global $smarty;
+<a name="l00091"></a>00091                 
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093                 $item = current( $this -&gt; figures );
+<a name="l00094"></a>00094                 $this -&gt; currentnum = key( $this -&gt; figures );
+<a name="l00095"></a>00095                 $this -&gt; inbattle = array();
+<a name="l00096"></a>00096                 <span class="comment">//echo "\n!{$this -&gt; currentnum}!\n";</span>
+<a name="l00097"></a>00097                 <span class="comment">//echo " --- ROZPOCZECIE WALKI ---\n";</span>
+<a name="l00098"></a>00098                 $player = array();
+<a name="l00099"></a>00099                 $this -&gt; groups = array();
+<a name="l00100"></a>00100                 foreach( $this -&gt; figures as $key =&gt; $item ) {
+<a name="l00101"></a>00101                         <span class="comment">//$toadd = array();</span>
+<a name="l00102"></a>00102                         <span class="comment">//$toadd['group'] = ;</span>
+<a name="l00103"></a>00103                         <span class="comment">//echo "GRUPA $key ------\n";</span>
+<a name="l00104"></a>00104                         <span class="comment">//foreach( $group as $id ) {</span>
+<a name="l00105"></a>00105                         <span class="keywordflow">if</span>( $item['figure'] -&gt; hp &lt;=0 ) {
+<a name="l00106"></a>00106                                 echo <span class="stringliteral">"Nie dodaje {$item['figure']-&gt;name} ! 0 HP !&lt;br&gt;"</span>;
+<a name="l00107"></a>00107                                 <span class="keywordflow">continue</span>;
+<a name="l00108"></a>00108                         }
+<a name="l00109"></a>00109                                 $this -&gt; inbattle[] = $key;
+<a name="l00110"></a>00110                                 <span class="comment">//$item = $this -&gt; figures[$id]['figure'];</span>
+<a name="l00111"></a>00111                                 <span class="comment">//$toadd['players'][] = $item['figure'] -&gt; name;</span>
+<a name="l00112"></a>00112                                 <span class="comment">//echo "     --{$id}::{$item-&gt;name}\n";</span>
+<a name="l00113"></a>00113                                 $this -&gt; groups[$item['group']][]=$key;
+<a name="l00114"></a>00114                                 <span class="comment">//echo "dodaje do grupy {$item['group']} :: $key&lt;br&gt;";</span>
+<a name="l00115"></a>00115                         <span class="comment">//}</span>
+<a name="l00116"></a>00116                         $player [$item['group']]['group'] = $item['group'];
+<a name="l00117"></a>00117                         $player [$item['group']]['players'][] = $item['figure'] -&gt; name.<span class="stringliteral">" hp:"</span>.$item['figure'] -&gt; hp;
+<a name="l00118"></a>00118                 }
+<a name="l00119"></a>00119                 <span class="comment">//echo "--------------------------\n";</span>
+<a name="l00120"></a>00120                 <span class="keywordflow">if</span>( count( $this -&gt; groups ) &lt; 2 ) {
+<a name="l00121"></a>00121                         trigger_error( <span class="stringliteral">"Za malo druzyn zeby zaczac walke !"</span> );
+<a name="l00122"></a>00122                         $this -&gt; status = <a class="code" href="battle_8class_8php.html#d8f7f4b1979a65df7c86ecd1c2301727">B_BATTLE_END</a>;
+<a name="l00123"></a>00123                         <span class="keywordflow">return</span> FALSE;
+<a name="l00124"></a>00124                 }
+<a name="l00125"></a>00125                 $smarty -&gt; assign( 'Starting', $player );
+<a name="l00126"></a>00126                 $smarty -&gt; display( 'battle/battleprepare.tpl' );
+<a name="l00127"></a>00127                 $this -&gt; status = <a class="code" href="battle_8class_8php.html#95643aefb6c33888828d34f41bcd3c7b">B_BATTLE_BEGIN</a>;
+<a name="l00128"></a>00128                 $this -&gt; round = 1;
+<a name="l00129"></a>00129                 <span class="keywordflow">return</span> TRUE;
+<a name="l00130"></a>00130         }
+<a name="l00131"></a>00131 
+<a name="l00132"></a><a class="code" href="classBattle.html#191f66665fd82f7d7522b7b9d9649748">00132</a>         function <a class="code" href="classBattle.html#191f66665fd82f7d7522b7b9d9649748">RoundPrepare</a>() {
+<a name="l00133"></a>00133                 global $smarty;
+<a name="l00134"></a>00134                 $this -&gt; roundstatus = <a class="code" href="battle_8class_8php.html#4a056ce565960c279740dca37d203ee2">B_ROUND_BEGIN</a>;
+<a name="l00135"></a>00135                 reset( $this -&gt; inbattle );
+<a name="l00136"></a>00136                 $this -&gt; currentnum = key( $this -&gt; inbattle );
+<a name="l00137"></a>00137                 $smarty -&gt; assign( <span class="stringliteral">"Roundno"</span>, $this -&gt; round );
+<a name="l00138"></a>00138                 $smarty -&gt; display( 'battle/roundprepare.tpl' );
+<a name="l00139"></a>00139         }
+<a name="l00140"></a>00140 
+<a name="l00141"></a><a class="code" href="classBattle.html#b2414a602e117207bf4ddf02adcb2da4">00141</a>         function <a class="code" href="classBattle.html#b2414a602e117207bf4ddf02adcb2da4">TurnPrepare</a>(  ) {
+<a name="l00142"></a>00142                 $fig =&amp; $this -&gt; figures[ $this -&gt; currentnum ];
+<a name="l00143"></a>00143                 $target = $this -&gt; <a class="code" href="classBattle.html#91fc6cbe0484f4dfcd820d9c3cd794bd">PickTarget</a>( $this -&gt; currentnum, $fig['group'] );
+<a name="l00144"></a>00144                 $fig['target'] = $target;
+<a name="l00145"></a>00145                 <span class="keywordflow">if</span>( $target === NULL ) {
+<a name="l00146"></a>00146                         $this -&gt; status = <a class="code" href="battle_8class_8php.html#d8f7f4b1979a65df7c86ecd1c2301727">B_BATTLE_END</a>;
+<a name="l00147"></a>00147                         <span class="keywordflow">return</span> NULL;
+<a name="l00148"></a>00148                 }
+<a name="l00149"></a>00149                 $enemy = $this -&gt; figures[$target];
+<a name="l00150"></a>00150                 $attacker = $fig['figure'];
+<a name="l00151"></a>00151                 $defender = $enemy['figure'];
+<a name="l00152"></a>00152                 $fig['attackstr'] = ceil( $attacker-&gt;GetStat('spd') / $defender-&gt;GetStat('spd') );
+<a name="l00153"></a>00153                 <span class="keywordflow">if</span>( $fig['attackstr'] &gt; 5 )
+<a name="l00154"></a>00154                         $fig['attackstr'] = 5;
+<a name="l00155"></a>00155                 <span class="keywordflow">return</span> $this -&gt; currentnum;
+<a name="l00156"></a>00156         }
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158         
+<a name="l00159"></a>00159 
+<a name="l00160"></a><a class="code" href="classBattle.html#b9d70be1059ede43be394891eeba64dd">00160</a>         function <a class="code" href="classBattle.html#b9d70be1059ede43be394891eeba64dd">TurnAttack</a>( ) {
+<a name="l00161"></a>00161                 global $smarty;
+<a name="l00162"></a>00162                 <span class="keywordflow">if</span>( $this -&gt; figures[$this -&gt; currentnum]['target'] === NULL ) {
+<a name="l00163"></a>00163                         <span class="keywordflow">return</span>;
+<a name="l00164"></a>00164                 }
+<a name="l00165"></a>00165                 $item =&amp; $this -&gt; figures[$this -&gt; currentnum];
+<a name="l00166"></a>00166                 $player =&amp; $this -&gt; figures[$this -&gt; currentnum]['figure'];
+<a name="l00167"></a>00167                 $enemy = $this -&gt; figures[$this -&gt; figures[$this -&gt; currentnum]['target']]['figure'];
+<a name="l00168"></a>00168                 <span class="comment">//$enamyid = key( $this -&gt; figures[$item['target']] );</span>
+<a name="l00169"></a>00169                 <span class="comment">//print_r( $item );</span>
+<a name="l00170"></a>00170                 $msg = '';
+<a name="l00171"></a>00171                 
+<a name="l00172"></a>00172                 $msg.= <span class="stringliteral">"&lt;u&gt;{$player -&gt; GetStat('name')}&lt;/u&gt; atakuje {$enemy-&gt;GetStat('name')}&lt;br&gt;&lt;ul&gt;"</span>;
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174                 <span class="keywordflow">if</span>( $player -&gt; hp &lt;= 0 ) {
+<a name="l00175"></a>00175                         $msg.= <span class="stringliteral">"&lt;li&gt;jest martwy&lt;br&gt;"</span>;
+<a name="l00176"></a>00176                 }
+<a name="l00177"></a>00177                 
+<a name="l00178"></a>00178                 <span class="keywordflow">for</span>( $i=0; $i &lt; $item['attackstr']; $i++ ) {
+<a name="l00179"></a>00179                         <span class="keywordflow">if</span>( $this -&gt; figures[$this -&gt; currentnum]['figure'] -&gt; hp &lt;= 0 ) {
+<a name="l00180"></a>00180                                 <span class="keywordflow">break</span>;
+<a name="l00181"></a>00181                         }
+<a name="l00182"></a>00182                         <span class="keywordflow">if</span>( $this -&gt; figures[$this -&gt; currentnum]['figure'] -&gt; GetStat('fatigue') &lt; 1 ) {
+<a name="l00183"></a>00183                                 $msg.= <span class="stringliteral">"&lt;li&gt;Jest zbyt zmeczony by dalej atakowac !&lt;/br&gt;"</span>;
+<a name="l00184"></a>00184                                 <span class="keywordflow">break</span>;
+<a name="l00185"></a>00185                         }
+<a name="l00186"></a>00186                         $unik = $enemy -&gt; CombatGetVal('miss') - $this -&gt; figures[$this -&gt; currentnum]['figure']-&gt; CombatGetVal('attack');
+<a name="l00187"></a>00187                         $szansa = rand( 1, 100 );
+<a name="l00188"></a>00188                         <span class="keywordflow">if</span>( $unik &gt;= $szansa &amp;&amp; $szansa &lt; 95 ) {
+<a name="l00189"></a>00189                                 $msg.= <span class="stringliteral">"&lt;li&gt;Przeciwnik unika ciosu !&lt;br&gt;"</span>;
+<a name="l00190"></a>00190                                 $item['gain']['miss'] += 0.01;
+<a name="l00191"></a>00191                                 <span class="keywordflow">if</span>( !empty( $this -&gt; equip['armor'] ) ) {
+<a name="l00192"></a>00192                                         $enemy -&gt; fatigue -= $enemy -&gt; equip['armor']['minlev'];
+<a name="l00193"></a>00193                                 }
+<a name="l00194"></a>00194                                 <span class="keywordflow">continue</span>;
+<a name="l00195"></a>00195                         }
+<a name="l00196"></a>00196                         $mod =0;
+<a name="l00197"></a>00197                         $dmg = $this -&gt; figures[$this -&gt; currentnum]['figure'] -&gt; CombatGetVal( 'damage' );
+<a name="l00198"></a>00198                         <span class="keywordflow">if</span>( $enemy -&gt; GetStat('fatigue') &gt; 0 ) {
+<a name="l00199"></a>00199                                 $mod = $enemy -&gt; CombatGetVal('armor');
+<a name="l00200"></a>00200                         }
+<a name="l00201"></a>00201                         $dmg -= $mod;
+<a name="l00202"></a>00202                         <span class="keywordflow">if</span>( $dmg &lt; 1 )
+<a name="l00203"></a>00203                                 $dmg = 0;
+<a name="l00204"></a>00204                         <span class="keywordflow">if</span>( $dmg &gt; $enemy -&gt; GetStat('hp') )
+<a name="l00205"></a>00205                                 $dmg = $enemy -&gt; GetStat('hp');
+<a name="l00206"></a>00206                         <span class="keywordflow">if</span>( $dmg &lt;= 0 ) {
+<a name="l00207"></a>00207                                 $msg.= <span class="stringliteral">"&lt;li&gt;Trafia lecz nie zadaje zadnych obrazen !&lt;br&gt;"</span>;
+<a name="l00208"></a>00208                                 <span class="keywordflow">continue</span>;
+<a name="l00209"></a>00209                         }
+<a name="l00210"></a>00210                         
+<a name="l00211"></a>00211                         $msg.= <span class="stringliteral">"&lt;li&gt;&lt;b&gt;Trafia&lt;/b&gt; ! Zadaje $dmg obrazen ... "</span>;
+<a name="l00212"></a>00212                         
+<a name="l00213"></a>00213                         $enemy -&gt; hp -= ( $dmg );
+<a name="l00214"></a>00214                         <span class="keywordflow">if</span>( $enemy -&gt; hp &gt; 0 ) {
+<a name="l00215"></a>00215                                 $msg.= <span class="stringliteral">"pozostalo {$enemy-&gt;hp}&lt;br&gt;"</span>;
+<a name="l00216"></a>00216                         }
+<a name="l00217"></a>00217                         <span class="keywordflow">else</span> {
+<a name="l00218"></a>00218                                 $msg.= <span class="stringliteral">"i zabija go"</span>;
+<a name="l00219"></a>00219                                 $this -&gt; <a class="code" href="classBattle.html#249ac6f33bf39cf04e0da4d74f045b23">DelFromCombat</a>($this -&gt; figures[$this -&gt; currentnum]['target'], $this -&gt; currentnum );
+<a name="l00220"></a>00220                         }
+<a name="l00221"></a>00221                         $msg .= <span class="stringliteral">" (za pomoca |"</span>.$player-&gt;GetWpnType().<span class="stringliteral">"|) "</span>;
+<a name="l00222"></a>00222                         <span class="keywordflow">if</span>( $player -&gt; GetWpnType() =='weapon' ) {
+<a name="l00223"></a>00223                                 $player -&gt; CombatEquipWt( 'weapon', 1 );
+<a name="l00224"></a>00224                                 <span class="keywordflow">if</span>( $this -&gt; figures[$this -&gt; currentnum]['figure'] -&gt; equip['weapon']['type'] == <span class="charliteral">'W'</span> ) {
+<a name="l00225"></a>00225                                         $item['gain']['melee'] += 0.01;
+<a name="l00226"></a>00226                                 }
+<a name="l00227"></a>00227                                 <span class="keywordflow">else</span> {
+<a name="l00228"></a>00228                                         $item['gain']['ranged'] += 0.01;
+<a name="l00229"></a>00229                                 }
+<a name="l00230"></a>00230                                 $player -&gt; fatigue -= $player -&gt; equip['weapon']['minlev'];
+<a name="l00231"></a>00231                         }
+<a name="l00232"></a>00232                         elseif( $player -&gt; GetWpnType() =='spell' ) {
+<a name="l00233"></a>00233                                 
+<a name="l00234"></a>00234                                 $player -&gt; mana -= $player -&gt; equip['spellatk']['power'];
+<a name="l00235"></a>00235                                 $item['gain']['cast'] += 0.01;
+<a name="l00236"></a>00236                         }
+<a name="l00237"></a>00237                         <span class="keywordflow">if</span>( $enemy -&gt; GetStat('hp') &lt;= 0 ) {
+<a name="l00238"></a>00238                                 <span class="keywordflow">break</span>;
+<a name="l00239"></a>00239                         }
+<a name="l00240"></a>00240                         
+<a name="l00241"></a>00241                         
+<a name="l00242"></a>00242                 }
+<a name="l00243"></a>00243                 $msg.= <span class="stringliteral">"&lt;/ul&gt;"</span>;
+<a name="l00244"></a>00244                 $smarty -&gt; assign( 'Message', $msg );
+<a name="l00245"></a>00245                 $smarty -&gt; display('battle/turn.tpl');
+<a name="l00246"></a>00246         }
+<a name="l00247"></a>00247 
+<a name="l00248"></a><a class="code" href="classBattle.html#57eb05c4fd5184280d4b74f44e832e8b">00248</a>         function <a class="code" href="classBattle.html#57eb05c4fd5184280d4b74f44e832e8b">TurnEnd</a>( ) {
+<a name="l00249"></a>00249                 $item = next( $this -&gt; inbattle );
+<a name="l00250"></a>00250                 <span class="keywordflow">if</span>( !empty( $item ) ) {
+<a name="l00251"></a>00251                         $this -&gt; currentnum = key( $this -&gt; inbattle );
+<a name="l00252"></a>00252                         $this -&gt; roundstatus = <a class="code" href="battle_8class_8php.html#5c272bbe5cc7bc88c485f3435e289133">B_ROUND_CONT</a>;
+<a name="l00253"></a>00253                 }
+<a name="l00254"></a>00254                 <span class="keywordflow">else</span> {
+<a name="l00255"></a>00255                         reset( $this -&gt; inbattle );
+<a name="l00256"></a>00256                         $this -&gt; currentnum = key( $this -&gt; inbattle );
+<a name="l00257"></a>00257                         $this -&gt; roundstatus = <a class="code" href="battle_8class_8php.html#817088adffee6bb42ac49e5bd5f73518">B_ROUND_END</a>;
+<a name="l00258"></a>00258                 }
+<a name="l00259"></a>00259         }
+<a name="l00260"></a>00260 
+<a name="l00261"></a><a class="code" href="classBattle.html#249ac6f33bf39cf04e0da4d74f045b23">00261</a>         function <a class="code" href="classBattle.html#249ac6f33bf39cf04e0da4d74f045b23">DelFromCombat</a>( $fid, $killerid = NULL ) {
+<a name="l00262"></a>00262                 <span class="comment">//echo "usuwam $fid ! Kilerid = $killerid&lt;br&gt;";</span>
+<a name="l00263"></a>00263                 <span class="comment">//$item =  $this -&gt; figures[$fid];</span>
+<a name="l00264"></a>00264                 <span class="comment">//$figure = $item['figure'];</span>
+<a name="l00265"></a>00265                 $grp = $this -&gt; figures[$fid]['group'];
+<a name="l00266"></a>00266                 <span class="comment">//unset( $this -&gt; figures[$item['target']] );</span>
+<a name="l00267"></a>00267                 <span class="comment">//unset( $this -&gt; figures[$fid] );</span>
+<a name="l00268"></a>00268                 unset( $this -&gt; inbattle[$fid] );
+<a name="l00269"></a>00269                 <span class="keywordflow">if</span>( $killerid !== NULL ) {
+<a name="l00270"></a>00270                         <span class="keywordflow">if</span>( empty( $this -&gt;figures[$killerid]['figure'] ) ) {
+<a name="l00271"></a>00271                                 trigger_error( <span class="stringliteral">"Zabojca oznaczony jako pusty !"</span>, E_USER_WARNING );
+<a name="l00272"></a>00272                         }
+<a name="l00273"></a>00273                         <span class="comment">//$this -&gt; figures[$fid]['killer'] = $this -&gt;figures[$killerid]['figure'];</span>
+<a name="l00274"></a>00274                         $this -&gt; figures[$fid]['killerid'] = $killerid;
+<a name="l00275"></a>00275                         <span class="comment">//$killer = $this -&gt;figures[$killerid]['figure'];</span>
+<a name="l00276"></a>00276                         <span class="comment">//print_r($killer);</span>
+<a name="l00277"></a>00277                 }
+<a name="l00278"></a>00278                 <span class="keywordflow">else</span> {
+<a name="l00279"></a>00279                         $killer = NULL;
+<a name="l00280"></a>00280                 }
+<a name="l00281"></a>00281                 $this -&gt; figures[$fid]['gain'] = $this -&gt;figures[$fid]['gain'];
+<a name="l00282"></a>00282                 <span class="comment">//$toadd = array( 'figure' =&gt; $figure, 'killer' =&gt; $killer, 'group' =&gt; $grp, 'gain' =&gt; $item['gain'] );</span>
+<a name="l00283"></a>00283                 <span class="comment">//$this -&gt; afterbattle[] = $toadd;</span>
+<a name="l00284"></a>00284                 <span class="comment">//$this -&gt; figures</span>
+<a name="l00285"></a>00285                 <span class="keywordflow">if</span>( !isset( $this -&gt; groups[$grp] ) ) {
+<a name="l00286"></a>00286                         <span class="keywordflow">return</span>;
+<a name="l00287"></a>00287                 }
+<a name="l00288"></a>00288                 $key = array_search( $fid, $this -&gt; groups[$grp] );
+<a name="l00289"></a>00289                 <span class="keywordflow">if</span>( $key === NULL ) {
+<a name="l00290"></a>00290                         echo <span class="stringliteral">"\nnie znaleziono klucza !\n"</span>;
+<a name="l00291"></a>00291                 }
+<a name="l00292"></a>00292                 <span class="comment">//print_r( $this -&gt; groups );</span>
+<a name="l00293"></a>00293                 
+<a name="l00294"></a>00294                 unset( $this -&gt; groups[$grp][$key] );
+<a name="l00295"></a>00295                 <span class="keywordflow">if</span>( empty( $this -&gt; groups[$grp] ) ) {
+<a name="l00296"></a>00296                         <span class="comment">//echo "uswam grupe $grp !&lt;br&gt;";</span>
+<a name="l00297"></a>00297                         unset ( $this -&gt; groups[$grp] );
+<a name="l00298"></a>00298                 }
+<a name="l00299"></a>00299                 <span class="comment">//print_r($this -&gt; inbattle );</span>
+<a name="l00300"></a>00300                 
+<a name="l00301"></a>00301         }
+<a name="l00302"></a>00302 
+<a name="l00303"></a><a class="code" href="classBattle.html#97ccab812af74f16ee7376551694ed50">00303</a>         function <a class="code" href="classBattle.html#97ccab812af74f16ee7376551694ed50">RoundEnd</a>() {
+<a name="l00304"></a>00304                 global $smarty;
+<a name="l00305"></a>00305                 <span class="comment">//print_r( $this -&gt; groups );</span>
+<a name="l00306"></a>00306                 <span class="keywordflow">if</span>( count( $this -&gt; groups ) &lt; 2 ) {
+<a name="l00307"></a>00307                         $this -&gt; status = <a class="code" href="battle_8class_8php.html#d8f7f4b1979a65df7c86ecd1c2301727">B_BATTLE_END</a>;
+<a name="l00308"></a>00308                         <span class="comment">//echo "USAWIAM KONIEC WALKI !";</span>
+<a name="l00309"></a>00309                 }
+<a name="l00310"></a>00310                 $this -&gt; round ++;
+<a name="l00311"></a>00311                 $smarty -&gt; display( 'battle/roundend.tpl' );
+<a name="l00312"></a>00312         }
+<a name="l00313"></a>00313 
+<a name="l00314"></a><a class="code" href="classBattle.html#99b91d9396be0075a26369b7466c3a82">00314</a>         function <a class="code" href="classBattle.html#99b91d9396be0075a26369b7466c3a82">BattleFinish</a>() {
+<a name="l00315"></a>00315                 global $smarty;
+<a name="l00316"></a>00316                 <span class="comment">//foreach( $this -&gt; figures as $key =&gt; $val ) {</span>
+<a name="l00317"></a>00317                 <span class="comment">//      $this -&gt; DelFromCombat( $key );</span>
+<a name="l00318"></a>00318                 <span class="comment">//}</span>
+<a name="l00319"></a>00319                 <span class="comment">//echo " --- PODSUMOWANIE ---\n";</span>
+<a name="l00320"></a>00320                 $msg = '';
+<a name="l00321"></a>00321                 <span class="comment">//print_r( $this -&gt; figures );</span>
+<a name="l00322"></a>00322                 foreach( $this -&gt; figures as $key =&gt; $item ) {
+<a name="l00323"></a>00323                         
+<a name="l00324"></a>00324                         <span class="comment">//print_r($item);</span>
+<a name="l00325"></a>00325                         $ply =&amp; $this -&gt; figures[$key]['figure'];
+<a name="l00326"></a>00326                         
+<a name="l00327"></a>00327                         <span class="comment">//echo "{$ply -&gt; name}&lt;br&gt;";</span>
+<a name="l00328"></a>00328                         $msg.= <span class="stringliteral">"{$ply -&gt; name}"</span>;
+<a name="l00329"></a>00329                         <span class="comment">//echo "{$killer-&gt;name} zabil {$killed -&gt; name}";</span>
+<a name="l00330"></a>00330                         <span class="keywordflow">if</span>( isset( $item['killerid'] ) ) {
+<a name="l00331"></a>00331                                 <span class="comment">//echo "KID : {$item['killerid']}&lt;br&gt;";</span>
+<a name="l00332"></a>00332                                 $kill =&amp; $this -&gt; figures[$item['killerid']];
+<a name="l00333"></a>00333                                 <span class="comment">//print_r( $kill );</span>
+<a name="l00334"></a>00334                                 $killer = $kill['figure'];
+<a name="l00335"></a>00335                                 $msg.= <span class="stringliteral">" (zabity przez {$killer-&gt;name}"</span>;
+<a name="l00336"></a>00336                                 <span class="keywordflow">if</span>( $kill['figure'] -&gt; type == 'player' ) {
+<a name="l00337"></a>00337                                         $exp = $ply-&gt;CombatGetVal('exp');
+<a name="l00338"></a>00338                                         $gold = $ply -&gt; CombatGetVal('gold');
+<a name="l00339"></a>00339                                         $kill['exp'] += $ply-&gt;CombatGetVal('exp');
+<a name="l00340"></a>00340                                         $kill['gold'] += $ply -&gt; CombatGetVal('gold');
+<a name="l00341"></a>00341                                         <span class="comment">//$killer -&gt; AwardExp( $exp );</span>
+<a name="l00342"></a>00342                                         <span class="comment">//$killer -&gt; gold += $gold;</span>
+<a name="l00343"></a>00343                                         <span class="comment">//$killer -&gt; ApplyChanges();</span>
+<a name="l00344"></a>00344                                         <span class="comment">//$kill</span>
+<a name="l00345"></a>00345                                         $msg.= <span class="stringliteral">", +$exp exp oraz +$gold zlota"</span>;
+<a name="l00346"></a>00346                                 }
+<a name="l00347"></a>00347                                 $msg.= <span class="stringliteral">")"</span>;
+<a name="l00348"></a>00348                         }
+<a name="l00349"></a>00349                         $msg.= <span class="stringliteral">"&lt;br&gt;"</span>;
+<a name="l00350"></a>00350                         
+<a name="l00351"></a>00351                         <span class="comment">//$ply -&gt; ApplyChanges();</span>
+<a name="l00352"></a>00352                         <span class="comment">//$ply -&gt; AwardSkill( $item['gain'] );</span>
+<a name="l00353"></a>00353                                 <span class="comment">//echo " oraz dostaje za to :\n\t{} doswiadczenia\n\t{$killed-&gt;CombatGetVal('gold')} zlota\n";</span>
+<a name="l00354"></a>00354                                 <span class="comment">//echo "";</span>
+<a name="l00355"></a>00355                                 <span class="comment">//$killer -&gt; ApplyChanges();</span>
+<a name="l00356"></a>00356                         <span class="comment">//}</span>
+<a name="l00357"></a>00357                         <span class="comment">//else</span>
+<a name="l00358"></a>00358                 }
+<a name="l00359"></a>00359                 $smarty -&gt; assign( <span class="stringliteral">"Message"</span>, $msg );
+<a name="l00360"></a>00360                 $smarty -&gt; display( 'battle/battlefinish.tpl' );
+<a name="l00361"></a>00361         }
+<a name="l00362"></a>00362 
+<a name="l00363"></a><a class="code" href="classBattle.html#3cb999f7ae94d02f135539e4bebe876c">00363</a>         function <a class="code" href="classBattle.html#3cb999f7ae94d02f135539e4bebe876c">BattleRestart</a>() {
+<a name="l00364"></a>00364                 foreach( $this -&gt; figures as $key =&gt; $item ) {
+<a name="l00365"></a>00365                         <span class="comment">//$this -&gt; figures[$key]['gain'] = array( 'melee'=&gt;0, 'ranged'=&gt;0, 'cast'=&gt;0, 'miss'=&gt;0 );</span>
+<a name="l00366"></a>00366                         $this -&gt; figures[$key]['figure'] -&gt; Restart();
+<a name="l00367"></a>00367                         unset( $this -&gt; figures[$key]['killerid'] );
+<a name="l00368"></a>00368                 }
+<a name="l00369"></a>00369         }
+<a name="l00370"></a>00370 
+<a name="l00371"></a><a class="code" href="classBattle.html#04f243886e5d4bd157087587eade6c16">00371</a>         function <a class="code" href="classBattle.html#04f243886e5d4bd157087587eade6c16">BattleEnd</a>() {
+<a name="l00372"></a>00372                 foreach( $this -&gt; figures as $key =&gt; $item ) {
+<a name="l00373"></a>00373                         echo <span class="stringliteral">"{$item['figure']-&gt;name} dostaje {$item['exp']} doswiadczenia, {$item['gold']} zlota&lt;br&gt;"</span>;
+<a name="l00374"></a>00374                         <span class="comment">//echo "{$item['gain']['cast']} rzucania czarow&lt;br&gt;";</span>
+<a name="l00375"></a>00375                         $item['figure'] -&gt; AwardExp( $item['exp'] );
+<a name="l00376"></a>00376                         $item['figure'] -&gt; gold += $item['gold'];
+<a name="l00377"></a>00377                         $item['figure'] -&gt; ApplyChanges();
+<a name="l00378"></a>00378                 }
+<a name="l00379"></a>00379         }
+<a name="l00380"></a>00380 
+<a name="l00381"></a><a class="code" href="classBattle.html#f6ad3ba36e77c4a76f053eaf39c73457">00381</a>         function <a class="code" href="classBattle.html#f6ad3ba36e77c4a76f053eaf39c73457">Battle</a>( $times = 1 ) {
+<a name="l00382"></a>00382                 <span class="keywordflow">if</span>( $times &gt; 1 &amp;&amp; $this -&gt; type != 'pvm' ) {
+<a name="l00383"></a>00383                         trigger_error( <span class="stringliteral">"Wielokrotne walki mozliwe tylko w trybie pvm !"</span>, E_USER_WARNING );
+<a name="l00384"></a>00384                         <span class="keywordflow">return</span> FALSE;
+<a name="l00385"></a>00385                 }
+<a name="l00386"></a>00386                 $this -&gt; <a class="code" href="classBattle.html#d72bb105e7773ee99804e86ad45a8dbe">BattleStart</a>();
+<a name="l00387"></a>00387                 <span class="keywordflow">for</span>( $i = 1; $i &lt;= $times; $i++ ) {
+<a name="l00388"></a>00388                         <span class="keywordflow">if</span>( $this -&gt; <a class="code" href="classBattle.html#5c77727bd937c7b188917822a327d190">BattlePrepare</a>() === FALSE ) {
+<a name="l00389"></a>00389                                 trigger_error( <span class="stringliteral">"Blad posczas przygotowywania walki !"</span>, E_USER_WARNING );
+<a name="l00390"></a>00390                                 <span class="keywordflow">break</span>;
+<a name="l00391"></a>00391                         }
+<a name="l00392"></a>00392                         <span class="keywordflow">do</span>{
+<a name="l00393"></a>00393                                 $this -&gt; <a class="code" href="classBattle.html#191f66665fd82f7d7522b7b9d9649748">RoundPrepare</a>();
+<a name="l00394"></a>00394                                 <span class="keywordflow">do</span>{
+<a name="l00395"></a>00395                                         $this -&gt; <a class="code" href="classBattle.html#b2414a602e117207bf4ddf02adcb2da4">TurnPrepare</a>( );
+<a name="l00396"></a>00396                                         $this -&gt; <a class="code" href="classBattle.html#b9d70be1059ede43be394891eeba64dd">TurnAttack</a>( );
+<a name="l00397"></a>00397                                         $this -&gt; <a class="code" href="classBattle.html#57eb05c4fd5184280d4b74f44e832e8b">TurnEnd</a>( );
+<a name="l00398"></a>00398                                 }<span class="keywordflow">while</span>( $this -&gt; roundstatus != <a class="code" href="battle_8class_8php.html#817088adffee6bb42ac49e5bd5f73518">B_ROUND_END</a> &amp;&amp; $this -&gt; status != <a class="code" href="battle_8class_8php.html#d8f7f4b1979a65df7c86ecd1c2301727">B_BATTLE_END</a> );
+<a name="l00399"></a>00399                                 $this -&gt; <a class="code" href="classBattle.html#97ccab812af74f16ee7376551694ed50">RoundEnd</a>();
+<a name="l00400"></a>00400                         } <span class="keywordflow">while</span>( $this -&gt; status != <a class="code" href="battle_8class_8php.html#d8f7f4b1979a65df7c86ecd1c2301727">B_BATTLE_END</a> &amp;&amp; $this -&gt; round &lt; 25 );
+<a name="l00401"></a>00401                         <span class="comment">//echo "Walka zakonczona !\n";</span>
+<a name="l00402"></a>00402                         $this -&gt; <a class="code" href="classBattle.html#99b91d9396be0075a26369b7466c3a82">BattleFinish</a>();
+<a name="l00403"></a>00403                         <span class="keywordflow">if</span>( $times &gt; 1 ) {
+<a name="l00404"></a>00404                                 $this -&gt; <a class="code" href="classBattle.html#3cb999f7ae94d02f135539e4bebe876c">BattleRestart</a>();
+<a name="l00405"></a>00405                         }
+<a name="l00406"></a>00406                 }
+<a name="l00407"></a>00407                 $this -&gt; <a class="code" href="classBattle.html#04f243886e5d4bd157087587eade6c16">BattleEnd</a>();
+<a name="l00408"></a>00408 
+<a name="l00409"></a>00409         }
+<a name="l00410"></a>00410 }
+</pre></div><hr size="1"><address style="align: right;"><small>Wygenerowano Wed Jan 24 21:54:54 2007 dla KaraTur Class programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.7 </small></address>
+</body>
+</html>

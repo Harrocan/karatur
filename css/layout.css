@@ -1,0 +1,142 @@
+body{
+background:black;
+}
+.kt_cont{
+width:760px;
+margin:0px auto;
+/*border*/
+}
+.bar{
+clear:both;
+background:url( '../images/layout/bar_mid.png' );
+height:26px;
+width:760px;
+font-size:10px;
+font-family:verdana;
+color: #DEB887;
+vertical-align:top;
+text-align:center;
+}
+.bar-left{
+background:url( '../images/layout/bar_left.png' );
+width:21px;
+height:26px;
+}
+.bar-mid{
+overflow:hidden;
+height:26px;
+padding:0px;
+margin:0px;
+}
+.bar-right{
+background:url( '../images/layout/bar_right.png' );
+width:20px;
+height:26px;
+}
+img.bar-btn{
+padding:1px 5px 1px 5px;
+margin:5px 1px 0px 1px;
+}
+img.bar-btn:hover{
+background:url( '../images/layout/bar_mid_hover.png' );
+
+}
+img.btn-active{
+background:url( '../images/layout/bar_mid_active.png' );
+
+}
+img.btn-active:hover{
+background:url( '../images/layout/bar_mid_active.png' );
+
+}
+.kt_logo{
+margin: 3px 0px;
+}
+
+.sidebar_left-before{
+font-size:10px;
+background:url( '../images/layout/side_left_top.png' );
+display:block;
+width:149px;
+height:10px;
+}
+.sidebar_left{
+float:left;
+width:149px;
+color: #DEB887;
+
+margin:10px 0px;
+background: url( '../images/layout/side_left_mid.png' );
+}
+.sidebar_left-after{
+font-size:10px;
+margin:0px;
+padding:0px;
+border:0px;
+background:url( '../images/layout/side_left_bottom.png' );
+display:block;
+width:149px;
+height:13px;
+}
+.sidebar_right-before{
+font-size:10px;
+background:url( '../images/layout/side_right_top.png' );
+display:block;
+width:170px;
+height:16px;
+}
+.sidebar_right{
+float:left;
+width:170px;
+color: #DEB887;
+
+margin:10px 0px;
+background: url( '../images/layout/side_right_mid.png' );
+}
+.sidebar_right-after{
+font-size:10px;
+background:url( '../images/layout/side_right_bottom.png' );
+display:block;
+width:170px;
+height:13px;
+}
+.side-cont{
+text-align:left;
+font-size:10px;
+font-family:verdana;
+margin: 0px 12px 0px 12px;
+
+}
+hr.kt-line{
+height:8px;
+background:url( '../images/layout/line.png' );
+border:none;
+}
+.kt_main_nav-before{
+background:url( '../images/layout/cont_top.png' );
+display:block;
+width:415px;
+height:10px;
+padding:0px;
+font-size:10px;
+}
+.kt_main_nav{
+float:left;
+margin: 10px 12px;
+width:415px;
+color: yellow;
+background: url( '../images/layout/cont_mid.png' );
+}
+.kt_main_nav-after{
+font-size:10px;
+background:url( '../images/layout/cont_bottom.png' );
+display:block;
+width:415px;
+height:17px;
+}
+.kt_main_cont{
+font-size:10px;
+color: #DEB887;
+font-family:verdana;
+margin: 0px 12px 0px 12px;
+}

@@ -1,0 +1,156 @@
+body {
+font-family:verdana;
+font-size:10px;
+margin:10px;
+padding:0px;
+background:#000000;
+/*color:white;*/
+}
+a {
+/*color:#C9CFFF;*/
+color: rgb( 201, 207, 255 );
+font-style:italic;
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+input {
+/*height:20px;*/
+font-size:10px;
+padding:1px;
+margin:1px;
+border:none;
+background-color:#2F4F4F;
+color:#FC3;
+}
+input:hover{
+background:#2F4F4F;
+}
+.main_page{
+margin:0px auto;
+width:760px;
+font-size:11px;
+}
+.main_logo{
+width:760px;
+height:150px;
+}
+.main_navigation{
+margin:5px auto;
+height:20px;
+width:760px;
+/*overflow:hidden;*/
+color: #FAEBD7;
+background:url( '../images/layout_out/bar_mid.png' );
+position:relative;
+clear:both;
+}
+.main_nav_left{
+display:block;
+position:absolute;
+top:0px;
+}
+.main_nav_right{
+display:block;
+position:absolute;
+top:0px;
+right:0px;
+}
+.main_nav_entry{
+margin-top:3px;
+height:14px;
+width:150px;
+float:left;
+text-align:center;
+}
+div.main:before {
+content:url( '../images/layout_out/main_top.png' );
+display:block;
+width:760px;
+height:8px;
+}
+.main{
+position:relative;
+min-width:160px;
+background-image:url( '../images/layout_out/main_mid.png' );
+}
+div.main:after {
+content:url( '../images/layout_out/main_bottom.png' );
+display:block;
+width:760px;
+height:17px;
+}
+.main_content {
+padding: 10px 14px;
+}
+.main_content div,
+.main_content table {
+color:#FC9;
+font-size:10px;
+}
+.main_login{
+font-size:10px;
+color: white;
+width:170px;
+text-align:center;
+clear: both;
+}
+.sidebar{
+background:url( "../images/layout_out/login1_mid.png" );
+position:relative;
+font-size:10px;
+padding:0px;
+margin:5px 0px;
+clear:both;
+float:right;
+width:194px;
+}
+div.sidebar:before{
+content:url( '../images/layout_out/login1_top.png' );
+display:block;
+width:193px;
+height:9px;
+}
+div.sidebar:after{
+content:url( '../images/layout_out/login1_bottom.png' );
+display:block;
+width:193px;
+height:9px;
+}
+.sidebar_head{
+border-bottom:dotted 1px;
+text-align:center;
+cursor:pointer;
+color:white;
+margin:0px 10px;
+}
+div.sidebar_head:hover{
+background:gray;
+font-style:italic;
+}
+.sidebar_text{
+overflow:hidden;
+color:white;
+margin:0px 10px;
+}
+.dialog {
+}
+.dialog > .text,
+.dialog .text {
+padding-left:5px;
+display: block;
+font-style:italic;
+margin: 10px 0px 10px 20px;
+border-left: solid 3px;
+/*background: #E7FFA8;*/
+color: #FE6;
+background-color:#0c1115;
+}
+.dialog > .desc,
+.dialog .desc {
+color:#FC9;
+display:block;
+
+
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-2">
+<title>KaraTur Class: Plik źródłowy /var/www/localhost/htdocs/karatur/class/quests_class.php</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Wygenerowano przez Doxygen 1.4.7 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Strona&nbsp;główna</span></a></li>
+    <li><a href="annotated.html"><span>Struktury&nbsp;Danych</span></a></li>
+    <li id="current"><a href="files.html"><span>Pliki</span></a></li>
+    <li><a href="pages.html"><span>Dodatkowe&nbsp;strony</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;<u>S</u>zukaj&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Lista&nbsp;plików</span></a></li>
+    <li><a href="globals.html"><span>Globalne</span></a></li>
+  </ul></div>
+<h1>/var/www/localhost/htdocs/karatur/class/quests_class.php</h1><a href="quests__class_8php.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment"> *                               quests_class.php</span>
+<a name="l00004"></a>00004 <span class="comment"> *                            -------------------</span>
+<a name="l00005"></a>00005 <span class="comment"> *   copyright            : (C) 2004 Vallheru Team based on Gamers-Fusion ver 2.5</span>
+<a name="l00006"></a>00006 <span class="comment"> *   email                : thindil@users.sourceforge.net</span>
+<a name="l00007"></a>00007 <span class="comment"> *</span>
+<a name="l00008"></a>00008 <span class="comment"> ***************************************************************************/</span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 <span class="comment">/***************************************************************************</span>
+<a name="l00011"></a>00011 <span class="comment"> *</span>
+<a name="l00012"></a>00012 <span class="comment"> *       This program is free software; you can redistribute it and/or modify</span>
+<a name="l00013"></a>00013 <span class="comment"> *   it under the terms of the GNU General Public License as published by</span>
+<a name="l00014"></a>00014 <span class="comment"> *   the Free Software Foundation; either version 2 of the License, or</span>
+<a name="l00015"></a>00015 <span class="comment"> *   (at your option) any later version.</span>
+<a name="l00016"></a>00016 <span class="comment"> *</span>
+<a name="l00017"></a>00017 <span class="comment"> *   This program is distributed in the hope that it will be useful,</span>
+<a name="l00018"></a>00018 <span class="comment"> *   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00019"></a>00019 <span class="comment"> *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<a name="l00020"></a>00020 <span class="comment"> *   GNU General Public License for more details.</span>
+<a name="l00021"></a>00021 <span class="comment"> *</span>
+<a name="l00022"></a>00022 <span class="comment"> *   You should have received a copy of the GNU General Public License</span>
+<a name="l00023"></a>00023 <span class="comment"> *   along with this program; if not, write to the Free Software</span>
+<a name="l00024"></a>00024 <span class="comment"> *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</span>
+<a name="l00025"></a>00025 <span class="comment"> *</span>
+<a name="l00026"></a>00026 <span class="comment"> ***************************************************************************/</span> 
+<a name="l00027"></a><a class="code" href="classQuests.html">00027</a> <span class="keyword">class </span><a class="code" href="classQuests.html">Quests</a> {
+<a name="l00028"></a><a class="code" href="classQuests.html#81050f7b45f262d020cb260bf49bbadc">00028</a>         var <a class="code" href="classQuests.html#81050f7b45f262d020cb260bf49bbadc">$number</a>;
+<a name="l00029"></a><a class="code" href="classQuests.html#6add3f8c989c8579f237539cffe3a66f">00029</a>         var <a class="code" href="classQuests.html#6add3f8c989c8579f237539cffe3a66f">$location</a>;
+<a name="l00030"></a>00030         <span class="comment">// Konstruktor klasy - start przygody i pobranie pierwszego tekstu</span>
+<a name="l00031"></a><a class="code" href="classQuests.html#d8333155d3bc0a72d963561598e688f5">00031</a>         function <a class="code" href="classQuests.html#d8333155d3bc0a72d963561598e688f5">Quests</a>(<a class="code" href="classQuests.html#6add3f8c989c8579f237539cffe3a66f">$location</a>,<a class="code" href="classQuests.html#81050f7b45f262d020cb260bf49bbadc">$number</a>,$action) {
+<a name="l00032"></a>00032                 global $db;
+<a name="l00033"></a>00033                 global $smarty;
+<a name="l00034"></a>00034                 global $player;
+<a name="l00035"></a>00035                 <span class="keywordflow">if</span> (!$action || $action == 'start') {
+<a name="l00036"></a>00036                     $text = $db -&gt; Execute(<span class="stringliteral">"SELECT text FROM quests WHERE qid="</span>.<a class="code" href="classQuests.html#81050f7b45f262d020cb260bf49bbadc">$number</a>.<span class="stringliteral">" AND location='"</span>.<a class="code" href="classQuests.html#6add3f8c989c8579f237539cffe3a66f">$location</a>.<span class="stringliteral">"' AND name='start'"</span>);
+<a name="l00037"></a>00037                     $smarty -&gt; assign(<span class="stringliteral">"Start"</span>, $text -&gt; fields['text']);
+<a name="l00038"></a>00038                     $text -&gt; Close();
+<a name="l00039"></a>00039                     $db -&gt; Execute(<span class="stringliteral">"UPDATE players set miejsce='podroz' WHERE id="</span>.$player -&gt; <span class="keywordtype">id</span>);
+<a name="l00040"></a>00040                     $test = $db -&gt; Execute(<span class="stringliteral">"SELECT id FROM questaction WHERE player="</span>.$player -&gt; <span class="keywordtype">id</span>.<span class="stringliteral">" AND quest="</span>.<a class="code" href="classQuests.html#81050f7b45f262d020cb260bf49bbadc">$number</a>);
+<a name="l00041"></a>00041                     <span class="keywordflow">if</span> (empty($test -&gt; fields['<span class="keywordtype">id</span>'])) {
+<a name="l00042"></a>00042                         $db -&gt; Execute(<span class="stringliteral">"INSERT INTO questaction (player, action, quest) VALUES("</span>.$player -&gt; <span class="keywordtype">id</span>.<span class="stringliteral">",'start',"</span>.$number.<span class="stringliteral">")"</span>);
+<a name="l00043"></a>00043                 }
+<a name="l00044"></a>00044                 $test -&gt; Close();
+<a name="l00045"></a>00045             }
+<a name="l00046"></a>00046             <span class="keywordflow">if</span> ($action == 'end') {
+<a name="l00047"></a>00047                     error(<span class="stringliteral">"Juz byles na tej przygodzie!"</span>);
+<a name="l00048"></a>00048             }               
+<a name="l00049"></a>00049                 $this -&gt; number = <a class="code" href="classQuests.html#81050f7b45f262d020cb260bf49bbadc">$number</a>;
+<a name="l00050"></a>00050                 $this -&gt; location = <a class="code" href="classQuests.html#6add3f8c989c8579f237539cffe3a66f">$location</a>;
+<a name="l00051"></a>00051         }
+<a name="l00052"></a>00052         <span class="comment">// Pole wyboru (checkbox) dla akcji podejmowanych przez gracza</span>
+<a name="l00053"></a><a class="code" href="classQuests.html#6c8e893fe8ce6541935a4c1e0d15a8d9">00053</a>         function <a class="code" href="classQuests.html#6c8e893fe8ce6541935a4c1e0d15a8d9">Box</a>($num) {
+<a name="l00054"></a>00054                 global $db;
+<a name="l00055"></a>00055                 global $smarty;
+<a name="l00056"></a>00056                 $name = <span class="stringliteral">"box"</span>.$num;
+<a name="l00057"></a>00057                 $box = $db -&gt; Execute(<span class="stringliteral">"SELECT text FROM quests WHERE qid="</span>.$this -&gt; number.<span class="stringliteral">" AND location='"</span>.$this -&gt; location.<span class="stringliteral">"' AND name='"</span>.$name.<span class="stringliteral">"'"</span>);
+<a name="l00058"></a>00058                 $arrtext = array();
+<a name="l00059"></a>00059                 $arroption = array();
+<a name="l00060"></a>00060                 $i = 0;
+<a name="l00061"></a>00061                 <span class="keywordflow">while</span> (!$box -&gt; EOF) {
+<a name="l00062"></a>00062                         $arrtext[$i] = $box -&gt; fields['text'];
+<a name="l00063"></a>00063                         $arroption[$i] = $i + 1;
+<a name="l00064"></a>00064                         $i = $i + 1;
+<a name="l00065"></a>00065                         $box -&gt; MoveNext();
+<a name="l00066"></a>00066                 }
+<a name="l00067"></a>00067                 $box -&gt; Close();
+<a name="l00068"></a>00068                 $smarty -&gt; assign( array(<span class="stringliteral">"Box"</span> =&gt; $arrtext, <span class="stringliteral">"File"</span> =&gt; $this -&gt; location, <span class="stringliteral">"Name"</span> =&gt; $name, <span class="stringliteral">"Option"</span> =&gt; $arroption));
+<a name="l00069"></a>00069         }
+<a name="l00070"></a>00070         <span class="comment">// Wyswietlanie tektsu w zaleznosci od wydarzenia</span>
+<a name="l00071"></a><a class="code" href="classQuests.html#b6e6b7c13f7cc32a242a002b6962075d">00071</a>         function <a class="code" href="classQuests.html#b6e6b7c13f7cc32a242a002b6962075d">Show</a>($num) {
+<a name="l00072"></a>00072                 global $db;
+<a name="l00073"></a>00073                 global $smarty;
+<a name="l00074"></a>00074                 global $player;
+<a name="l00075"></a>00075             $db -&gt; Execute(<span class="stringliteral">"UPDATE questaction SET action='"</span>.$num.<span class="stringliteral">"' WHERE player="</span>.$player -&gt; <span class="keywordtype">id</span>.<span class="stringliteral">" AND quest="</span>.$this -&gt; number);
+<a name="l00076"></a>00076                 $text = $db -&gt; Execute(<span class="stringliteral">"SELECT text FROM quests WHERE qid="</span>.$this -&gt; number.<span class="stringliteral">" AND location='"</span>.$this -&gt; location.<span class="stringliteral">"' AND name='"</span>.$num.<span class="stringliteral">"'"</span>);
+<a name="l00077"></a>00077                 $smarty -&gt; assign(<span class="stringliteral">"Text"</span>, $text -&gt; fields['text']);
+<a name="l00078"></a>00078                 $text -&gt; Close();
+<a name="l00079"></a>00079         }
+<a name="l00080"></a>00080         <span class="comment">// Zakonczenie przygody</span>
+<a name="l00081"></a><a class="code" href="classQuests.html#0d7545972f9d0561d5f6662accc1e3de">00081</a>         function <a class="code" href="classQuests.html#0d7545972f9d0561d5f6662accc1e3de">Finish</a>($exp) {
+<a name="l00082"></a>00082                 global $db;
+<a name="l00083"></a>00083                 global $smarty;
+<a name="l00084"></a>00084                 global $player;
+<a name="l00085"></a>00085                 $db -&gt; Execute(<span class="stringliteral">"UPDATE questaction SET action='end' WHERE player="</span>.$player -&gt; <span class="keywordtype">id</span>.<span class="stringliteral">" AND quest="</span>.$this -&gt; number);
+<a name="l00086"></a>00086                 $db -&gt; Execute(<span class="stringliteral">"UPDATE players SET miejsce='Athkatla' WHERE id="</span>.$player -&gt; <span class="keywordtype">id</span>);
+<a name="l00087"></a>00087                 $gainexp = $exp * $player -&gt; level;
+<a name="l00088"></a>00088                 <span class="keywordflow">if</span> ($exp &gt; 0) {
+<a name="l00089"></a>00089             $text = <span class="stringliteral">"Dostajesz "</span>.$gainexp.<span class="stringliteral">" Punktow Doswiadczenia"</span>;
+<a name="l00090"></a>00090                         require_once(<span class="stringliteral">"includes/checkexp.php"</span>);
+<a name="l00091"></a>00091             checkexp($player -&gt; exp,$gainexp,$player -&gt; level,$player -&gt; race,$player -&gt; user,$player -&gt; <span class="keywordtype">id</span>,0,0,$player -&gt; <span class="keywordtype">id</span>,'',0);
+<a name="l00092"></a>00092         } <span class="keywordflow">else</span> {
+<a name="l00093"></a>00093                 $text = '';
+<a name="l00094"></a>00094         }
+<a name="l00095"></a>00095                 $smarty -&gt; assign(<span class="stringliteral">"End"</span>, $text.'&lt;br /&gt;&lt;br /&gt;(&lt;a href=<span class="stringliteral">"athkatla.php"</span>&gt;Wróc <span class="keywordflow">do</span> miasta&lt;/a&gt;)');
+<a name="l00096"></a>00096     }
+<a name="l00097"></a>00097     <span class="comment">// Walka turowa podczas przygody</span>
+<a name="l00098"></a><a class="code" href="classQuests.html#5b4b03eb4f67b2ec79fc3068d18040b4">00098</a>     function <a class="code" href="classQuests.html#5b4b03eb4f67b2ec79fc3068d18040b4">Battle</a>($adress) {
+<a name="l00099"></a>00099         global $player;
+<a name="l00100"></a>00100         global $smarty;
+<a name="l00101"></a>00101         global $enemy;
+<a name="l00102"></a>00102         global $arrehp;
+<a name="l00103"></a>00103         global $db;
+<a name="l00104"></a>00104         global $newdate;
+<a name="l00105"></a>00105         require_once('includes/turnfight.php');
+<a name="l00106"></a>00106         require_once('includes/funkcje.php');
+<a name="l00107"></a>00107         $fight = $db -&gt; Execute(<span class="stringliteral">"SELECT fight FROM players WHERE id="</span>.$player -&gt; <span class="keywordtype">id</span>);
+<a name="l00108"></a>00108         $enemy1 = $db -&gt; Execute(<span class="stringliteral">"SELECT * FROM monsters WHERE id="</span>.$fight -&gt; fields['fight']);
+<a name="l00109"></a>00109         $enemy = array(<span class="stringliteral">"strength"</span> =&gt; $enemy1 -&gt; fields['strength'], <span class="stringliteral">"agility"</span> =&gt; $enemy1 -&gt; fields['agility'], <span class="stringliteral">"speed"</span> =&gt; $enemy1 -&gt; fields['speed'], <span class="stringliteral">"endurance"</span> =&gt; $enemy1 -&gt; fields['endurance'], <span class="stringliteral">"hp"</span> =&gt; $enemy1 -&gt; fields['hp'], <span class="stringliteral">"name"</span> =&gt; $enemy1 -&gt; fields['name'], <span class="stringliteral">"exp1"</span> =&gt; $enemy1 -&gt; fields['exp1'], <span class="stringliteral">"exp2"</span> =&gt; $enemy1 -&gt; fields['exp2'], <span class="stringliteral">"level"</span> =&gt; $enemy1 -&gt; fields['level']);
+<a name="l00110"></a>00110         $span = ($enemy1 -&gt; fields['level'] / $player -&gt; level);
+<a name="l00111"></a>00111         <span class="keywordflow">if</span> ($span &gt; 2) {
+<a name="l00112"></a>00112             $span = 2;
+<a name="l00113"></a>00113         }
+<a name="l00114"></a>00114         $expgain = ceil(rand($enemy1 -&gt; fields['exp1'],$enemy1 -&gt; fields['exp2'])  * $span);
+<a name="l00115"></a>00115         $goldgain = ceil(rand($enemy1 -&gt; fields['credits1'],$enemy1 -&gt; fields['credits2']) * $span);
+<a name="l00116"></a>00116             $enemy1 -&gt; Close();        
+<a name="l00117"></a>00117         $arrehp = array ();
+<a name="l00118"></a>00118         <span class="keywordflow">if</span> (!isset ($_POST['action'])) {
+<a name="l00119"></a>00119             turnfight ($expgain,$goldgain,'',$adress);
+<a name="l00120"></a>00120         } <span class="keywordflow">else</span> {
+<a name="l00121"></a>00121             turnfight ($expgain,$goldgain,$_POST['action'],$adress);
+<a name="l00122"></a>00122         }
+<a name="l00123"></a>00123         <span class="keywordflow">if</span> ($fight -&gt; fields['fight'] == 0) {
+<a name="l00124"></a>00124             $player -&gt; energy = $player -&gt; energy - 1;
+<a name="l00125"></a>00125             $db -&gt; Execute(<span class="stringliteral">"UPDATE players SET energy="</span>.$player -&gt; energy.<span class="stringliteral">" WHERE id="</span>.$player -&gt; <span class="keywordtype">id</span>);
+<a name="l00126"></a>00126        }
+<a name="l00127"></a>00127        $fight -&gt; Close();
+<a name="l00128"></a>00128    }
+<a name="l00129"></a>00129    <span class="comment">// Zdobywanie doswiadczenia podczas przygody</span>
+<a name="l00130"></a><a class="code" href="classQuests.html#dd38803f7b2583a037fbe8abc521eb56">00130</a>    function <a class="code" href="classQuests.html#dd38803f7b2583a037fbe8abc521eb56">Gainexp</a>($exp) {
+<a name="l00131"></a>00131                 global $db;
+<a name="l00132"></a>00132                 global $smarty;
+<a name="l00133"></a>00133                 global $player;
+<a name="l00134"></a>00134                 $gainexp = $exp * $player -&gt; level;
+<a name="l00135"></a>00135         $text = <span class="stringliteral">"Dostajesz "</span>.$gainexp.<span class="stringliteral">" Punktow Doswiadczenia"</span>;
+<a name="l00136"></a>00136             require_once(<span class="stringliteral">"includes/checkexp.php"</span>);
+<a name="l00137"></a>00137         checkexp($player -&gt; exp,$gainexp,$player -&gt; level,$player -&gt; race,$player -&gt; user,$player -&gt; <span class="keywordtype">id</span>,0,0,$player -&gt; <span class="keywordtype">id</span>,'',0);
+<a name="l00138"></a>00138                 $smarty -&gt; assign(<span class="stringliteral">"End"</span>, <span class="stringliteral">"&lt;br /&gt;&lt;br /&gt;"</span>.$text);        
+<a name="l00139"></a>00139     }
+<a name="l00140"></a>00140     <span class="comment">// Odpowiedzi na pytania</span>
+<a name="l00141"></a><a class="code" href="classQuests.html#06fec7375afd0861b245854baeb3ffc1">00141</a>     function <a class="code" href="classQuests.html#06fec7375afd0861b245854baeb3ffc1">Answer</a>($num,$answfalse,$repeat) {
+<a name="l00142"></a>00142             global $db;
+<a name="l00143"></a>00143             global $player;
+<a name="l00144"></a>00144             global $smarty;
+<a name="l00145"></a>00145             <span class="keywordflow">if</span> (!isset($_POST['planswer'])) {
+<a name="l00146"></a>00146                 $_POST['planswer'] = '';
+<a name="l00147"></a>00147             }
+<a name="l00148"></a>00148             $_POST['planswer'] = strip_tags($_POST['planswer']);
+<a name="l00149"></a>00149             $ans = $db -&gt; Execute(<span class="stringliteral">"SELECT * FROM quests WHERE qid="</span>.$this -&gt; number.<span class="stringliteral">" AND location='"</span>.$this -&gt; location.<span class="stringliteral">"' AND name='"</span>.$num.<span class="stringliteral">"'"</span>);
+<a name="l00150"></a>00150             <span class="keywordflow">if</span> ($repeat == <span class="charliteral">'Y'</span>) {
+<a name="l00151"></a>00151                 $db -&gt; Execute(<span class="stringliteral">"UPDATE players SET temp=temp-1 WHERE id="</span>.$player -&gt; <span class="keywordtype">id</span>);
+<a name="l00152"></a>00152             }
+<a name="l00153"></a>00153             <span class="keywordflow">if</span> (isset($_POST['planswer']) &amp;&amp; $_POST['planswer'] == $ans -&gt; fields['option']) {
+<a name="l00154"></a>00154                 <span class="keywordflow">return</span> 1;
+<a name="l00155"></a>00155             } elseif (isset($_POST['planswer']) &amp;&amp; $_POST['planswer'] != $ans -&gt; fields['option']) {
+<a name="l00156"></a>00156                 <span class="keywordflow">if</span> (!empty($answfalse)) {
+<a name="l00157"></a>00157                     $text = $db -&gt; Execute(<span class="stringliteral">"SELECT text FROM quests WHERE qid="</span>.$this -&gt; number.<span class="stringliteral">" AND location='"</span>.$this -&gt; location.<span class="stringliteral">"' AND name='"</span>.$answfalse.<span class="stringliteral">"'"</span>);
+<a name="l00158"></a>00158                     $smarty -&gt; assign(<span class="stringliteral">"Link"</span>, $text -&gt; fields['text']);
+<a name="l00159"></a>00159                     $text -&gt; Close();
+<a name="l00160"></a>00160                 }
+<a name="l00161"></a>00161                 <span class="keywordflow">return</span> 0;                               
+<a name="l00162"></a>00162             }
+<a name="l00163"></a>00163     }
+<a name="l00164"></a>00164     <span class="comment">// rezygnacja z przygody</span>
+<a name="l00165"></a><a class="code" href="classQuests.html#7fcb037c93ec7493d95d4934c5937ee0">00165</a>     function <a class="code" href="classQuests.html#7fcb037c93ec7493d95d4934c5937ee0">Resign</a>() {
+<a name="l00166"></a>00166         global $db;
+<a name="l00167"></a>00167         global $player;
+<a name="l00168"></a>00168         global $smarty;
+<a name="l00169"></a>00169         $db -&gt; Execute(<span class="stringliteral">"DELETE FROM questaction WHERE player="</span>.$player -&gt; <span class="keywordtype">id</span>.<span class="stringliteral">" AND quest="</span>.$this -&gt; number);
+<a name="l00170"></a>00170         $db -&gt; Execute(<span class="stringliteral">"UPDATE players SET miejsce='Athkatla' WHERE id="</span>.$player -&gt; <span class="keywordtype">id</span>);
+<a name="l00171"></a>00171         $smarty -&gt; assign(<span class="stringliteral">"End"</span>, <span class="stringliteral">"(&lt;a href=\"grid.php\"&gt;Labirynt&lt;/a&gt;)"</span>);
+<a name="l00172"></a>00172     }
+<a name="l00173"></a>00173 }
+<a name="l00174"></a>00174 ?&gt;
+<a name="l00175"></a>00175 
+</pre></div><hr size="1"><address style="align: right;"><small>Wygenerowano Wed Jan 24 21:54:54 2007 dla KaraTur Class programem&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.7 </small></address>
+</body>
+</html>
